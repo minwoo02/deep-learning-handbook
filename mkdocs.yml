@@ -5,7 +5,6 @@ theme:
   language: ko
   features:
   - navigation.tabs
-  - navigation.sections
   - navigation.top
   - content.code.copy
   - toc.follow
