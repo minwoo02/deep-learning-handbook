@@ -86,39 +86,111 @@
   box-shadow: var(--handbook-article-shadow);
 }
 
-/* Clickable concept branches use native links for keyboard and touch access. */
-.md-typeset .handbook-concept-map ul { list-style: none; margin: 0; padding: 0; }
-.md-typeset .handbook-concept-map > ul > li > ul {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.2rem;
-  border: 0;
-  margin: 1rem 0;
+/* A two-sided mind map with real document links on every node. */
+.md-typeset .handbook-concept-map {
+  overflow: auto;
+  font-size: .65rem;
+  max-width: 100%;
+  padding: 1rem;
+  margin-block: 1.5rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .6rem;
+  background: var(--md-code-bg-color);
+}
+.md-typeset .handbook-concept-map ul {
+  list-style: none;
+  margin: 0;
   padding: 0;
 }
-.md-typeset .handbook-concept-map li { margin: .55rem 0 0; }
-.md-typeset .handbook-concept-map li ul {
-  margin: .5rem 0 .8rem .6rem;
-  padding-left: .8rem;
-  border-left: 2px solid var(--md-default-fg-color--lightest);
+.md-typeset .handbook-concept-map li {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 0;
+  padding: .25rem 0;
+  gap: 1rem;
 }
+.md-typeset .handbook-concept-map li > ul {
+  position: relative;
+  padding-left: 1rem;
+  border-left: 2px solid var(--handbook-branch-color, var(--md-default-fg-color--lighter));
+}
+.md-typeset .handbook-concept-map li > ul::before,
+.md-typeset .handbook-concept-map li > ul > li::before {
+  content: "";
+  position: absolute;
+  width: 1rem;
+  top: 50%;
+  left: -1rem;
+  border-top: 2px solid var(--handbook-branch-color, var(--md-default-fg-color--lighter));
+}
+.md-typeset .handbook-concept-map li > ul::before { left: -1rem; }
 .md-typeset .handbook-concept-map a {
-  display: inline-block;
-  padding: .35rem .65rem;
-  border: 1px solid var(--md-default-fg-color--lightest);
-  border-radius: .4rem;
-  background: var(--md-code-bg-color);
+  display: block;
+  flex-shrink: 0;
+  max-width: 9rem;
+  padding: .4rem .65rem;
+  border: 1px solid var(--handbook-branch-color, var(--md-default-fg-color--lightest));
+  border-radius: .6rem;
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
   text-decoration: none;
   overflow-wrap: anywhere;
+  box-shadow: 0 2px 5px rgb(15 23 42 / 7%);
 }
 .md-typeset .handbook-concept-map a:hover,
 .md-typeset .handbook-concept-map a:focus-visible {
-  border-color: var(--md-accent-fg-color);
   color: var(--md-accent-fg-color);
-  box-shadow: 0 3px 10px rgb(15 23 42 / 10%);
+  outline: 2px solid var(--md-accent-fg-color);
+  outline-offset: 2px;
 }
-.md-typeset .handbook-concept-map > ul > li > a,
+.md-typeset .handbook-concept-map > ul > li {
+  display: grid;
+  grid-template-columns: max-content 8rem max-content;
+  gap: 1rem;
+  width: max-content;
+  min-width: 100%;
+  justify-content: center;
+}
+.md-typeset .handbook-concept-map > ul > li > a {
+  grid-column: 2;
+  grid-row: 1;
+  text-align: center;
+  font-weight: 700;
+  padding: 1rem;
+  border: 2px solid var(--md-accent-fg-color);
+}
+.md-typeset .handbook-concept-map > ul > li > ul {
+  display: contents;
+}
+.md-typeset .handbook-concept-map > ul > li > ul::before { display: none; }
+.md-typeset .handbook-concept-map > ul > li > ul > li { grid-row: 1; }
 .md-typeset .handbook-concept-map > ul > li > ul > li > a { font-weight: 700; }
-@media screen and (max-width: 44.99em) {
-  .md-typeset .handbook-concept-map > ul > li > ul { grid-template-columns: minmax(0, 1fr); }
+.md-typeset .handbook-concept-map > ul > li > ul > li:first-child {
+  grid-column: 1;
+  --handbook-branch-color: #6986cb;
+}
+.md-typeset .handbook-concept-map > ul > li > ul > li:last-child {
+  grid-column: 3;
+  --handbook-branch-color: #36a49a;
+}
+/* Mirror Theory so both branches grow outwards from the central topic. */
+.md-typeset .handbook-concept-map > ul > li > ul > li:first-child,
+.md-typeset .handbook-concept-map > ul > li > ul > li:first-child li {
+  flex-direction: row-reverse;
+}
+.md-typeset .handbook-concept-map > ul > li > ul > li:first-child ul {
+  padding-left: 0;
+  padding-right: 1rem;
+  border-left: 0;
+  border-right: 2px solid var(--handbook-branch-color);
+}
+.md-typeset .handbook-concept-map > ul > li > ul > li:first-child ul::before,
+.md-typeset .handbook-concept-map > ul > li > ul > li:first-child ul > li::before {
+  left: auto;
+  right: -1rem;
+}
+.md-typeset .handbook-concept-map > ul > li > ul > li:first-child::before {
+  left: auto;
+  right: -1rem;
 }
