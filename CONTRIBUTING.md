@@ -11,9 +11,7 @@ Handbook 문서를 작성하고 관리할 때 사용하는 안내이다. 학습 
 | [`docs/roadmap.md`](docs/roadmap.md) | 전체 학습 순서와 마인드맵 |
 | [`docs/assets/images/`](docs/assets/images/) | 문서에 사용하는 이미지 |
 | [`mkdocs.yml`](mkdocs.yml) | 메뉴, 문서 순서, 테마, 목차, 이전 주소 연결 설정 |
-| [`examples/fragments/`](examples/fragments/) | 문서의 코드·출력·텍스트 도표 블록. 일부는 부분 코드이다. |
-| [`sources/`](sources/) | 내용 대조와 유지보수를 위한 자료 |
-| [`tools/`](tools/) | 내용·링크·문서 구조 검사 도구 |
+| [`tools/`](tools/) | 링크·문서 구조 검사 도구 |
 | [`.github/workflows/docs.yml`](.github/workflows/docs.yml) | 자동 검사·빌드·배포 설정 |
 
 사이트에는 `docs/`의 문서가 표시된다. 각 분류의 `index.md`는 해당 분류의 개요이다.
@@ -53,13 +51,12 @@ zensical serve
 ### 검사와 빌드
 
 ```sh
-python tools/check_sources.py
 zensical build --clean
 python tools/check_built_links.py
 python tools/check_site_structure.py
 ```
 
-문서의 코드를 수정했다면 관련 내용 대조 기준도 함께 점검한다.
+문서와 코드의 수정은 `docs/`에서 관리한다. 예제 코드를 수정했다면 관련 설명과 실행 결과도 함께 확인한다.
 
 ## 자동 배포
 

@@ -1,27 +1,13 @@
 {
-  "articles": 39,
   "code_blocks": 1364,
   "markdown_pages": 74,
   "math_expressions": 2935,
   "image_references": 15,
-  "code_preservation": "PASS: all source blocks match fragments and Markdown",
   "local_markdown_links": "PASS",
-  "training_execution": "NOT RUN: source fragments include partial examples, output, and diagrams",
-  "external_images": "PASS: 15/15 source images downloaded; original URLs, bytes and SHA-256 preserved",
   "built_local_links_checked": 7199,
   "built_local_links": "PASS",
   "zensical_build": "PASS: 0.0.74, clean build, no issues",
-  "browser_checks": [
-    "Desktop: inline and sidebar article TOC visible",
-    "390px mobile viewport: inline TOC visible",
-    "TOC link click: Optimizer heading reached"
-  ],
-  "deployment": "PASS",
-  "github_actions_build": "PASS: source, build, links, standalone structure and TOC checks",
   "site_url": "https://minwoo02.github.io/deep-learning-handbook/",
-  "deployment_commit": "e64dd53f37c7a399c820a29f711e6dca7ba53042",
-  "github_actions_run": "https://github.com/minwoo02/deep-learning-handbook/actions/runs/41295469961",
-  "github_actions_deploy": "PASS",
-  "live_browser": "PASS: public MLP article has 29 TOC links and no provenance banner",
-  "standalone_structure": "PASS: one H1 per page, valid inline TOCs, no public provenance links"
+  "standalone_structure": "PASS: one H1 per page, valid inline TOCs, no public provenance links",
+  "code_blocks_note": "Code and output blocks remain in docs; extracted copies and original-source comparisons have been removed."
 }
