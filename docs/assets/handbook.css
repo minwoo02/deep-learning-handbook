@@ -12,33 +12,53 @@
 .md-content .toc ul { margin-bottom: 0; }
 .md-content .toc a { overflow-wrap: anywhere; }
 
-/* A persistent header button remains available while the desktop menu is hidden. */
+/* Let navigation and content use the viewport instead of a centered fixed grid. */
+.md-header__inner.md-grid,
+.md-tabs__inner.md-grid,
+.md-main__inner.md-grid {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+}
+.md-header__inner.md-grid,
+.md-tabs__inner.md-grid { padding-inline: .4rem; }
+
+/* The desktop sidebar control is the first icon in the header. */
 .handbook-navigation-toggle {
   display: none;
   align-items: center;
-  gap: .3rem;
-  padding: .3rem .45rem;
-  margin: 0 .2rem;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  padding: .4rem;
+  margin: 0 .2rem 0 0;
   color: var(--md-default-fg-color);
-  font: inherit;
-  font-size: .65rem;
-  line-height: 1.4;
-  white-space: nowrap;
   cursor: pointer;
-  background: var(--md-default-fg-color--lightest);
-  border: 1px solid var(--md-default-fg-color--lighter);
+  background: transparent;
+  border: 0;
   border-radius: .35rem;
 }
-.handbook-navigation-toggle svg { width: .9rem; height: .9rem; }
-.handbook-navigation-toggle:hover { color: var(--md-accent-fg-color); }
+.handbook-navigation-toggle svg { width: 1.1rem; height: 1.1rem; }
+.handbook-navigation-toggle:hover {
+  color: var(--md-accent-fg-color);
+  background: var(--md-default-fg-color--lightest);
+}
 .handbook-navigation-toggle:focus-visible {
   outline: 2px solid var(--md-accent-fg-color);
   outline-offset: 2px;
 }
+.handbook-navigation-toggle[hidden] { display: none; }
 @media screen and (min-width: 76.25em) {
-  .handbook-navigation-toggle { display: inline-flex; }
-  .handbook-navigation-collapsed .md-sidebar--primary { display: none; }
-  [dir=ltr] .handbook-navigation-collapsed .md-content > .md-content__inner {
+  .handbook-navigation-toggle:not([hidden]) { display: inline-flex; }
+  .handbook-navigation-collapsed .md-sidebar--primary,
+  .handbook-navigation-unavailable .md-sidebar--primary { display: none; }
+  /* Avoid an empty column before JavaScript initializes on top-level pages. */
+  .md-sidebar--primary:not(:has(.md-nav__item--active.md-nav__item--nested)) {
+    display: none;
+  }
+  [dir=ltr] .handbook-navigation-collapsed .md-content > .md-content__inner,
+  [dir=ltr] .handbook-navigation-unavailable .md-content > .md-content__inner {
     margin-left: .8rem;
   }
 }

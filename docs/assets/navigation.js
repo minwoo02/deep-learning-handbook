@@ -13,6 +13,8 @@
     const sidebar = document.querySelector('.md-sidebar--primary');
     if (!header || !sidebar) return;
     sidebar.id = 'handbook-primary-navigation';
+    const hasPageNavigation = !!sidebar.querySelector('.md-nav__item--active.md-nav__item--nested');
+    document.body.classList.toggle('handbook-navigation-unavailable', !hasPageNavigation);
 
     let button = document.getElementById('handbook-navigation-toggle');
     if (!button) {
@@ -20,10 +22,8 @@
       button.id = 'handbook-navigation-toggle';
       button.type = 'button';
       button.className = 'handbook-navigation-toggle';
-      button.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></svg><span></span>';
-      const logo = header.querySelector('.md-logo');
-      if (logo) logo.after(button);
-      else header.prepend(button);
+      button.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/><path data-handbook-chevron/></svg>';
+      header.prepend(button);
 
       button.addEventListener('click', () => {
         collapsed = !collapsed;
@@ -43,7 +43,8 @@
       button.setAttribute('aria-expanded', String(!collapsed));
       button.setAttribute('aria-label', label);
       button.title = label;
-      button.querySelector('span').textContent = label;
+      button.hidden = !hasPageNavigation;
+      button.querySelector('[data-handbook-chevron]').setAttribute('d', collapsed ? 'm13 9 3 3-3 3' : 'm16 9-3 3 3 3');
       // Let the theme recalculate sticky sidebars after the content width changes.
       window.dispatchEvent(new Event('resize'));
     }
