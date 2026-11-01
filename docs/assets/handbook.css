@@ -85,3 +85,40 @@
   background: var(--md-default-bg-color);
   box-shadow: var(--handbook-article-shadow);
 }
+
+/* Clickable concept branches use native links for keyboard and touch access. */
+.md-typeset .handbook-concept-map ul { list-style: none; margin: 0; padding: 0; }
+.md-typeset .handbook-concept-map > ul > li > ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+  border: 0;
+  margin: 1rem 0;
+  padding: 0;
+}
+.md-typeset .handbook-concept-map li { margin: .55rem 0 0; }
+.md-typeset .handbook-concept-map li ul {
+  margin: .5rem 0 .8rem .6rem;
+  padding-left: .8rem;
+  border-left: 2px solid var(--md-default-fg-color--lightest);
+}
+.md-typeset .handbook-concept-map a {
+  display: inline-block;
+  padding: .35rem .65rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .4rem;
+  background: var(--md-code-bg-color);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.md-typeset .handbook-concept-map a:hover,
+.md-typeset .handbook-concept-map a:focus-visible {
+  border-color: var(--md-accent-fg-color);
+  color: var(--md-accent-fg-color);
+  box-shadow: 0 3px 10px rgb(15 23 42 / 10%);
+}
+.md-typeset .handbook-concept-map > ul > li > a,
+.md-typeset .handbook-concept-map > ul > li > ul > li > a { font-weight: 700; }
+@media screen and (max-width: 44.99em) {
+  .md-typeset .handbook-concept-map > ul > li > ul { grid-template-columns: minmax(0, 1fr); }
+}

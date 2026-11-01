@@ -111,41 +111,8 @@ Loss와 Regularization의 수학적 근거를 더 깊게 이해하고 싶을 때
 
 ## 개념 지도
 
-목차는 개념의 분류를, 위 학습 경로는 읽는 순서를 나타낸다.
+목차는 개념의 분류를, 위 학습 경로는 읽는 순서를 나타낸다. 개념을 누르면 관련 문서로 이동한다.
 
-```mermaid
-mindmap
-  root((Deep Learning Handbook))
-    Theory
-      Foundations & Tasks
-        Regression
-        Classification
-      Model Architecture
-        MLP
-        CNN
-        RNN
-      Weight & Initialization
-      Loss
-      Gradient / Autograd
-      Optimizer
-        SGD
-        Adam
-        AdamW
-      Normalization
-      Regularization
-      Evaluation
-    Practice
-      PyTorch Basics
-      Regression
-        Manual gradient
-        Autograd
-        SGD
-        nn.Module
-        Dataset / DataLoader
-        ANN regression
-      Classification
-        XOR model
-        Iris multiclass
-      CNN · 예정
-      RNN · 예정
-```
+<nav class="handbook-concept-map" aria-label="개념별 관련 문서">
+<ul><li><a href="index.md">Deep Learning Handbook</a><ul><li><a href="theory/foundations/index.md">Theory</a><ul><li><a href="theory/foundations/index.md">Foundations &amp; Tasks</a><ul><li><a href="theory/foundations/classification-vs-regression.md">Regression</a></li><li><a href="theory/foundations/supervised-learning.md">Classification</a></li></ul></li><li><a href="theory/architectures/index.md">Model Architecture</a><ul><li><a href="theory/architectures/mlp.md">MLP</a></li><li><a href="theory/architectures/cnn.md">CNN</a></li><li><a href="theory/architectures/rnn.md">RNN</a></li></ul></li><li><a href="theory/weight/index.md">Weight &amp; Initialization</a></li><li><a href="theory/loss/index.md">Loss</a></li><li><a href="theory/gradients/index.md">Gradient / Autograd</a></li><li><a href="theory/optimizers/index.md">Optimizer</a><ul><li><a href="theory/optimizers/sgd.md">SGD</a></li><li><a href="theory/optimizers/adam.md">Adam</a></li><li><a href="theory/optimizers/adamw.md">AdamW</a></li></ul></li><li><a href="theory/normalization/index.md">Normalization</a></li><li><a href="theory/regularization/index.md">Regularization</a></li><li><a href="theory/evaluation/index.md">Evaluation</a></li></ul></li><li><a href="practice/stages/basics.md">Practice</a><ul><li><a href="practice/stages/basics.md">PyTorch Basics</a></li><li><a href="practice/regression/index.md">Regression</a><ul><li><a href="practice/stages/manual.md">Manual gradient</a></li><li><a href="practice/stages/autograd.md">Autograd</a></li><li><a href="practice/stages/sgd.md">SGD</a></li><li><a href="practice/stages/module.md">nn.Module</a></li><li><a href="practice/stages/data.md">Dataset / DataLoader</a></li><li><a href="practice/stages/ann.md">ANN regression</a></li></ul></li><li><a href="practice/classification/index.md">Classification</a><ul><li><a href="practice/stages/xor.md">XOR model</a></li><li><a href="practice/classification/iris-classification-pipeline.md">Iris multiclass</a></li></ul></li><li><a href="practice/stages/cnn.md">CNN · 예정</a></li><li><a href="practice/stages/rnn.md">RNN · 예정</a></li></ul></li></ul></li></ul>
+</nav>
