@@ -7,7 +7,7 @@
 ```mermaid
 mindmap
   root((Deep Learning Handbook))
-    Theory · DL_a
+    Theory
       Foundations & Tasks
         Regression
         Classification
@@ -25,7 +25,7 @@ mindmap
       Normalization
       Regularization
       Evaluation
-    Practice · DL_c
+    Practice
       PyTorch Basics
       Regression
         Manual gradient

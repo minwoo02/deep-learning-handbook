@@ -1,6 +1,6 @@
 # Evaluation
 
-DL_a · Theory
+Theory
 
 - [머신러닝 분류 성능평가 완전 정리: Confusion Matrix부터 Accuracy·Precision·Recall·F1-score까지](classification-metrics.md)
 - [머신러닝 회귀 성능평가 완전 정리: MAE·MSE·RMSE·MAPE부터 결정계수 R²까지](regression-metrics.md)

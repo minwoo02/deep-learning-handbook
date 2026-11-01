@@ -1,6 +1,6 @@
 # Foundations & Tasks
 
-DL_a · Theory
+Theory
 
 - [딥러닝의 역사: AI, ML, DL은 어떻게 발전했는가?](deep-learning-history.md)
 - [Supervised Learning(지도학습) 완전 정리: Classification·Regression부터 Object Detection·Segmentation까지](supervised-learning.md)

@@ -1,6 +1,6 @@
 # Classification
 
-DL_c · Practice
+Practice
 
 - [PyTorch로 MLP 직접 구현하기](iris-mlp-training.md)
 - [PyTorch로 XOR 해결하기: MLP 클래스 구조 분석](xor-mlp.md)

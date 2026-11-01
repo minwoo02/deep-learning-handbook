@@ -24,7 +24,7 @@ theme:
 nav:
 - Home: index.md
 - Learning Roadmap: roadmap.md
-- Theory · DL_a:
+- Theory:
   - Foundations & Tasks:
     - 개요: theory/foundations/index.md
     - '딥러닝의 역사: AI, ML, DL은 어떻게 발전했는가?': theory/foundations/deep-learning-history.md
@@ -73,7 +73,7 @@ nav:
     - '머신러닝 회귀 성능평가 완전 정리: MAE·MSE·RMSE·MAPE부터 결정계수 R²까지': theory/evaluation/regression-metrics.md
     - 'Cross Validation 완전 정리: Hold-out부터 K-Fold·Stratified K-Fold와 모델 일반화 성능 평가까지': theory/evaluation/cross-validation.md
     - Hyperparameter Tuning: theory/evaluation/hyperparameter-tuning.md
-- Practice · DL_c:
+- Practice:
   - 학습 순서:
     - PyTorch Basics: practice/stages/basics.md
     - Regression · 수동 gradient: practice/stages/manual.md

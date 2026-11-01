@@ -1,6 +1,6 @@
 # scikit-learn 입문
 
-DL_c · Practice
+Practice
 
 - [scikit-learn으로 Perceptron 구현하기](sklearn-perceptron.md)
 - [scikit-learn MLPClassifier 이해하기](sklearn-mlp-classifier.md)

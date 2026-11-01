@@ -1,6 +1,6 @@
 # Optimizer
 
-DL_a · Theory
+Theory
 
 관련 개념과 구현 예제를 함께 살펴봅니다.
 

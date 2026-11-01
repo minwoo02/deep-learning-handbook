@@ -1,6 +1,6 @@
 # Model Architecture
 
-DL_a · Theory
+Theory
 
 - [ANN • DNN • CNN • RNN 개념 및 핵심 차이 총정리](neural-network-architectures.md)
 - [Perceptron에서 MLP와 Backpropagation까지: 신경망은 어떻게 학습하는가?](perceptron-mlp-backpropagation.md)
