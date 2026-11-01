@@ -14,8 +14,10 @@ Python 3.12 이상을 사용합니다.
 ```sh
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+pip install -r requirements.lock.txt
+python tools/check_sources.py
 zensical build --clean
+python tools/check_built_links.py
 zensical serve
 ```
 
