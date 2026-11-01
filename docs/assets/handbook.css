@@ -1,0 +1,13 @@
+/* Keep the article outline visible at every viewport width. */
+.md-content .toc {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .5rem;
+  background: var(--md-code-bg-color);
+  max-height: 18rem;
+  overflow-y: auto;
+}
+.md-content .toctitle { font-weight: 700; }
+.md-content .toc ul { margin-bottom: 0; }
+.md-content .toc a { overflow-wrap: anywhere; }

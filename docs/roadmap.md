@@ -1,5 +1,7 @@
 # Learning Roadmap
 
+[TOC]
+
 ## 개념 지도
 
 ```mermaid
@@ -53,4 +55,4 @@ mindmap
 10. [CNN · 예정](practice/stages/cnn.md)
 11. [RNN · 예정](practice/stages/rnn.md)
 
-scikit-learn 원문은 별도 입문 분류로 보존했습니다. 기술별 심화는 사이드바의 Weight·Optimizer·Normalization·Gradient에서 탐색하세요.
+scikit-learn을 이용한 입문 실습도 함께 제공합니다. 기술별 심화는 사이드바의 Weight·Optimizer·Normalization·Gradient에서 탐색하세요.

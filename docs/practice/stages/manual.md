@@ -1,6 +1,6 @@
 # Regression · 수동 gradient
 
-원문의 6~9절: 선형 모델, 직접 MSE, analytical/numerical gradient, 수동 업데이트.
+6~9절: 선형 모델, 직접 MSE, analytical/numerical gradient, 수동 업데이트.
 
 | 항목 | 해당 단계의 코드 |
 | --- | --- |

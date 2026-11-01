@@ -21,6 +21,7 @@ jobs:
       - run: python tools/check_sources.py
       - run: zensical build --clean
       - run: python tools/check_built_links.py
+      - run: python tools/check_site_structure.py
       - uses: actions/upload-pages-artifact@v5
         with:
           path: site

@@ -1,14 +1,14 @@
 {
   "articles": 39,
   "code_blocks": 1364,
-  "markdown_pages": 77,
+  "markdown_pages": 74,
   "math_expressions": 2935,
   "image_references": 15,
   "code_preservation": "PASS: all source blocks match fragments and Markdown",
   "local_markdown_links": "PASS",
   "training_execution": "NOT RUN: source fragments include partial examples, output, and diagrams",
   "external_images": "PASS: 15/15 source images downloaded; original URLs, bytes and SHA-256 preserved",
-  "built_local_links_checked": 7456,
+  "built_local_links_checked": 6768,
   "built_local_links": "PASS",
   "zensical_build": "PASS: 0.0.74, clean build, no issues",
   "browser_checks": [
@@ -16,11 +16,12 @@
     "Mermaid mindmap rendered visually",
     "Loss page: 254 MathJax containers rendered"
   ],
-  "deployment": "PASS",
+  "deployment": "pending updated publication",
   "github_actions_build": "PASS: source check, clean build, built-link check, artifact upload",
   "site_url": "https://minwoo02.github.io/deep-learning-handbook/",
   "deployment_commit": "067669b",
   "github_actions_run": "https://github.com/minwoo02/deep-learning-handbook/actions/runs/41293988846",
   "github_actions_deploy": "PASS",
-  "live_browser": "PASS: published Home and Mermaid roadmap rendered"
+  "live_browser": "PASS: published Home and Mermaid roadmap rendered",
+  "standalone_structure": "PASS: one H1 per page, valid inline TOCs, no public provenance links"
 }

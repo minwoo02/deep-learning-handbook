@@ -1,4 +1,4 @@
-# scikit-learn 입문 · 보존
+# scikit-learn 입문
 
 DL_c · Practice
 

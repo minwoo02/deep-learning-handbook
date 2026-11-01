@@ -1,6 +1,6 @@
 # AdamW
 
-기존 원문으로 연결하는 개념별 탐색 페이지입니다.
+관련 개념과 구현을 함께 살펴봅니다.
 
-- [AdamW 원문](../../practice/tech-optimizers/c11.md)
+- [AdamW 실습](../../practice/tech-optimizers/c11.md)
 - [Regularization 이론](../regularization/a19.md)

@@ -1,6 +1,6 @@
 # Regression · nn.Module
 
-원문의 13~15절: nn.Linear와 CelsiusANN. 사용자 정의 Module은 c04에서 보완합니다.
+13~15절: nn.Linear와 CelsiusANN. 사용자 정의 Module은 c04에서 보완합니다.
 
 | 항목 | 해당 단계의 코드 |
 | --- | --- |

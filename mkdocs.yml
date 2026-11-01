@@ -8,6 +8,7 @@ theme:
   - navigation.sections
   - navigation.top
   - content.code.copy
+  - toc.follow
   palette:
   - scheme: default
     primary: indigo
@@ -86,7 +87,7 @@ nav:
     - Classification · Iris: practice/stages/iris.md
     - CNN · 학습 예정: practice/stages/cnn.md
     - RNN · 학습 예정: practice/stages/rnn.md
-  - scikit-learn 입문 · 보존:
+  - scikit-learn 입문:
     - 개요: practice/sklearn/index.md
     - scikit-learn으로 Perceptron 구현하기: practice/sklearn/c01.md
     - scikit-learn MLPClassifier 이해하기: practice/sklearn/c02.md
@@ -116,10 +117,6 @@ nav:
   - Gradient Clipping:
     - 개요: practice/tech-gradients/index.md
     - 'PyTorch Gradient Clipping 완전 정리: Exploding Gradient부터 Norm·Value Clipping 구현까지': practice/tech-gradients/c14.md
-- 원본·검증 기록: sources.md
-- 기존 목차 보존:
-  - DL_a: archive/a00.md
-  - DL_c: archive/c00.md
 markdown_extensions:
 - tables
 - fenced_code
@@ -130,6 +127,12 @@ markdown_extensions:
       format: !!python/name:pymdownx.superfences.fence_code_format ''
 - pymdownx.arithmatex:
     generic: true
+- toc:
+    title: 이 글의 목차
+    permalink: true
+    toc_depth: 2-3
 extra_javascript:
 - assets/mathjax.js
 - https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js
+extra_css:
+- assets/handbook.css

@@ -17,4 +17,4 @@ for f in S.rglob('*.html'):
   checked+=1
   if not target.exists():issues.append((str(f),u))
 assert not issues,issues[:20]
-f=R/'VALIDATION.json';d=json.loads(f.read_text());d.update(built_local_links_checked=checked,built_local_links='PASS',zensical_build='PASS: 0.0.74, clean build, no issues',browser_checks=['Home navigation visible','Mermaid mindmap rendered visually','Loss page: 254 MathJax containers rendered']);f.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n');print(d)
+f=R/'VALIDATION.json';d=json.loads(f.read_text());d.update(built_local_links_checked=checked,built_local_links='PASS',zensical_build='PASS: 0.0.74, clean build, no issues');f.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n');print(d)
