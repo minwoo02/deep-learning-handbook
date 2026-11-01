@@ -8,11 +8,34 @@
     // The control still works if browser storage is unavailable.
   }
 
+  function numberNavigationItems(sidebar) {
+    // Each subcategory owns its sequence; titles in Markdown and nav stay unchanged.
+    sidebar.querySelectorAll('.md-nav[data-md-level]').forEach(nav => {
+      if (Number(nav.dataset.mdLevel) < 2) return;
+      const list = nav.querySelector(':scope > .md-nav__list');
+      if (!list) return;
+      let number = 1;
+      list.querySelectorAll(':scope > .md-nav__item').forEach(item => {
+        const titles = item.querySelectorAll(':scope > .md-nav__link > .md-ellipsis');
+        if (!titles.length) return;
+        titles.forEach(title => title.querySelector('.handbook-nav-number')?.remove());
+        const value = titles[0].textContent.trim() === '개요' ? 0 : number++;
+        titles.forEach(title => {
+          const prefix = document.createElement('span');
+          prefix.className = 'handbook-nav-number';
+          prefix.textContent = `${value}. `;
+          title.prepend(prefix);
+        });
+      });
+    });
+  }
+
   function initializeNavigationControl() {
     const header = document.querySelector('.md-header__inner');
     const sidebar = document.querySelector('.md-sidebar--primary');
     if (!header || !sidebar) return;
     sidebar.id = 'handbook-primary-navigation';
+    numberNavigationItems(sidebar);
     const hasPageNavigation = !!sidebar.querySelector('.md-nav__item--active.md-nav__item--nested');
     document.body.classList.toggle('handbook-navigation-unavailable', !hasPageNavigation);
 
