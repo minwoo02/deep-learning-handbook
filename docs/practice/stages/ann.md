@@ -1,6 +1,6 @@
 # Regression · ANN
 
-18절: CelsiusANN, MSELoss, Adam, mini-batch training.
+CelsiusANN, MSELoss, Adam, mini-batch training.
 
 | 항목 | 해당 단계의 코드 |
 | --- | --- |
