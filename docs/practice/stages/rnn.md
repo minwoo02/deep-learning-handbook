@@ -1,5 +1,5 @@
 # RNN · 학습 예정
 
-RNN 구현 실습은 준비 중입니다. 먼저 모델 구조의 차이를 살펴보세요.
+RNN 구현 실습은 준비 중이다. 먼저 모델 구조의 차이를 살펴본다.
 
 - [ANN • DNN • CNN • RNN 개념 및 핵심 차이 총정리](../../theory/architectures/neural-network-architectures.md)

@@ -1,6 +1,6 @@
 # Regression · Dataset / DataLoader
 
-16~17절과 Dataset 설명 글을 연결합니다.
+16~17절과 Dataset 설명 글을 연결한다.
 
 | 항목 | 해당 단계의 코드 |
 | --- | --- |

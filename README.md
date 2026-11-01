@@ -1,6 +1,6 @@
 # Deep Learning Handbook
 
-딥러닝의 개념과 수학적 원리를 이해하고, PyTorch로 직접 모델을 구현하며 학습하는 Handbook입니다.
+딥러닝의 개념과 수학적 원리를 이해하고, PyTorch로 직접 모델을 구현하며 학습하는 Handbook이다.
 
 [문서 사이트](https://minwoo02.github.io/deep-learning-handbook/) · [학습 로드맵](https://minwoo02.github.io/deep-learning-handbook/roadmap/)
 
@@ -11,7 +11,7 @@
 | **Theory** | Foundations & Tasks, Model Architecture, Weight & Initialization, Loss, Gradient / Autograd, Optimizer, Normalization, Regularization, Evaluation |
 | **Practice** | PyTorch 기초, 회귀·분류 구현, 기술별 심화 실습, scikit-learn 입문 |
 
-Regression·Classification은 **해결할 문제(Task)**, MLP·CNN·RNN은 **모델 구조(Architecture)** 로 구분합니다. 관련 이론과 실습은 문서 사이의 링크로 연결합니다.
+Regression·Classification은 **해결할 문제(Task)**, MLP·CNN·RNN은 **모델 구조(Architecture)** 로 구분한다. 관련 이론과 실습은 문서 사이의 링크로 연결한다.
 
 ### 권장 학습 순서
 
@@ -21,7 +21,7 @@ PyTorch Basics → Regression → Classification → CNN → RNN
 - **Classification**: XOR 모델 구조 → Iris 다중 분류
 - **CNN·RNN**: 구현 실습 준비 중
 
-실습 문서 앞의 구성표에서 Task, Model, nn.Module, Autograd, Loss, Optimizer, Activation을 확인할 수 있습니다.
+실습 문서 앞의 구성표에서 Task, Model, nn.Module, Autograd, Loss, Optimizer, Activation을 확인할 수 있다.
 
 ## 자료 구성
 
@@ -41,8 +41,8 @@ PyTorch Basics → Regression → Classification → CNN → RNN
 
 ## 문서 작성
 
-문서 수정과 기여 방법은 [문서 작성·관리 가이드](CONTRIBUTING.md)를 참고하세요.
+문서 수정과 기여 방법은 [문서 작성·관리 가이드](CONTRIBUTING.md)를 참고한다.
 
 ## 저작권
 
-제3자 이미지와 인용의 권리는 원저작자에게 있습니다. 이 저장소 전체에 별도의 포괄적 라이선스를 부여하지 않습니다.
+제3자 이미지와 인용의 권리는 원저작자에게 있다. 이 저장소 전체에 별도의 포괄적 라이선스를 부여하지 않는다.
