@@ -1,0 +1,752 @@
+[
+  {
+    "index": 0,
+    "language": "text",
+    "text": "Input Data (X, y)\n        │\n        ▼\n    PyTorch Tensor\n        │\n        ▼\n     Model Definition\n        │\n        ├── Linear Regression\n        │\n        └── ANN\n        │\n        ▼\n  Forward Propagation\n        │\n        ▼\n     Prediction (ŷ)\n        │\n        ▼\n     Loss Calculation\n        │\n        ▼\n      loss.backward()\n        │\n        ▼\n      optimizer.step()\n        │\n        ▼\n     Parameter Update\n        │\n        ▼\n    Model Evaluation",
+    "sha256": "d921af0a9dd082dca73056b7b72573de15c7bb3ee5054ff0418a6ee13b7139f1"
+  },
+  {
+    "index": 1,
+    "language": "text",
+    "text": "데이터 생성\n    ↓\nTensor 변환\n    ↓\nDataset / DataLoader\n    ↓\nModel\n    ↓\nForward Propagation\n    ↓\nPrediction\n    ↓\nLoss Calculation\n    ↓\nBackward Propagation\n    ↓\nGradient Calculation\n    ↓\nOptimizer\n    ↓\nParameter Update\n    ↓\nValidation / Test",
+    "sha256": "8009b365f5a32d76254394f8df3e76f7232cb758b914d75e8449633ad037a217"
+  },
+  {
+    "index": 2,
+    "language": "python",
+    "text": "import copy\nimport math\nimport random\n\nimport torch\nimport torch.nn as nn\nimport torch.optim as optim\nimport matplotlib.pyplot as plt\n\nfrom torch.utils.data import Dataset, DataLoader",
+    "sha256": "6bd5358b0dc16451b8830b326baf736fcd117ecebe25e5ef0e11efaf6c4efb54"
+  },
+  {
+    "index": 3,
+    "language": "python",
+    "text": "SEED = 23\n\nrandom.seed(SEED)\ntorch.manual_seed(SEED)",
+    "sha256": "32656b686abe534fe95f209d2714046076eb1f14b9b9fa5083d37ab31f0314c0"
+  },
+  {
+    "index": 4,
+    "language": "python",
+    "text": "device = torch.device(\n    \"cuda\" if torch.cuda.is_available()\n    else \"mps\" if torch.backends.mps.is_available()\n    else \"cpu\"\n)\n\nprint(\"PyTorch version:\", torch.__version__)\nprint(\"Device:\", device)",
+    "sha256": "a47f23de1888068aad868be26b8bf265c43f655458197a78ef00a77f9a07e1cc"
+  },
+  {
+    "index": 5,
+    "language": "text",
+    "text": "PyTorch version: 2.11.0+cu130\nDevice: cuda",
+    "sha256": "9b2746cbf53215f8814d957ce2171754286d0cf296522a8d68d9c4a4f12e3c3f"
+  },
+  {
+    "index": 6,
+    "language": "python",
+    "text": "a = torch.tensor([1, 2, 3])\n\nb = torch.tensor(\n    [1.0, 2.0, 3.0],\n    dtype=torch.float32\n)\n\nprint(\"a:\", a)\nprint(\"dtype:\", a.dtype)\nprint(\"shape:\", a.shape)\n\nprint()\n\nprint(\"b:\", b)\nprint(\"dtype:\", b.dtype)\nprint(\"shape:\", b.shape)",
+    "sha256": "f59c990c25f1c46ad2aaec23292412f4f180375f09b83aed426fcae37a2ad4e5"
+  },
+  {
+    "index": 7,
+    "language": "text",
+    "text": "a: tensor([1, 2, 3])\ndtype: torch.int64\nshape: torch.Size([3])\n\nb: tensor([1., 2., 3.])\ndtype: torch.float32\nshape: torch.Size([3])",
+    "sha256": "d3176f0d646ed84f8908b862407f2b5f4ec2947a98742a6e89bf884977cf7118"
+  },
+  {
+    "index": 8,
+    "language": "python",
+    "text": "x = torch.linspace(-10, 10, 5)\n\nx_col = x.reshape(-1, 1)\n\nprint(\"Original:\", x.shape)\nprint(\"Reshaped:\", x_col.shape)\nprint(x_col)",
+    "sha256": "881e4419512b51eee6cba7c516118441b55235215b9709482d1e306dd2429269"
+  },
+  {
+    "index": 9,
+    "language": "text",
+    "text": "Original: torch.Size([5])\nReshaped: torch.Size([5, 1])\n\ntensor([[-10.],\n        [ -5.],\n        [  0.],\n        [  5.],\n        [ 10.]])",
+    "sha256": "abdce3015ab357799457808653ce41f10e4e1700ad936a4666f453fed49f278a"
+  },
+  {
+    "index": 10,
+    "language": "python",
+    "text": "reshape(-1, 1)",
+    "sha256": "b02b22627f2ee2e43d06ff01c74ade6e55d0333940041b3fb04932e4fbc437f4"
+  },
+  {
+    "index": 11,
+    "language": "python",
+    "text": "temperature = torch.tensor([\n    [250.0],\n    [300.0],\n    [350.0]\n])\n\nmole = torch.tensor([\n    [1.0],\n    [2.0],\n    [3.0]\n])",
+    "sha256": "f3720abc7384e4dc58bd9004cb70a16c731e6cd2f18cd4a8de6d314b56a56490"
+  },
+  {
+    "index": 12,
+    "language": "python",
+    "text": "X = torch.cat(\n    [temperature, mole],\n    dim=1\n)\n\nprint(\"X shape:\", X.shape)\nprint(X)",
+    "sha256": "341d9acf640c4750b0f7557542fb147a5243e04765024b9416d6ca28bdbc2ee8"
+  },
+  {
+    "index": 13,
+    "language": "text",
+    "text": "X shape: torch.Size([3, 2])\n\ntensor([[250.,   1.],\n        [300.,   2.],\n        [350.,   3.]])",
+    "sha256": "939e3b09a291302d60d43bae0938ad495cbc2ea1c6d525eb836711f5ffe85641"
+  },
+  {
+    "index": 14,
+    "language": "python",
+    "text": "def generate_celsius_data(\n    n_samples=200,\n    noise_std=4.0\n):\n    # Celsius\n    x = torch.linspace(\n        -100,\n        100,\n        n_samples\n    ).reshape(-1, 1)\n\n    # Ideal Fahrenheit\n    y_ideal = 1.8 * x + 32.0\n\n    # Add Gaussian noise\n    y = (\n        y_ideal\n        + torch.randn_like(y_ideal) * noise_std\n    )\n\n    return (\n        x.float(),\n        y.float(),\n        y_ideal.float()\n    )\n\n\nx, y, y_ideal = generate_celsius_data()\n\nprint(\"x shape:\", x.shape)\nprint(\"y shape:\", y.shape)",
+    "sha256": "7a479c61ee7c6fc14d54c9cfd2717d954b846188b6ad74155df88174c2d63853"
+  },
+  {
+    "index": 15,
+    "language": "text",
+    "text": "x shape: torch.Size([200, 1])\ny shape: torch.Size([200, 1])",
+    "sha256": "9422511b6b31a4daa8561c9d3f615d555b0945ccbbe0ac2dc1f76342c543ce2e"
+  },
+  {
+    "index": 16,
+    "language": "python",
+    "text": "plt.figure(figsize=(7, 4))\n\nplt.scatter(\n    x.squeeze(),\n    y.squeeze(),\n    s=18,\n    alpha=0.6,\n    label=\"Noisy samples\"\n)\n\nplt.plot(\n    x.squeeze(),\n    y_ideal.squeeze(),\n    label=\"Ideal relation: F = 1.8C + 32\"\n)\n\nplt.xlabel(\"Celsius\")\nplt.ylabel(\"Fahrenheit\")\nplt.title(\"Celsius to Fahrenheit\")\nplt.legend()\nplt.show()",
+    "sha256": "79be6988d29168c298c4de16e3359f1b830fdc43263c95aaa985daf5318c1a42"
+  },
+  {
+    "index": 17,
+    "language": "python",
+    "text": "def linear_model(x, w, b):\n    return x @ w + b",
+    "sha256": "e3946608282c5ad6f5b80eb7b387e2d8d0dcba295a22f26932e1e929efe1c68e"
+  },
+  {
+    "index": 18,
+    "language": "python",
+    "text": "def mse_loss(pred, target):\n    return ((pred - target) ** 2).mean()",
+    "sha256": "2ce6a9dae311978b0a90bb3f32a707ed6404f6448f41a524fed9f45b527fb472"
+  },
+  {
+    "index": 19,
+    "language": "python",
+    "text": "w = torch.ones((1, 1))\nb = torch.zeros(1)\n\npred = linear_model(x, w, b)\n\nloss = mse_loss(pred, y)\n\nprint(\"Initial w:\", w.item())\nprint(\"Initial b:\", b.item())\nprint(\"Initial loss:\", loss.item())",
+    "sha256": "8123c2fbd4b79e07a5ae5aa74187e209c2e9c221eb4d8ba33203c572bae38592"
+  },
+  {
+    "index": 20,
+    "language": "text",
+    "text": "Initial w: 1.0\nInitial b: 0.0\nInitial loss: 3171.4631",
+    "sha256": "bd5dd786bc79e123cc6223f89590c2908c548cfa10468c63d61d24bf71e3dd98"
+  },
+  {
+    "index": 21,
+    "language": "python",
+    "text": "def analytical_gradients(x, y, w, b):\n    pred = linear_model(x, w, b)\n\n    error = pred - y\n\n    grad_w = (\n        2.0 * error * x\n    ).mean().reshape_as(w)\n\n    grad_b = (\n        2.0 * error\n    ).mean().reshape_as(b)\n\n    return grad_w, grad_b",
+    "sha256": "0897df9ab588e17435877e9114a60935159dff159bfd80b7ec313d16e1daa70b"
+  },
+  {
+    "index": 22,
+    "language": "python",
+    "text": "error = pred - y",
+    "sha256": "ff28c2a710bb890624300911bc148f2b1bdae8a5d72f197464a157289dce965d"
+  },
+  {
+    "index": 23,
+    "language": "python",
+    "text": "def numerical_gradients(\n    x, y, w, b, eps=1e-3\n):\n    w_plus = w.clone()\n    w_minus = w.clone()\n\n    w_plus[0, 0] += eps\n    w_minus[0, 0] -= eps\n\n    loss_plus = mse_loss(\n        linear_model(x, w_plus, b),\n        y\n    )\n\n    loss_minus = mse_loss(\n        linear_model(x, w_minus, b),\n        y\n    )\n\n    return (\n        loss_plus - loss_minus\n    ) / (2 * eps)",
+    "sha256": "17e356b3919e6f8ca419ebcfc5c6ef89bfe356ca86d15227b4616aa83ca26586"
+  },
+  {
+    "index": 24,
+    "language": "python",
+    "text": "grad_w_a, grad_b_a = analytical_gradients(\n    x, y, w, b\n)\n\ngrad_w_n = numerical_gradients(\n    x, y, w, b\n)\n\nprint(\n    \"Analytical grad_w:\",\n    grad_w_a.item()\n)\n\nprint(\n    \"Numerical grad_w:\",\n    grad_w_n.item()\n)\n\nprint(\n    \"Analytical grad_b:\",\n    grad_b_a.item()\n)",
+    "sha256": "261ce9f5880f9fb352e0ff22dc2f38db8715204d46ea483ac2b496c7c90d2868"
+  },
+  {
+    "index": 25,
+    "language": "text",
+    "text": "Analytical grad_w: -5374.9033\nNumerical grad_w: -5374.9995\nAnalytical grad_b: -63.5968",
+    "sha256": "3adac40ad61885ebe026c7c6c31749c5259eb4781071c4d1b29f3c2f721fe173"
+  },
+  {
+    "index": 26,
+    "language": "python",
+    "text": "w_analytical = torch.tensor([[1.0]])\nb_analytical = torch.tensor([0.0])\n\nlr = 2e-4\nn_epochs = 15000\n\nanalytical_losses = []\n\nfor epoch in range(n_epochs):\n    pred = linear_model(\n        x,\n        w_analytical,\n        b_analytical\n    )\n\n    loss = mse_loss(pred, y)\n\n    analytical_losses.append(loss.item())\n\n    grad_w, grad_b = analytical_gradients(\n        x,\n        y,\n        w_analytical,\n        b_analytical\n    )\n\n    w_analytical -= lr * grad_w\n    b_analytical -= lr * grad_b\n\n    if (epoch + 1) % 1500 == 0:\n        print(\n            f\"Epoch {epoch+1:5d} | \"\n            f\"Loss {loss.item():.4f} | \"\n            f\"w {w_analytical.item():.4f} | \"\n            f\"b {b_analytical.item():.4f}\"\n        )",
+    "sha256": "e1a9c06d28a732a3be9f1e831ed4e9ff4ba89f2d22599e177778aae4dff15945"
+  },
+  {
+    "index": 27,
+    "language": "python",
+    "text": "plt.figure(figsize=(7, 4))\n\nplt.plot(\n    analytical_losses,\n    label=\"Analytical Gradient\"\n)\n\nplt.xlabel(\"Epoch\")\nplt.ylabel(\"MSE Loss\")\nplt.title(\"Analytical Gradient Training\")\n\nplt.yscale(\"log\")\nplt.legend()\nplt.show()",
+    "sha256": "2e954149aa6f4557c79ea376b57d8bd56be01d8b2090607e4c35b4f6f68706a3"
+  },
+  {
+    "index": 28,
+    "language": "python",
+    "text": "with torch.no_grad():\n    y_pred_analytical = linear_model(\n        x,\n        w_analytical,\n        b_analytical\n    )\n\nplt.figure(figsize=(7, 4))\n\nplt.scatter(\n    x.squeeze(),\n    y.squeeze(),\n    s=18,\n    alpha=0.5,\n    label=\"Noisy samples\"\n)\n\nplt.plot(\n    x.squeeze(),\n    y_pred_analytical.squeeze(),\n    label=\"Analytical Model\"\n)\n\nplt.plot(\n    x.squeeze(),\n    y_ideal.squeeze(),\n    linestyle=\"--\",\n    label=\"Ideal Relation\"\n)\n\nplt.xlabel(\"Celsius\")\nplt.ylabel(\"Fahrenheit\")\nplt.legend()\nplt.show()",
+    "sha256": "3ab24e09e92a7e2a3536eaaf045f611b452d9714951682f8520a570b309b47c8"
+  },
+  {
+    "index": 29,
+    "language": "python",
+    "text": "w_auto = torch.tensor(\n    [[1.0]],\n    requires_grad=True\n)\n\nb_auto = torch.tensor(\n    [[0.0]],\n    requires_grad=True\n)",
+    "sha256": "731845438ab5249ceac19c6bd6ff2fea51276efa4d6306dd3d47f3fb546004d0"
+  },
+  {
+    "index": 30,
+    "language": "python",
+    "text": "pred_auto = linear_model(\n    x,\n    w_auto,\n    b_auto\n)\n\nloss_auto = mse_loss(\n    pred_auto,\n    y\n)",
+    "sha256": "56ae68a5c55b090a83a93e712e920616b9c09a5a9cc0e8070f4e71d8e7c6c6e9"
+  },
+  {
+    "index": 31,
+    "language": "python",
+    "text": "print(w_auto.grad)\nprint(b_auto.grad)",
+    "sha256": "c4a747372ff3740dc594fa48e3693a03f42e16d44b67fa890b763c91d08b5135"
+  },
+  {
+    "index": 32,
+    "language": "text",
+    "text": "None\nNone",
+    "sha256": "ddd016ef97243efed9b5f6c3ff802accad9518dadc20e3ccebaae4a6d8b48999"
+  },
+  {
+    "index": 33,
+    "language": "python",
+    "text": "loss_auto.backward()",
+    "sha256": "89f9788f0f0e6e85bfff4a0c5112b5fb8fcbc988578e207650b9bcba830bd3df"
+  },
+  {
+    "index": 34,
+    "language": "python",
+    "text": "print(w_auto.grad)\nprint(b_auto.grad)",
+    "sha256": "c4a747372ff3740dc594fa48e3693a03f42e16d44b67fa890b763c91d08b5135"
+  },
+  {
+    "index": 35,
+    "language": "text",
+    "text": "tensor([[-5374.9028]])\n\ntensor([[-63.5968]])",
+    "sha256": "08efdd9bfe82b157654890b0f0a37af2ea9bbdbe445fe1d07cb83b6a126a04a3"
+  },
+  {
+    "index": 36,
+    "language": "python",
+    "text": "grad_w_manual, grad_b_manual = analytical_gradients(\n    x,\n    y,\n    w_auto.detach(),\n    b_auto.detach()\n)\n\nprint(\n    \"AutoGrad w:\",\n    w_auto.grad.item()\n)\n\nprint(\n    \"Analytical w:\",\n    grad_w_manual.item()\n)\n\nprint(\n    \"Weight close?:\",\n    torch.allclose(\n        w_auto.grad,\n        grad_w_manual,\n        rtol=1e-4,\n        atol=1e-4\n    )\n)\n\nprint(\n    \"AutoGrad b:\",\n    b_auto.grad.item()\n)\n\nprint(\n    \"Analytical b:\",\n    grad_b_manual.item()\n)\n\nprint(\n    \"Bias close?:\",\n    torch.allclose(\n        b_auto.grad,\n        grad_b_manual,\n        rtol=1e-4,\n        atol=1e-4\n    )\n)",
+    "sha256": "875da47345e3a189b1b7bc0007beaabf756e6a59fdf9ae664e947c6a8e13e571"
+  },
+  {
+    "index": 37,
+    "language": "python",
+    "text": "w_manual = torch.tensor(\n    [[1.0]],\n    requires_grad=True\n)\n\nb_manual = torch.tensor(\n    [0.0],\n    requires_grad=True\n)\n\nlr = 2e-4\nn_epochs = 15000\n\nmanual_losses = []\n\nfor epoch in range(n_epochs):\n    # Forward\n    pred = linear_model(\n        x,\n        w_manual,\n        b_manual\n    )\n\n    # Loss\n    loss = mse_loss(pred, y)\n\n    # Backward\n    loss.backward()\n\n    # Parameter Update\n    with torch.no_grad():\n        w_manual -= lr * w_manual.grad\n        b_manual -= lr * b_manual.grad\n\n    # Gradient 초기화\n    w_manual.grad.zero_()\n    b_manual.grad.zero_()\n\n    manual_losses.append(loss.item())\n\n    if (epoch + 1) % 1500 == 0:\n        print(\n            f\"Epoch {epoch+1:5d} | \"\n            f\"Loss {loss.item():.4f} | \"\n            f\"w {w_manual.item():.4f} | \"\n            f\"b {b_manual.item():.4f}\"\n        )",
+    "sha256": "e145f0006a24a8a52e289e044326bc72cf7ddcafd8f63f3144f5abeae4e63286"
+  },
+  {
+    "index": 38,
+    "language": "python",
+    "text": "pred = linear_model(x, w_manual, b_manual)",
+    "sha256": "92b6fc8dcab2700ef19a4b0f9ff4e5c97ed00ebf24c86587ba722f37a535a88c"
+  },
+  {
+    "index": 39,
+    "language": "python",
+    "text": "loss = mse_loss(pred, y)",
+    "sha256": "c9c3ef9dc4df7bb9c8946fa8b59a924a4ebdcd289f29f59bc79cecfd953ed5d1"
+  },
+  {
+    "index": 40,
+    "language": "python",
+    "text": "loss.backward()",
+    "sha256": "227fe80da08b6d02955034947b207abea315364b3d84ee7b1732f8e8c3b31d8d"
+  },
+  {
+    "index": 41,
+    "language": "python",
+    "text": "with torch.no_grad():\n    w_manual -= lr * w_manual.grad\n    b_manual -= lr * b_manual.grad",
+    "sha256": "239ae817cf9376706043f08f8f92e877cb43f7c21c73a17727b9924f7878665a"
+  },
+  {
+    "index": 42,
+    "language": "python",
+    "text": "w_manual.grad.zero_()\nb_manual.grad.zero_()",
+    "sha256": "c98bb57e8e332352bbdc6a86b274cadaf7d06d40782c7401dab6a5b858421e6f"
+  },
+  {
+    "index": 43,
+    "language": "text",
+    "text": "Weight: 1.7982\nBias: 31.7197\nLoss: 15.1708",
+    "sha256": "d7f0fea269a2cd9d520dbc29de30567fc3929e0bcb077df92781aac8656765d8"
+  },
+  {
+    "index": 44,
+    "language": "python",
+    "text": "with torch.no_grad():\n    w -= lr * w.grad\n    b -= lr * b.grad",
+    "sha256": "7c98197700f4d6c36576c6581b40a601522cf5900da6fe8e0b7fe9118c4dd18e"
+  },
+  {
+    "index": 45,
+    "language": "python",
+    "text": "w_sgd = torch.tensor(\n    [[1.0]],\n    requires_grad=True\n)\n\nb_sgd = torch.tensor(\n    [0.0],\n    requires_grad=True\n)\n\noptimizer = optim.SGD(\n    [w_sgd, b_sgd],\n    lr=2e-4\n)\n\nsgd_losses = []\n\nfor epoch in range(15000):\n    pred = linear_model(\n        x,\n        w_sgd,\n        b_sgd\n    )\n\n    loss = mse_loss(pred, y)\n\n    optimizer.zero_grad()\n\n    loss.backward()\n\n    optimizer.step()\n\n    sgd_losses.append(loss.item())\n\nprint(\"w:\", w_sgd.item())\nprint(\"b:\", b_sgd.item())\nprint(\"loss:\", sgd_losses[-1])",
+    "sha256": "a35973612f08f5b5053f348db2aaeb2cba1e5320a9f935119dc632c3ab3cddfc"
+  },
+  {
+    "index": 46,
+    "language": "text",
+    "text": "w: 1.7982\nb: 31.7197\nloss: 15.1708",
+    "sha256": "70c9ad14937d63f80c134e413650b514ab757e94be8e73d1814acba558374af2"
+  },
+  {
+    "index": 47,
+    "language": "python",
+    "text": "optimizer.zero_grad()\n\npred = model(X)\n\nloss = criterion(pred, y)\n\nloss.backward()\n\noptimizer.step()",
+    "sha256": "8c09aeafdcd043a0665dfdee4a7f168d7132e66c1e7de3608a07258f12fd2b89"
+  },
+  {
+    "index": 48,
+    "language": "python",
+    "text": "nn.Linear(\n    in_features=1,\n    out_features=1\n)",
+    "sha256": "6a52b5fc211eb1b29ce10c27ba652402e0dbab1fd392ac812ec7c8a2cd8e7f3e"
+  },
+  {
+    "index": 49,
+    "language": "python",
+    "text": "linear = nn.Linear(\n    in_features=1,\n    out_features=1\n)\n\ncriterion = nn.MSELoss()\n\noptimizer = optim.SGD(\n    linear.parameters(),\n    lr=2e-4\n)\n\nlinear_losses = []\n\nfor epoch in range(15000):\n    pred = linear(x)\n\n    loss = criterion(pred, y)\n\n    optimizer.zero_grad()\n\n    loss.backward()\n\n    optimizer.step()\n\n    linear_losses.append(loss.item())\n\nprint(linear)\n\nprint(\"w:\", linear.weight.item())\nprint(\"b:\", linear.bias.item())\nprint(\"loss:\", linear_losses[-1])",
+    "sha256": "139405a944f9c383d2b9c0154558d7fa7f441d474725e6bc95795f625391b3c4"
+  },
+  {
+    "index": 50,
+    "language": "text",
+    "text": "Linear(in_features=1, out_features=1, bias=True)\n\nw: 1.7982\nb: 31.7176\nloss: 15.1711",
+    "sha256": "1c546f2688ec3af6a6c77355d7d9644b0641e9a33632b8f312374ca6e59fddb9"
+  },
+  {
+    "index": 51,
+    "language": "python",
+    "text": "w = torch.tensor(...)\nb = torch.tensor(...)",
+    "sha256": "9f20c1530e7a33c56a3abc52bc730eb3d65917c2aa6797531ecb8a0f76fa4363"
+  },
+  {
+    "index": 52,
+    "language": "python",
+    "text": "linear.parameters()",
+    "sha256": "a2b79163f660a1a080f3d075ad3e4f1d9cfcb83ca61422af8179ea999fdda871"
+  },
+  {
+    "index": 53,
+    "language": "text",
+    "text": "Input\n  1\n  ↓\nLinear(1, 32)\n  ↓\nReLU\n  ↓\nLinear(32, 32)\n  ↓\nReLU\n  ↓\nLinear(32, 1)\n  ↓\nOutput\n  1",
+    "sha256": "00f3a66c152930a3a8fcc49f2c1a1655e044902f34e29a869766fbc980b74c6d"
+  },
+  {
+    "index": 54,
+    "language": "python",
+    "text": "class CelsiusANN(nn.Module):\n    def __init__(self):\n        super().__init__()\n\n        self.linear0 = nn.Linear(1, 32)\n        self.relu0 = nn.ReLU()\n\n        self.linear1 = nn.Linear(32, 32)\n        self.relu1 = nn.ReLU()\n\n        self.linear2 = nn.Linear(32, 1)\n\n        # Weight Initialization\n        with torch.no_grad():\n            nn.init.constant_(\n                self.linear0.bias,\n                0.0\n            )\n\n            nn.init.xavier_uniform_(\n                self.linear0.weight\n            )\n\n    def forward(self, x):\n        x = self.linear0(x)\n        x = self.relu0(x)\n\n        x = self.linear1(x)\n        x = self.relu1(x)\n\n        return self.linear2(x)",
+    "sha256": "6ba8e43f948dc031123aac8cd8ca18cde774bbf7a11627ce432df9e65f6aacae"
+  },
+  {
+    "index": 55,
+    "language": "python",
+    "text": "class CelsiusANN(nn.Module):",
+    "sha256": "27cf7472834737149de6024808196c37f3cc29d8061056e17c67492114b53864"
+  },
+  {
+    "index": 56,
+    "language": "python",
+    "text": "super().__init__()",
+    "sha256": "7678213b30fa6b4a6b4ac1a76956d2e36897d32a23d4f4b0e7e0668fcf259e89"
+  },
+  {
+    "index": 57,
+    "language": "python",
+    "text": "self.linear0 = nn.Linear(1, 32)\nself.relu0 = nn.ReLU()",
+    "sha256": "3482854063acf4389c71e50e2e94f1691467ffd92c108d0e5eb69b55380bcd9e"
+  },
+  {
+    "index": 58,
+    "language": "python",
+    "text": "def forward(self, x):",
+    "sha256": "a87869a2104f0466b12528867e554a9d73bf2dd0ea266cfe118bd488b23086a9"
+  },
+  {
+    "index": 59,
+    "language": "python",
+    "text": "output = model(x)",
+    "sha256": "d1d620559071cc978188501cea3b14a1defb4adb53ec819caf31a1ecbe25782e"
+  },
+  {
+    "index": 60,
+    "language": "python",
+    "text": "ann = CelsiusANN()\n\nprint(ann)",
+    "sha256": "c731ea54f1eafcd224e6910529702f5bdb1f70d7b14ed82a88a5c14cb46c0e51"
+  },
+  {
+    "index": 61,
+    "language": "python",
+    "text": "for name, param in ann.named_parameters():\n    print(\n        name,\n        tuple(param.shape)\n    )",
+    "sha256": "426a338ce310fe4b810f070dd36b8c42edf08e0e8b3eedbb16b2f8fa776ec012"
+  },
+  {
+    "index": 62,
+    "language": "text",
+    "text": "linear0.weight (32, 1)\nlinear0.bias   (32,)\n\nlinear1.weight (32, 32)\nlinear1.bias   (32,)\n\nlinear2.weight (1, 32)\nlinear2.bias   (1,)",
+    "sha256": "084db823923c17989cf88796b1a670061c0e88dc11fbf56d6c72c4fbf9acdc9a"
+  },
+  {
+    "index": 63,
+    "language": "python",
+    "text": "nn.Linear(1, 32)",
+    "sha256": "533a237568e91d79f136f57064d77833a51382a75d0d842d65d49c1ae7bc3dbc"
+  },
+  {
+    "index": 64,
+    "language": "python",
+    "text": "print(\"=== Children ===\")\n\nfor child in ann.children():\n    print(child)\n\nprint(\"=== Modules ===\")\n\nfor module in ann.modules():\n    print(module.__class__.__name__)",
+    "sha256": "fed970baf228313004d2d96d8d20fe51fa2e53e6dcb792eaa2edadeefa8e7a28"
+  },
+  {
+    "index": 65,
+    "language": "python",
+    "text": "class RegressionDataset(Dataset):\n    def __init__(\n        self,\n        X,\n        y,\n        transform=None,\n        target_transform=None\n    ):\n        self.X = torch.as_tensor(\n            X,\n            dtype=torch.float32\n        )\n\n        self.y = torch.as_tensor(\n            y,\n            dtype=torch.float32\n        )\n\n        self.transform = transform\n        self.target_transform = target_transform\n\n    def __len__(self):\n        return len(self.X)\n\n    def __getitem__(self, idx):\n        sample = self.X[idx]\n        target = self.y[idx]\n\n        if self.transform is not None:\n            sample = self.transform(sample)\n\n        if self.target_transform is not None:\n            target = self.target_transform(target)\n\n        return sample, target",
+    "sha256": "3147f36296cb8a2314bad10b82c3dcc96706466ff19d219b7d7e8ba1113f2b66"
+  },
+  {
+    "index": 66,
+    "language": "python",
+    "text": "return sample, target",
+    "sha256": "65a8de968cf8c03f8446b238a5b5179922a51704f83147e9a812d2756463c830"
+  },
+  {
+    "index": 67,
+    "language": "python",
+    "text": "dataset = RegressionDataset(x, y)\n\nprint(\"Dataset length:\", len(dataset))\n\nprint(\"First sample:\", dataset[0])",
+    "sha256": "cda9b6c9250de390c6ab2879ee8f1b9b350120cc95e2b646a3a6c9ace3d0af31"
+  },
+  {
+    "index": 68,
+    "language": "text",
+    "text": "Dataset length: 200",
+    "sha256": "6b134e39312d6b8b6b0d0b6660c51b7025c3d2021313df67322e12a2345b9baa"
+  },
+  {
+    "index": 69,
+    "language": "python",
+    "text": "loader = DataLoader(\n    dataset,\n    batch_size=16,\n    shuffle=True\n)",
+    "sha256": "583e7976c87c4a7a035d446470b96fc0ccc97fb76532e68826180558664a183b"
+  },
+  {
+    "index": 70,
+    "language": "python",
+    "text": "X_batch, y_batch = next(iter(loader))\n\nprint(\"X shape:\", X_batch.shape)\nprint(\"y shape:\", y_batch.shape)",
+    "sha256": "9a2d76475f17e03c56cc735c696a8125775c9a1828f39ae9c4bda95e4cfb5808"
+  },
+  {
+    "index": 71,
+    "language": "text",
+    "text": "X shape: torch.Size([16, 1])\ny shape: torch.Size([16, 1])",
+    "sha256": "15f951d895710c314c80f0b24d781858d381a698750ede78f8c1eeb8f96486cf"
+  },
+  {
+    "index": 72,
+    "language": "python",
+    "text": "ann = CelsiusANN()\n\ncriterion = nn.MSELoss()\n\noptimizer = optim.Adam(\n    ann.parameters(),\n    lr=1e-3\n)",
+    "sha256": "e3c4d8034455ff3e0b6ec302567447157cc69097a9dd0f5a7a551478eb3588f6"
+  },
+  {
+    "index": 73,
+    "language": "python",
+    "text": "ann_losses = []\n\nfor epoch in range(300):\n    ann.train()\n\n    running_loss = 0.0\n\n    for X_batch, y_batch in loader:\n        pred = ann(X_batch)\n\n        loss = criterion(pred, y_batch)\n\n        optimizer.zero_grad()\n\n        loss.backward()\n\n        optimizer.step()\n\n        running_loss += (\n            loss.item() * X_batch.size(0)\n        )\n\n    epoch_loss = (\n        running_loss / len(dataset)\n    )\n\n    ann_losses.append(epoch_loss)\n\n    if (epoch + 1) % 100 == 0:\n        print(\n            f\"Epoch {epoch+1:3d} | \"\n            f\"Loss {epoch_loss:.4f}\"\n        )",
+    "sha256": "5e2d60e7f4d7039fe011f0eff255fd5a33b30d4369cb76cfb7049381d5daec95"
+  },
+  {
+    "index": 74,
+    "language": "python",
+    "text": "for X_batch, y_batch in loader:",
+    "sha256": "bd20f0d91999f8a5f2f3adada678bead480fba2a313b37ca8e6d9c00b96928ce"
+  },
+  {
+    "index": 75,
+    "language": "python",
+    "text": "running_loss += (\n    loss.item() * X_batch.size(0)\n)",
+    "sha256": "8ccc158c7744ca9ebad0870e472e68d7d80de926ea1fb279f49d877a29572993"
+  },
+  {
+    "index": 76,
+    "language": "python",
+    "text": "ann.eval()",
+    "sha256": "300abf1e53bd77f7699e502c34b609475acb075e90131d4ec4079c637f938060"
+  },
+  {
+    "index": 77,
+    "language": "python",
+    "text": "with torch.no_grad():\n    ann_pred = ann(x)",
+    "sha256": "5e89449f223b38d20ca71b076a8cab3fd2b608373c62272aa747bd7e04c08fe9"
+  },
+  {
+    "index": 78,
+    "language": "python",
+    "text": "plt.figure(figsize=(7, 4))\n\nplt.scatter(\n    x.squeeze(),\n    y.squeeze(),\n    s=16,\n    alpha=0.4,\n    label=\"Data\"\n)\n\nplt.plot(\n    x.squeeze(),\n    ann_pred.squeeze(),\n    label=\"ANN Prediction\"\n)\n\nplt.plot(\n    x.squeeze(),\n    y_ideal.squeeze(),\n    linestyle=\"--\",\n    label=\"Ideal Relation\"\n)\n\nplt.xlabel(\"Celsius\")\nplt.ylabel(\"Fahrenheit\")\nplt.legend()\nplt.show()",
+    "sha256": "75f0d0d25bfb3d8dbfe054866b9b02581173e2b4c1f20a87e63f504c80d05d04"
+  },
+  {
+    "index": 79,
+    "language": "python",
+    "text": "class GasDataset(Dataset):\n    def __init__(\n        self,\n        n_samples=3000,\n        noise_std=1.0,\n        transform=None\n    ):\n        # Temperature: 200 ~ 400 K\n        T = (\n            torch.rand(n_samples, 1) * 200\n            + 200\n        )\n\n        # Mole: 1 ~ 5 mol\n        n = (\n            torch.rand(n_samples, 1) * 4\n            + 1\n        )\n\n        P = 1.0\n        R = 0.08206\n\n        # Ideal Gas Law\n        V = n * R * T / P\n\n        # Add Gaussian Noise\n        V += (\n            torch.randn_like(V) * noise_std\n        )\n\n        V = torch.clamp(V, min=0)\n\n        self.X = torch.cat(\n            [T, n],\n            dim=1\n        ).float()\n\n        self.y = V.float()\n\n        self.transform = transform\n\n    def __len__(self):\n        return len(self.X)\n\n    def __getitem__(self, idx):\n        X = self.X[idx]\n        y = self.y[idx]\n\n        if self.transform is not None:\n            X = self.transform(X)\n\n        return X, y",
+    "sha256": "4a7f5a088e8b0ffcb55ca485dd95551252e2811fb3d5b330fbffd9eff8adce9c"
+  },
+  {
+    "index": 80,
+    "language": "python",
+    "text": "gas_dataset = GasDataset(\n    n_samples=3000,\n    noise_std=1.0\n)\n\nprint(\"X:\", gas_dataset.X.shape)\nprint(\"y:\", gas_dataset.y.shape)",
+    "sha256": "3bc2d0a16551d956cac063af8cbdaf40b8509fb81b24f82d5472fb5bd6a801bb"
+  },
+  {
+    "index": 81,
+    "language": "text",
+    "text": "X: torch.Size([3000, 2])\ny: torch.Size([3000, 1])",
+    "sha256": "1927dbcbceee8cc886076c39269b9bc4e437111685cdc732b7443dea2626a429"
+  },
+  {
+    "index": 82,
+    "language": "python",
+    "text": "from sklearn.model_selection import train_test_split\n\nindices = list(range(len(gas_dataset)))\n\ntrain_indices, temp_indices = train_test_split(\n    indices,\n    test_size=0.3,\n    random_state=SEED\n)\n\nvalid_indices, test_indices = train_test_split(\n    temp_indices,\n    test_size=0.5,\n    random_state=SEED\n)\n\nprint(\"Train:\", len(train_indices))\nprint(\"Validation:\", len(valid_indices))\nprint(\"Test:\", len(test_indices))",
+    "sha256": "3d158b7a2699a5a9d1351b926ae3ed5a3c00c2ee7c53d1d718226179e05f0141"
+  },
+  {
+    "index": 83,
+    "language": "text",
+    "text": "Train: 2100\nValidation: 450\nTest: 450",
+    "sha256": "5cd92e0d202f7b3cb5976d60efdfb12c9e29256377a64a154c6a7fc28ac58b33"
+  },
+  {
+    "index": 84,
+    "language": "python",
+    "text": "X_train_raw = gas_dataset.X[train_indices]\n\ntrain_mean = X_train_raw.mean(dim=0)\ntrain_std = X_train_raw.std(dim=0)\n\nprint(\"Train Mean:\", train_mean)\nprint(\"Train Std:\", train_std)",
+    "sha256": "0b81a7ee8bd16edbdf389ad01777df18eae071335ce49762042c352d71552d14"
+  },
+  {
+    "index": 85,
+    "language": "text",
+    "text": "Train Mean: tensor([299.7136,   2.9921])\n\nTrain Std: tensor([57.5857,  1.1576])",
+    "sha256": "889cec04bf7cfa6b35ca8a925937e805f8f66fdfca3c5ae03716ed8f470c0c69"
+  },
+  {
+    "index": 86,
+    "language": "python",
+    "text": "class StandardizedSubset(Dataset):\n    def __init__(\n        self,\n        base_dataset,\n        indices,\n        mean,\n        std\n    ):\n        self.base_dataset = base_dataset\n\n        self.indices = torch.as_tensor(indices)\n\n        self.mean = mean\n        self.std = std\n\n    def __len__(self):\n        return len(self.indices)\n\n    def __getitem__(self, idx):\n        real_idx = self.indices[idx]\n\n        X, y = self.base_dataset[real_idx]\n\n        X = (X - self.mean) / self.std\n\n        return X, y",
+    "sha256": "bac700439c4033683289d733794a505d10f23df36ef9e8ba5568814836b49d80"
+  },
+  {
+    "index": 87,
+    "language": "python",
+    "text": "train_dataset = StandardizedSubset(\n    gas_dataset,\n    train_indices,\n    train_mean,\n    train_std\n)\n\nvalid_dataset = StandardizedSubset(\n    gas_dataset,\n    valid_indices,\n    train_mean,\n    train_std\n)\n\ntest_dataset = StandardizedSubset(\n    gas_dataset,\n    test_indices,\n    train_mean,\n    train_std\n)",
+    "sha256": "49571e8411076b8e326231dfe8e0e7e66c05500aaf2007ed35ea97c46bb4aad3"
+  },
+  {
+    "index": 88,
+    "language": "python",
+    "text": "train_loader = DataLoader(\n    train_dataset,\n    batch_size=32,\n    shuffle=True\n)\n\nvalid_loader = DataLoader(\n    valid_dataset,\n    batch_size=32,\n    shuffle=False\n)\n\ntest_loader = DataLoader(\n    test_dataset,\n    batch_size=32,\n    shuffle=False\n)",
+    "sha256": "2f3ffed0fb02f8e35d85f0eab7ff1c1c1e2dc032792f9dfe4fdeae29a00f17dc"
+  },
+  {
+    "index": 89,
+    "language": "python",
+    "text": "X_batch, y_batch = next(iter(train_loader))\n\nprint(\"X batch:\", X_batch.shape)\nprint(\"y batch:\", y_batch.shape)",
+    "sha256": "153dcdaf88c4de3ff93a0dcd84dba8a6d885da454bc6c3d4b207ef832641fcf6"
+  },
+  {
+    "index": 90,
+    "language": "text",
+    "text": "X batch: torch.Size([32, 2])\ny batch: torch.Size([32, 1])",
+    "sha256": "57222e6bc1b92cb2b0e12193ae5718d55085b19e8336efb515dd057f22cc717d"
+  },
+  {
+    "index": 91,
+    "language": "text",
+    "text": "Input Layer\n  T, n\n   ↓\nLinear(2, 32)\n   ↓\nReLU\n   ↓\nLinear(32, 32)\n   ↓\nReLU\n   ↓\nLinear(32, 1)\n   ↓\nOutput\n   V",
+    "sha256": "a91f91d0d6e4fde687cc5a7ddfa27860b81ba9642ff6448a076311467b30e15c"
+  },
+  {
+    "index": 92,
+    "language": "python",
+    "text": "nn.Linear(2, 32)",
+    "sha256": "6300baf43f44f22e5f958067d99177228e7291d6bae03fdda53444be243a0d30"
+  },
+  {
+    "index": 93,
+    "language": "python",
+    "text": "class GasANN(nn.Module):\n    def __init__(self):\n        super().__init__()\n\n        self.net = nn.Sequential(\n            nn.Linear(2, 32),\n            nn.ReLU(),\n\n            nn.Linear(32, 32),\n            nn.ReLU(),\n\n            nn.Linear(32, 1)\n        )\n\n    def forward(self, x):\n        return self.net(x)\n\n\ngas_model = GasANN().to(device)\n\nprint(gas_model)",
+    "sha256": "64cf6bcb04c99e71b555b1a0e70bacbce0019bb416ed0c42a290d05ae849079c"
+  },
+  {
+    "index": 94,
+    "language": "python",
+    "text": "%pip install torchviz",
+    "sha256": "d1031fc3069bcc5029850e27c3c6791743676bd80236d21fb339e6d43948e37b"
+  },
+  {
+    "index": 95,
+    "language": "python",
+    "text": "from torchviz import make_dot\n\nparam = next(gas_model.parameters())\n\ndummy_x = torch.randn(\n    1,\n    2,\n    device=param.device,\n    dtype=param.dtype\n)\n\ndummy_y = gas_model(dummy_x)\n\ngraph = make_dot(\n    dummy_y,\n    params=dict(gas_model.named_parameters())\n)\n\ngraph",
+    "sha256": "fed96a3b60dafc4a2389ea1930866e7fdce12722fd4eb7ec5dea67740a646830"
+  },
+  {
+    "index": 96,
+    "language": "python",
+    "text": "criterion = nn.MSELoss()",
+    "sha256": "0cd992ff40775f3b5a08794b643c500beba5c70b7c73f8df871d34bb22d746ff"
+  },
+  {
+    "index": 97,
+    "language": "python",
+    "text": "optimizer = optim.Adam(\n    gas_model.parameters(),\n    lr=1e-3\n)",
+    "sha256": "cddf8c67fec7a94cb93680fd2b12199bbbfba1b78426d2da56f9d18e18fd698b"
+  },
+  {
+    "index": 98,
+    "language": "python",
+    "text": "scheduler = optim.lr_scheduler.ReduceLROnPlateau(\n    optimizer,\n    mode=\"min\",\n    factor=0.5,\n    patience=5\n)",
+    "sha256": "bae7bb6218d5ab23f56896048d186d91b195fd61eaac04f68c26822150b9a36b"
+  },
+  {
+    "index": 99,
+    "language": "python",
+    "text": "n_epochs = 100\n\ntrain_losses = []\nvalid_losses = []\n\nbest_valid_loss = float(\"inf\")\nbest_state = None\n\nearly_stopping_patience = 15\nmin_delta = 1e-3\nearly_stopping_counter = 0\n\nfor epoch in range(n_epochs):\n\n    # -------------------------\n    # Training\n    # -------------------------\n    gas_model.train()\n\n    train_loss_sum = 0.0\n\n    for X_batch, y_batch in train_loader:\n        X_batch = X_batch.to(device)\n        y_batch = y_batch.to(device)\n\n        y_pred = gas_model(X_batch)\n\n        loss = criterion(y_pred, y_batch)\n\n        optimizer.zero_grad()\n\n        loss.backward()\n\n        optimizer.step()\n\n        train_loss_sum += (\n            loss.item() * X_batch.size(0)\n        )\n\n    train_loss = (\n        train_loss_sum / len(train_dataset)\n    )\n\n    # -------------------------\n    # Validation\n    # -------------------------\n    gas_model.eval()\n\n    valid_loss_sum = 0.0\n\n    with torch.no_grad():\n        for X_batch, y_batch in valid_loader:\n            X_batch = X_batch.to(device)\n            y_batch = y_batch.to(device)\n\n            y_pred = gas_model(X_batch)\n\n            loss = criterion(y_pred, y_batch)\n\n            valid_loss_sum += (\n                loss.item() * X_batch.size(0)\n            )\n\n    valid_loss = (\n        valid_loss_sum / len(valid_dataset)\n    )\n\n    train_losses.append(train_loss)\n    valid_losses.append(valid_loss)\n\n    # Learning Rate Scheduler\n    scheduler.step(valid_loss)\n\n    # Save Best Model\n    if valid_loss < best_valid_loss - min_delta:\n        best_valid_loss = valid_loss\n\n        best_state = copy.deepcopy(\n            gas_model.state_dict()\n        )\n\n        early_stopping_counter = 0\n\n    else:\n        early_stopping_counter += 1\n\n    # Log\n    if (epoch + 1) % 10 == 0:\n        current_lr = optimizer.param_groups[0][\"lr\"]\n\n        print(\n            f\"Epoch {epoch+1:3d} | \"\n            f\"Train {train_loss:.4f} | \"\n            f\"Valid {valid_loss:.4f} | \"\n            f\"LR {current_lr:.6f}\"\n        )\n\n    # Early Stopping\n    if early_stopping_counter >= early_stopping_patience:\n        print(\n            f\"Early stopping at epoch {epoch+1}\"\n        )\n\n        break\n\n# Restore Best Model\nif best_state is not None:\n    gas_model.load_state_dict(best_state)",
+    "sha256": "c5bc5b9447f8ad83fb173b517dc4fa9bda84af45acf67d9f6bf78f44a680966b"
+  },
+  {
+    "index": 100,
+    "language": "python",
+    "text": "gas_model.train()",
+    "sha256": "09eb795e4f97d7088bdd2b963b39592ecbc8d88e2b1d0133876ff1cf91f95cd7"
+  },
+  {
+    "index": 101,
+    "language": "python",
+    "text": "for X_batch, y_batch in train_loader:",
+    "sha256": "ea6ec4f72b39810000f78a9aa66978f3c6748616ae604afa8e1ceb5964f5d5b6"
+  },
+  {
+    "index": 102,
+    "language": "python",
+    "text": "X_batch = X_batch.to(device)\ny_batch = y_batch.to(device)",
+    "sha256": "b60252b9579a8b508cd549500316f91dd3a312c20eea9d909a897c6f860a1f72"
+  },
+  {
+    "index": 103,
+    "language": "python",
+    "text": "y_pred = gas_model(X_batch)",
+    "sha256": "53eff851ee389c288587de8edde8978d40af660260fcf939476e6701f0915fb1"
+  },
+  {
+    "index": 104,
+    "language": "python",
+    "text": "loss = criterion(y_pred, y_batch)",
+    "sha256": "46503ec1327cfc8ae1e7d9c561aa5e0d63c9121060a0934beae8c428e86f6425"
+  },
+  {
+    "index": 105,
+    "language": "python",
+    "text": "optimizer.zero_grad()\n\nloss.backward()\n\noptimizer.step()",
+    "sha256": "6bd97e88baa131fa20ab2c8e436647bb4e72e732cb835db2b6448a35f14f442a"
+  },
+  {
+    "index": 106,
+    "language": "python",
+    "text": "gas_model.eval()",
+    "sha256": "3be09f1e05df2c016c62eb2723d30ff3958e4e552f2e2e92357b5b638c7aab86"
+  },
+  {
+    "index": 107,
+    "language": "python",
+    "text": "with torch.no_grad():",
+    "sha256": "d4f61231629bbf1e3960a804d3539a92239fa118f856b5d0efb60eafba2dc2e7"
+  },
+  {
+    "index": 108,
+    "language": "python",
+    "text": "scheduler.step(valid_loss)",
+    "sha256": "71fc04eefdbf5140aa493df366fff5d74cb241bbdae7a9430ac81f587628843c"
+  },
+  {
+    "index": 109,
+    "language": "python",
+    "text": "early_stopping_patience = 15\nmin_delta = 1e-3",
+    "sha256": "9a91c74b04992d98383eeac9cba96b877d7108dd0782ea005c6e7cda78cdfadb"
+  },
+  {
+    "index": 110,
+    "language": "python",
+    "text": "best_state = copy.deepcopy(\n    gas_model.state_dict()\n)",
+    "sha256": "3de8025d5fdc6306b370747f1e26ceb07ba17624a2d86aec18b3459dbd31aa0e"
+  },
+  {
+    "index": 111,
+    "language": "python",
+    "text": "gas_model.load_state_dict(best_state)",
+    "sha256": "8815a784bc88c66e951cf4a8266a237ea77c3686a96920ab8efb043c00480e1d"
+  },
+  {
+    "index": 112,
+    "language": "python",
+    "text": "epochs = range(\n    1,\n    len(train_losses) + 1\n)\n\nplt.figure(figsize=(7, 4))\n\nplt.plot(\n    epochs,\n    train_losses,\n    label=\"Train Loss\"\n)\n\nplt.plot(\n    epochs,\n    valid_losses,\n    label=\"Validation Loss\"\n)\n\nplt.xlabel(\"Epoch\")\nplt.ylabel(\"MSE Loss\")\n\nplt.title(\"Gas ANN Learning Curve\")\n\nplt.yscale(\"log\")\n\nplt.legend()\nplt.show()",
+    "sha256": "999ba4c7995bbd5416c25316bb307eb1b8a8c20c8a7c830c79ee2b785b19fccc"
+  },
+  {
+    "index": 113,
+    "language": "python",
+    "text": "gas_model.eval()",
+    "sha256": "3be09f1e05df2c016c62eb2723d30ff3958e4e552f2e2e92357b5b638c7aab86"
+  },
+  {
+    "index": 114,
+    "language": "python",
+    "text": "test_loss_sum = 0.0\n\nwith torch.no_grad():\n    for X_batch, y_batch in test_loader:\n        X_batch = X_batch.to(device)\n        y_batch = y_batch.to(device)\n\n        y_pred = gas_model(X_batch)\n\n        loss = criterion(y_pred, y_batch)\n\n        test_loss_sum += (\n            loss.item() * X_batch.size(0)\n        )\n\ntest_loss = (\n    test_loss_sum / len(test_dataset)\n)\n\nprint(f\"Test MSE: {test_loss:.4f}\")\nprint(\n    f\"Test RMSE: {math.sqrt(test_loss):.4f} L\"\n)",
+    "sha256": "774d376dec5344dd697edd85bb6b136c9f7c7caf523929e1a336037fe0e5c19d"
+  },
+  {
+    "index": 115,
+    "language": "text",
+    "text": "Test MSE: 1.4898\nTest RMSE: 1.2206 L",
+    "sha256": "06913348ef872c8c83df6a51dda05cfe0f30a1c6ae3dfa1f6b9734c6ba6b2737"
+  },
+  {
+    "index": 116,
+    "language": "python",
+    "text": "gas_model.eval()\n\nX_example_raw = torch.tensor([\n    [250.0, 1.5],\n    [300.0, 2.0],\n    [350.0, 4.0]\n])\n\n# Training 통계량으로 표준화\nX_example = (\n    X_example_raw - train_mean\n) / train_std\n\nX_example = X_example.to(device)\n\nwith torch.no_grad():\n    pred_volume = gas_model(\n        X_example\n    ).cpu()\n\n# Ideal Gas Law\nR = 0.08206\n\nideal_volume = (\n    X_example_raw[:, 0:1]\n    * X_example_raw[:, 1:2]\n    * R\n)\n\nfor raw, pred, ideal in zip(\n    X_example_raw,\n    pred_volume,\n    ideal_volume\n):\n    print(\n        f\"T={raw[0].item():.0f} K, \"\n        f\"n={raw[1].item():.1f} mol | \"\n        f\"ANN={pred.item():.2f} L | \"\n        f\"Ideal={ideal.item():.2f} L\"\n    )",
+    "sha256": "9b222c12ddd22031aa85f9ae21f39959dc642e21523cb4fea162d492e52116d8"
+  },
+  {
+    "index": 117,
+    "language": "text",
+    "text": "Synthetic Dataset\n       ↓\nCustom Dataset\n       ↓\nDataLoader\n       ↓\nMini-batch\n       ↓\nANN Model\n       ↓\nForward\n       ↓\nLoss\n       ↓\nAutograd\n       ↓\nOptimizer\n       ↓\nParameter Update\n       ↓\nValidation\n       ↓\nLearning Rate Scheduler\n       ↓\nEarly Stopping\n       ↓\nTest",
+    "sha256": "6942ce765b59f78e7df9e0221b1502f951870b081cf7090490534944eecd7e48"
+  },
+  {
+    "index": 118,
+    "language": "python",
+    "text": "loss.backward()",
+    "sha256": "227fe80da08b6d02955034947b207abea315364b3d84ee7b1732f8e8c3b31d8d"
+  },
+  {
+    "index": 119,
+    "language": "python",
+    "text": "optimizer.step()",
+    "sha256": "d9e59d7e651406a80e3569ffa41084f191174efc349faa642472c01e845fa001"
+  },
+  {
+    "index": 120,
+    "language": "text",
+    "text": "Dataset\n   ↓\nDataLoader\n   ↓\nMini-batch\n   ↓\nModel",
+    "sha256": "f90f6342800bd154aff6e00659a2c25e7ce5e67e3186c057d6fdf568d902300c"
+  },
+  {
+    "index": 121,
+    "language": "python",
+    "text": "model.train()",
+    "sha256": "a89ce3c7f36eea12c33df4d472ba58b4c161f7f06a861e34f23be438dc7c7036"
+  },
+  {
+    "index": 122,
+    "language": "python",
+    "text": "model.eval()",
+    "sha256": "45bf010c8945c8582402644951737948dcc61cda8f418cb4cb8cf85bae21019b"
+  },
+  {
+    "index": 123,
+    "language": "python",
+    "text": "with torch.no_grad():",
+    "sha256": "d4f61231629bbf1e3960a804d3539a92239fa118f856b5d0efb60eafba2dc2e7"
+  },
+  {
+    "index": 124,
+    "language": "python",
+    "text": "batch_size = 16\nbatch_size = 32\nbatch_size = 64",
+    "sha256": "67f2312ba05ef37d45be5b8eba582895fc9b6538999a87cccefc33b71e98796b"
+  }
+]

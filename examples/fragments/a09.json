@@ -1,0 +1,260 @@
+[
+  {
+    "index": 0,
+    "language": "text",
+    "text": "Input\n  ↓\nWeighted Sum\n  ↓\nz = Wx + b\n  ↓\nActivation Function\n  ↓\nOutput",
+    "sha256": "b233d16a09f65bd6b4f626a6a7e7a988abf74c8435af9f065e29d4192477051e"
+  },
+  {
+    "index": 1,
+    "language": "text",
+    "text": "Linear\n  ↓\nLinear\n  ↓\nLinear\n  ↓\nLinear",
+    "sha256": "9d613615660a93ad6a517884e0e653516e07647b7dacc2d87fb340afa612cb1c"
+  },
+  {
+    "index": 2,
+    "language": "text",
+    "text": "하나의 Linear Function",
+    "sha256": "f4facc11ca7e3f7a9ee214ab1a0f0f14a8548c86fb9c8370c1faedd62bfdf131"
+  },
+  {
+    "index": 3,
+    "language": "text",
+    "text": "Linear Transformation\n        ↓\nNon-linear Activation\n        ↓\nLinear Transformation\n        ↓\nNon-linear Activation",
+    "sha256": "71f539b13e2825765c00d37137a80ca24ee392b180c6a65c646529e6e46400fd"
+  },
+  {
+    "index": 4,
+    "language": "text",
+    "text": "        1 ─────────────\n          |\n          |\n        0 ─────────────\n                  0",
+    "sha256": "cfd36ee9f2193f8ab6f2d772cc55c63350784cca3c88784b0ba2e4b253f2c3a3"
+  },
+  {
+    "index": 5,
+    "language": "text",
+    "text": "OFF → 0\nON  → 1",
+    "sha256": "af8d55eb9309b9df27e1361a69b237957c50aac33279c1360061564b1767eb29"
+  },
+  {
+    "index": 6,
+    "language": "text",
+    "text": "Step Function\n      ↓\nGradient ≈ 0\n      ↓\nGradient Descent를 이용한 학습에 부적합",
+    "sha256": "b9c55f0831596ae64849f4b9c3ace95cf907d07b0fba5568ee70346f89b84a0e"
+  },
+  {
+    "index": 7,
+    "language": "text",
+    "text": "매우 큰 음수\n      ↓\n0에 가까움\n\nz = 0\n      ↓\n0.5\n\n매우 큰 양수\n      ↓\n1에 가까움",
+    "sha256": "5ac1ba3864ba1b8fdd2877d163b0a4105bc8275bb6134215bbcf94aef0342569"
+  },
+  {
+    "index": 8,
+    "language": "text",
+    "text": "Output Layer\n     ↓\nGradient\n     ↓\nHidden Layer\n     ↓\nGradient\n     ↓\nHidden Layer\n     ↓\nGradient\n     ↓\nInput 쪽 Layer",
+    "sha256": "af17e34ec756f0adae62be9311f0352cb91e6f83d09cede5bd57ce3392107d5b"
+  },
+  {
+    "index": 9,
+    "language": "text",
+    "text": "Sigmoid\n0 ~ 1\n\nTanh\n-1 ~ 1",
+    "sha256": "a941d522b1c9babf380b90a10519e8ecf8a0e8a772e677b792d58d3f9e70cfe2"
+  },
+  {
+    "index": 10,
+    "language": "text",
+    "text": "Negative Input\n      ↓\n      0\n\nPositive Input\n      ↓\n 그대로 전달",
+    "sha256": "30e050e7287ac46dc59451ed1d6368aed39266e017a251c6e978e1b99043b926"
+  },
+  {
+    "index": 11,
+    "language": "text",
+    "text": "Original Network\n\n● ● ● ● ● ●\n\nDropout 적용\n\n● X ● X ● ●",
+    "sha256": "6ea18ac042101b41df67a697c0dad8dcfbb52cb3320324ec5fb73cf9376fef44"
+  },
+  {
+    "index": 12,
+    "language": "text",
+    "text": "Activation Function\n→ Non-linearity\n\nDropout\n→ Regularization",
+    "sha256": "813aa9e6bfd30f365a8876f0ce74cedc5ca5c8426c1e6350316ba53ce149ffd2"
+  },
+  {
+    "index": 13,
+    "language": "text",
+    "text": "Input < 0\n   ↓\nOutput = 0\n   ↓\nGradient = 0\n   ↓\nWeight Update 어려움",
+    "sha256": "88b703a40c970e239e89f4f2b3889254a0f3dc0e0e7d3bcd9fe8c81f79083400"
+  },
+  {
+    "index": 14,
+    "language": "text",
+    "text": "ReLU\n\nNegative Region\nGradient = 0",
+    "sha256": "b45c37fd0b11e6bd476cdeb536a6c143a23afef75568043a2724cef13be1e049"
+  },
+  {
+    "index": 15,
+    "language": "text",
+    "text": "Leaky ReLU\n\nNegative Region\nGradient = α",
+    "sha256": "5f70eca47f52ec5abbded064f246074cf739ccd0910cfa7de616425ffab93550"
+  },
+  {
+    "index": 16,
+    "language": "text",
+    "text": "Leaky ReLU\n    │\n    ▼\nα = Fixed Hyperparameter\n\n\nPReLU\n    │\n    ▼\nα = Learnable Parameter",
+    "sha256": "94517b0c64a128965fdcef3431277cba26523069ec7cdae78d24d54b0e9ba55f"
+  },
+  {
+    "index": 17,
+    "language": "python",
+    "text": "import torch\nimport torch.nn as nn\n\nprelu = nn.PReLU()\n\nx = torch.tensor([\n    -2.0, -1.0, 0.0, 1.0, 2.0\n])\n\ny = prelu(x)\n\nprint(y)\nprint(prelu.weight)",
+    "sha256": "5cd645a56034044da3482a432e848156fd249aa4ca313e4fb863b7f232e5d52b"
+  },
+  {
+    "index": 18,
+    "language": "python",
+    "text": "# 하나의 Alpha를 공유\nnn.PReLU(num_parameters=1)\n\n# Channel마다 별도의 Alpha 사용\nnn.PReLU(num_parameters=16)",
+    "sha256": "55eebf37853a427b5ebf0b2670f16870dfc0a2b8527b7f18539b6886e48e1473"
+  },
+  {
+    "index": 19,
+    "language": "text",
+    "text": "Training\n    │\n    ▼\nRandom Alpha\n    │\n    ▼\nRandomized Activation\n\n\nInference\n    │\n    ▼\nFixed Alpha\n    │\n    ▼\nDeterministic Activation",
+    "sha256": "a6f2050946015fb910437a16e2f3d078816bcf6241da212f4d86be336b1cab4f"
+  },
+  {
+    "index": 20,
+    "language": "python",
+    "text": "import torch\nimport torch.nn as nn\n\nrrelu = nn.RReLU(\n    lower=0.1,\n    upper=0.3\n)\n\nx = torch.tensor([\n    -2.0, -1.0, 0.0, 1.0, 2.0\n])\n\n# Training\nrrelu.train()\n\nprint(rrelu(x))\n\n# Inference\nrrelu.eval()\n\nprint(rrelu(x))",
+    "sha256": "6e6bb3aa2496bac1b590694a4dee5ce4431622443910ea453f19fadc99bbebda"
+  },
+  {
+    "index": 21,
+    "language": "text",
+    "text": "tensor([-0.4000, -0.2000, 0.0000, 1.0000, 2.0000])",
+    "sha256": "e5acdb2eaf43e9202da6b89aa3c70ecdd78b95cdc3309bc0cba6333d81ddfe3d"
+  },
+  {
+    "index": 22,
+    "language": "python",
+    "text": "import torch.nn as nn\n\nelu = nn.ELU(alpha=1.0)",
+    "sha256": "feca43167dbc12748ec3dece32e307d70613b4291a59644ca654da68b86aef78"
+  },
+  {
+    "index": 23,
+    "language": "text",
+    "text": "Layer 1\n   │\n   ▼\nMean ≈ 0, Variance ≈ 1\n   │\n   ▼\nLayer 2\n   │\n   ▼\nMean ≈ 0, Variance ≈ 1\n   │\n   ▼\nLayer 3",
+    "sha256": "acd7017ade1e78abe9832300ee40c68e120640204ca14b73eab374dd66cacd50"
+  },
+  {
+    "index": 24,
+    "language": "python",
+    "text": "import torch\nimport torch.nn as nn\n\nmodel = nn.Sequential(\n    nn.Linear(20, 64),\n    nn.SELU(),\n    nn.AlphaDropout(p=0.1),\n\n    nn.Linear(64, 32),\n    nn.SELU(),\n\n    nn.Linear(32, 3)\n)",
+    "sha256": "d779cac5b10b9bb725e048803506de332be7cdaa8c3994a7583f2a3f9a3bf5ac"
+  },
+  {
+    "index": 25,
+    "language": "python",
+    "text": "def init_lecun(module):\n\n    if isinstance(module, nn.Linear):\n\n        fan_in = module.in_features\n\n        std = (1.0 / fan_in) ** 0.5\n\n        nn.init.normal_(\n            module.weight,\n            mean=0.0,\n            std=std\n        )\n\n        if module.bias is not None:\n            nn.init.zeros_(module.bias)\n\n\nmodel.apply(init_lecun)",
+    "sha256": "b3dd455581cfab8ec309018a54590b0c4063cad18e446c3275545668062237a3"
+  },
+  {
+    "index": 26,
+    "language": "text",
+    "text": "Softplus\n    │\n    ▼\nDifferentiation\n    │\n    ▼\nSigmoid",
+    "sha256": "251b5fc4bed0d92b39aa3be4b5ee74f08aab32797de3bae8cd5568cd8bdbb164"
+  },
+  {
+    "index": 27,
+    "language": "python",
+    "text": "import torch.nn as nn\n\nsoftplus = nn.Softplus()",
+    "sha256": "bc24cacecddee4c3a7008ffe5e26a0eca898a7304aab6559f09b34385c95218d"
+  },
+  {
+    "index": 28,
+    "language": "python",
+    "text": "import torch.nn as nn\n\n# 기본 GELU\ngelu = nn.GELU()\n\n# Tanh 근사식 사용\ngelu_approx = nn.GELU(\n    approximate=\"tanh\"\n)",
+    "sha256": "7cfd755ef06da23f840fb918d59cf9249823210eb1417ba6bc48eb055c100cba"
+  },
+  {
+    "index": 29,
+    "language": "python",
+    "text": "import torch.nn as nn\n\nsilu = nn.SiLU()",
+    "sha256": "8b464e7ad8cfa11870509ee4fd6cb535fe0e7d0cc3cd8581d25040ac626f37f8"
+  },
+  {
+    "index": 30,
+    "language": "python",
+    "text": "import torch\nimport torch.nn as nn\n\n\nclass Swish(nn.Module):\n\n    def __init__(self, beta=1.0):\n        super().__init__()\n\n        self.beta = beta\n\n    def forward(self, x):\n\n        return x * torch.sigmoid(\n            self.beta * x\n        )",
+    "sha256": "64950e0bbe2cae588424dc611270b01d718b552f9672762336c0f060e8173916"
+  },
+  {
+    "index": 31,
+    "language": "python",
+    "text": "class LearnableSwish(nn.Module):\n\n    def __init__(self, beta=1.0):\n        super().__init__()\n\n        self.beta = nn.Parameter(\n            torch.tensor(float(beta))\n        )\n\n    def forward(self, x):\n\n        return x * torch.sigmoid(\n            self.beta * x\n        )",
+    "sha256": "cbdc3e5d0d4a2b8810713bf1732aea2fbeb8349d52a2907d59e17f721f320091"
+  },
+  {
+    "index": 32,
+    "language": "text",
+    "text": "Input x\n   │\n   ├─────────────────┐\n   │                 │\n   ▼                 │\nSoftplus             │\n   │                 │\n   ▼                 │\n Tanh                │\n   │                 │\n   └──── Multiply ◀──┘\n            │\n            ▼\n           Mish",
+    "sha256": "fbe0ef172e725155cf4c66c0f4291024a2561cf89d06c744f4a3fde252b33b6b"
+  },
+  {
+    "index": 33,
+    "language": "python",
+    "text": "import torch.nn as nn\n\nmish = nn.Mish()",
+    "sha256": "727326bc7ea0cfa97e4e2bb22e9a683b532d5937769eddba7855a3f67c09dd4d"
+  },
+  {
+    "index": 34,
+    "language": "text",
+    "text": "                Input x\n                   │\n          ┌────────┴────────┐\n          │                 │\n          ▼                 ▼\n    Linear(W1)         Linear(W2)\n          │                 │\n          ▼                 │\n      SiLU/Swish            │\n          │                 │\n          └────────┬────────┘\n                   │\n                   ▼\n          Element-wise\n          Multiplication\n                   │\n                   ▼\n                Output",
+    "sha256": "7fb0bf57264fe3cc32c5488748fed4a2caea48c329584111966806204c397732"
+  },
+  {
+    "index": 35,
+    "language": "text",
+    "text": "                Input x\n                   │\n          ┌────────┴────────┐\n          │                 │\n          ▼                 ▼\n       Linear            Linear\n          │                 │\n          ▼                 │\n         SiLU               │\n          │                 │\n          └────────┬────────┘\n                   │\n                   ▼\n           Element-wise\n           Multiplication\n                   │\n                   ▼\n                 Linear\n                   │\n                   ▼\n               FFN Output",
+    "sha256": "2dbaa4b9fd62a7b999cdae9b6562d1501d4a46c486d4a3086eab6b1895c9f86a"
+  },
+  {
+    "index": 36,
+    "language": "python",
+    "text": "import torch\nimport torch.nn as nn\n\n\nclass SwiGLUFFN(nn.Module):\n\n    def __init__(\n        self,\n        input_dim,\n        hidden_dim\n    ):\n\n        super().__init__()\n\n        self.gate_proj = nn.Linear(\n            input_dim,\n            hidden_dim,\n            bias=False\n        )\n\n        self.up_proj = nn.Linear(\n            input_dim,\n            hidden_dim,\n            bias=False\n        )\n\n        self.down_proj = nn.Linear(\n            hidden_dim,\n            input_dim,\n            bias=False\n        )\n\n        self.silu = nn.SiLU()\n\n    def forward(self, x):\n\n        gate = self.silu(\n            self.gate_proj(x)\n        )\n\n        value = self.up_proj(x)\n\n        x = gate * value\n\n        return self.down_proj(x)",
+    "sha256": "ceaeaf252923c590f9c5acf94910d39d0ca9a3c05304f82319390dbd9567c187"
+  },
+  {
+    "index": 37,
+    "language": "python",
+    "text": "model = SwiGLUFFN(\n    input_dim=4,\n    hidden_dim=16\n)",
+    "sha256": "25a9d40bb12a2542005ebce56ad3faefe88be12cb5d98ab43080887ede730395"
+  },
+  {
+    "index": 38,
+    "language": "python",
+    "text": "x = torch.randn(8, 4)",
+    "sha256": "a78bdcc15e35ea010c5a22a9940377b90340e77642d5234be6236b903b6a0026"
+  },
+  {
+    "index": 39,
+    "language": "python",
+    "text": "output = model(x)\n\nprint(output.shape)",
+    "sha256": "29f77d29ef070b947af444c841b2f8ff4cc22f3d6cf55f531809f901bbd10938"
+  },
+  {
+    "index": 40,
+    "language": "text",
+    "text": "torch.Size([8, 4])",
+    "sha256": "12ff92f19f0591a8f3ef99c0fd48059cd310bd19e014f868d05d5bc0983bd31a"
+  },
+  {
+    "index": 41,
+    "language": "text",
+    "text": "Input\n [8, 4]\n    │\n    ├──────────────┐\n    │              │\n    ▼              ▼\nGate Projection  Up Projection\n [8, 16]         [8, 16]\n    │              │\n    ▼              │\n   SiLU            │\n    │              │\n    └──────┬───────┘\n           │\n           ▼\n        Multiply\n         [8, 16]\n           │\n           ▼\n     Down Projection\n          [8, 4]\n           │\n           ▼\n         Output",
+    "sha256": "5ba902d831286be360617381e65e6f5472b952917e2323216fc60919047a5f33"
+  },
+  {
+    "index": 42,
+    "language": "text",
+    "text": "Step Function\n      │\n      ▼\nGradient 기반 학습의 어려움\n      │\n      ▼\nSigmoid / Tanh\n      │\n      ▼\nVanishing Gradient 문제\n      │\n      ▼\nReLU\n      │\n      ▼\nDying ReLU 문제\n      │\n      ├── Leaky ReLU\n      │       │\n      │       ├── PReLU\n      │       │\n      │       └── RReLU\n      │\n      ├── ELU\n      │       │\n      │       └── SELU\n      │\n      └── Softplus\n              │\n              ▼\n      Smooth Activation\n              │\n         ┌────┴────┐\n         │         │\n         ▼         ▼\n        GELU      SiLU / Swish\n         │         │\n         │         ├── Mish와 비교\n         │         │\n         │         ▼\n         │       SwiGLU\n         │\n         ▼\n   Transformer 등에서 활용",
+    "sha256": "d26bbb9d704ebaee987e699f0b14782ca45301b635d83e44ce2eb4b629188a52"
+  }
+]

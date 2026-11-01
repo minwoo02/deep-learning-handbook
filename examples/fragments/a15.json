@@ -1,0 +1,14 @@
+[
+  {
+    "index": 0,
+    "language": "python",
+    "text": "import numpy as np\nimport matplotlib.pyplot as plt\n\nfrom scipy.stats import laplace, norm\n\nmu = 0\nb = 1\n\nsigma = np.sqrt(2) * b\n\nx = np.linspace(\n    -8,\n    8,\n    1000\n)\n\nlaplace_pdf = laplace.pdf(\n    x,\n    loc=mu,\n    scale=b\n)\n\nnormal_pdf = norm.pdf(\n    x,\n    loc=mu,\n    scale=sigma\n)\n\nplt.figure(figsize=(9, 5))\n\nplt.plot(\n    x,\n    laplace_pdf,\n    label=\"Laplace\"\n)\n\nplt.plot(\n    x,\n    normal_pdf,\n    label=\"Gaussian\"\n)\n\nplt.xlabel(\"x\")\nplt.ylabel(\"Probability Density\")\n\nplt.title(\n    \"Laplace vs Gaussian\"\n)\n\nplt.legend()\nplt.grid(alpha=0.3)\n\nplt.show()",
+    "sha256": "b759b00bcea2398774029895920ba15a3b9a817fd3723c8eeeccf0a0f6b50ef1"
+  },
+  {
+    "index": 1,
+    "language": "python",
+    "text": "import torch\nimport torch.nn as nn\n\npredictions = torch.tensor([\n    1.0,\n    2.0,\n    3.0\n])\n\ntargets = torch.tensor([\n    1.5,\n    2.5,\n    10.0\n])\n\nmae = nn.L1Loss()\n\nmse = nn.MSELoss()\n\nprint(\n    \"MAE:\",\n    mae(predictions, targets).item()\n)\n\nprint(\n    \"MSE:\",\n    mse(predictions, targets).item()\n)",
+    "sha256": "52d86e1742e293fdf094e174deca996adfb7b8c15640075e39c3ea365e848993"
+  }
+]

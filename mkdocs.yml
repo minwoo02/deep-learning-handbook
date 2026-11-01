@@ -1,0 +1,135 @@
+site_name: Deep Learning Handbook
+site_url: https://minwoo02.github.io/deep-learning-handbook/
+repo_url: https://github.com/minwoo02/deep-learning-handbook
+theme:
+  language: ko
+  features:
+  - navigation.tabs
+  - navigation.sections
+  - navigation.top
+  - content.code.copy
+  palette:
+  - scheme: default
+    primary: indigo
+    accent: teal
+    toggle:
+      icon: material/brightness-4
+      name: 다크 모드
+  - scheme: slate
+    primary: indigo
+    accent: teal
+    toggle:
+      icon: material/brightness-7
+      name: 라이트 모드
+nav:
+- Home: index.md
+- Learning Roadmap: roadmap.md
+- Theory · DL_a:
+  - Foundations & Tasks:
+    - 개요: theory/foundations/index.md
+    - '딥러닝의 역사: AI, ML, DL은 어떻게 발전했는가?': theory/foundations/a01.md
+    - 'Supervised Learning(지도학습) 완전 정리: Classification·Regression부터 Object Detection·Segmentation까지': theory/foundations/a02.md
+    - Classification과 Regression: theory/foundations/a03.md
+    - '확률분포 완전 정리: PMF·PDF·CDF의 개념과 차이': theory/foundations/a12.md
+    - '베르누이 분포 완전 정리: PMF·기댓값·분산과 Binary Classification': theory/foundations/a13.md
+    - '범주형 분포 완전 정리: One-Hot Encoding부터 PMF·Multinomial·Cross-Entropy까지': theory/foundations/a14.md
+    - '라플라스 분포 완전 정리: PDF·통계적 특성과 MAE·L1 정규화': theory/foundations/a15.md
+    - 'Likelihood(우도) 완전 정리: Probability와의 차이부터 MLE·MAP·Log-Likelihood까지': theory/foundations/a16.md
+    - '베이즈 정리(Bayes'' Theorem) 완전 정리: 사전확률·우도·사후확률부터 MLE와 MAP 추정까지': theory/foundations/a17.md
+  - Model Architecture:
+    - 개요: theory/architectures/index.md
+    - RNN: theory/architectures/rnn.md
+    - CNN: theory/architectures/cnn.md
+    - MLP: theory/architectures/mlp.md
+    - ANN • DNN • CNN • RNN 개념 및 핵심 차이 총정리: theory/architectures/a04.md
+    - 'Perceptron에서 MLP와 Backpropagation까지: 신경망은 어떻게 학습하는가?': theory/architectures/a05.md
+    - TLU와 Perceptron의 기하학적 이해: theory/architectures/a06.md
+    - XOR로 이해하는 Perceptron의 한계와 MLP: theory/architectures/a07.md
+    - 딥러닝을 공간 변환 관점에서 이해하기: theory/architectures/a08.md
+    - Activation Function: theory/architectures/a09.md
+  - Weight & Initialization:
+    - 개요: theory/weight/index.md
+    - Initialization: theory/weight/initialization.md
+    - 'Parameter vs Hyperparameter: 모델이 학습하는 값과 사람이 정하는 값': theory/weight/a10.md
+  - Loss:
+    - 개요: theory/loss/index.md
+    - '딥러닝 손실함수의 확률적 이해: MLE·NLL부터 Cross-Entropy, MSE, MAE, L1·L2 정규화까지': theory/loss/a18.md
+  - Gradient / Autograd:
+    - 개요: theory/gradients/index.md
+    - 'Gradient Descent와 Learning Rate: Linear Regression과 Logistic Regression까지': theory/gradients/a11.md
+  - Optimizer:
+    - 개요: theory/optimizers/index.md
+    - AdamW: theory/optimizers/adamw.md
+    - Adam: theory/optimizers/adam.md
+    - SGD: theory/optimizers/sgd.md
+  - Normalization:
+    - 개요: theory/normalization/index.md
+  - Regularization:
+    - 개요: theory/regularization/index.md
+    - 'Regularization 완전 정리: Overfitting·L1/L2부터 Dropout·Early Stopping·Data Augmentation까지': theory/regularization/a19.md
+  - Evaluation:
+    - 개요: theory/evaluation/index.md
+    - '머신러닝 분류 성능평가 완전 정리: Confusion Matrix부터 Accuracy·Precision·Recall·F1-score까지': theory/evaluation/a20.md
+    - '머신러닝 회귀 성능평가 완전 정리: MAE·MSE·RMSE·MAPE부터 결정계수 R²까지': theory/evaluation/a21.md
+    - 'Cross Validation 완전 정리: Hold-out부터 K-Fold·Stratified K-Fold와 모델 일반화 성능 평가까지': theory/evaluation/a22.md
+    - Hyperparameter Tuning: theory/evaluation/a23.md
+- Practice · DL_c:
+  - 학습 순서:
+    - PyTorch Basics: practice/stages/basics.md
+    - Regression · 수동 gradient: practice/stages/manual.md
+    - Regression · Autograd: practice/stages/autograd.md
+    - Regression · SGD: practice/stages/sgd.md
+    - Regression · nn.Module: practice/stages/module.md
+    - Regression · Dataset / DataLoader: practice/stages/data.md
+    - Regression · ANN: practice/stages/ann.md
+    - Classification · XOR: practice/stages/xor.md
+    - Classification · Iris: practice/stages/iris.md
+    - CNN · 학습 예정: practice/stages/cnn.md
+    - RNN · 학습 예정: practice/stages/rnn.md
+  - scikit-learn 입문 · 보존:
+    - 개요: practice/sklearn/index.md
+    - scikit-learn으로 Perceptron 구현하기: practice/sklearn/c01.md
+    - scikit-learn MLPClassifier 이해하기: practice/sklearn/c02.md
+    - scikit-learn MLPRegressor로 California Housing 집값 예측하기: practice/sklearn/c03.md
+  - PyTorch Basics:
+    - 개요: practice/pytorch-basics/index.md
+    - 'PyTorch Custom 모델 구현: nn.Module 상속부터 모델 관리까지': practice/pytorch-basics/c04.md
+    - PyTorch Dataset과 DataLoader 이해하기 — 클래스 상속부터 데이터 전처리까지: practice/pytorch-basics/c05.md
+  - Regression:
+    - 개요: practice/regression/index.md
+    - 'PyTorch 딥러닝 모델 구현 실습: 선형회귀부터 ANN 학습·평가까지': practice/regression/c06.md
+  - Classification:
+    - 개요: practice/classification/index.md
+    - PyTorch로 MLP 직접 구현하기: practice/classification/c07.md
+    - 'PyTorch로 XOR 해결하기: MLP 클래스 구조 분석': practice/classification/c08.md
+    - 'PyTorch로 Iris Dataset 다중 분류 구현하기: Dataset부터 ANN 학습 및 평가까지': practice/classification/c09.md
+  - Optimizer:
+    - 개요: practice/tech-optimizers/index.md
+    - 'Learning Rate 완전 정리: 학습률 설정부터 Scheduler·Warmup·Cosine Annealing과 PyTorch 구현까지': practice/tech-optimizers/c10.md
+    - 'AdamW 완전 정리: Adam의 Moment Estimation부터 L2 Regularization·Weight Decay와 PyTorch 구현까지': practice/tech-optimizers/c11.md
+  - Weight & Initialization:
+    - 개요: practice/tech-weight/index.md
+    - 'PyTorch 가중치 초기화 완전 정리: Xavier·He·LeCun Initialization과 Gradient 문제': practice/tech-weight/c12.md
+  - Normalization:
+    - 개요: practice/tech-normalization/index.md
+    - 'PyTorch Batch Normalization 완전 정리: 동작 원리부터 Running Statistics와 학습·추론까지': practice/tech-normalization/c13.md
+  - Gradient Clipping:
+    - 개요: practice/tech-gradients/index.md
+    - 'PyTorch Gradient Clipping 완전 정리: Exploding Gradient부터 Norm·Value Clipping 구현까지': practice/tech-gradients/c14.md
+- 원본·검증 기록: sources.md
+- 기존 목차 보존:
+  - DL_a: archive/a00.md
+  - DL_c: archive/c00.md
+markdown_extensions:
+- tables
+- fenced_code
+- pymdownx.superfences:
+    custom_fences:
+    - name: mermaid
+      class: mermaid
+      format: !!python/name:pymdownx.superfences.fence_code_format ''
+- pymdownx.arithmatex:
+    generic: true
+extra_javascript:
+- assets/mathjax.js
+- https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js

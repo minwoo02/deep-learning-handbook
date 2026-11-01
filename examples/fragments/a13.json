@@ -1,0 +1,38 @@
+[
+  {
+    "index": 0,
+    "language": "text",
+    "text": "Success\nFailure",
+    "sha256": "724bc099eb9c0654192dd85c0168c34898464d64919c73723af74cc9363954b1"
+  },
+  {
+    "index": 1,
+    "language": "text",
+    "text": "1\n0",
+    "sha256": "4ea2ed1420659bf15773230715e87b4408625eaf88869b7e8bb51c42889579d6"
+  },
+  {
+    "index": 2,
+    "language": "python",
+    "text": "import numpy as np\n\nrng = np.random.default_rng(42)\n\np = 0.7\nn = 10000\n\nsamples = rng.binomial(\n    n=1,\n    p=p,\n    size=n\n)\n\nsample_mean = samples.mean()\nsample_var = samples.var()\n\nprint(\"Theoretical Mean:\", p)\nprint(\"Sample Mean:\", sample_mean)\n\nprint(\n    \"Theoretical Variance:\",\n    p * (1 - p)\n)\n\nprint(\n    \"Sample Variance:\",\n    sample_var\n)",
+    "sha256": "0e0b0d0dc84d90cc07d2cad0c03160555c64d5099f786ccd929a66df6f8650d0"
+  },
+  {
+    "index": 3,
+    "language": "python",
+    "text": "import torch\n\nfrom torch.distributions import Bernoulli\n\n\ndist = Bernoulli(\n    probs=torch.tensor(0.7)\n)\n\nsamples = dist.sample(\n    (10000,)\n)\n\nprint(samples.shape)\n\nprint(\n    \"Sample Mean:\",\n    samples.mean().item()\n)\n\nprint(\n    \"Sample Variance:\",\n    samples.var(unbiased=False).item()\n)",
+    "sha256": "64655299642ff41c1bc5fd179dfbfbb040c3e778206ca45f147b72cb68b4b922"
+  },
+  {
+    "index": 4,
+    "language": "text",
+    "text": "torch.Size([10000])",
+    "sha256": "491899a09171160eeaafedb8bbba0e64773c65b97c7112429ff14bd7adcded16"
+  },
+  {
+    "index": 5,
+    "language": "python",
+    "text": "import torch\nimport torch.nn as nn\n\nlogits = torch.tensor([\n    [2.0],\n    [-1.0],\n    [0.5]\n])\n\ntargets = torch.tensor([\n    [1.0],\n    [0.0],\n    [1.0]\n])\n\ncriterion = nn.BCEWithLogitsLoss()\n\nloss = criterion(\n    logits,\n    targets\n)\n\nprint(loss.item())",
+    "sha256": "c8d3550ede3b7d0258e5bb649159327c75aa7f8b122e7e4923e5d418b53f21b5"
+  }
+]

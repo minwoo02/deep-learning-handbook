@@ -1,0 +1,140 @@
+[
+  {
+    "index": 0,
+    "language": "python",
+    "text": "sklearn.neural_network.MLPClassifier",
+    "sha256": "e3d067b9d5670d9ecfe38d8f6e24da406939c01016779ccbb9827c02c5ff7aa4"
+  },
+  {
+    "index": 1,
+    "language": "python",
+    "text": "from sklearn.datasets import load_iris\nfrom sklearn.metrics import accuracy_score\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.neural_network import MLPClassifier\nfrom sklearn.pipeline import make_pipeline\nfrom sklearn.preprocessing import StandardScaler\n\n\n# 1. Dataset Load\nX, y = load_iris(return_X_y=True)\n\n\n# 2. Train / Test Split\nX_train, X_test, y_train, y_test = train_test_split(\n    X,\n    y,\n    test_size=0.2,\n    random_state=42,\n    stratify=y,\n)\n\n\n# 3. Model Creation\nmodel = make_pipeline(\n    StandardScaler(),\n    MLPClassifier(\n        hidden_layer_sizes=(100,),\n        activation=\"relu\",\n        solver=\"adam\",\n        max_iter=1000,\n        random_state=42,\n    ),\n)\n\n\n# 4. Training\nmodel.fit(X_train, y_train)\n\n\n# 5. Prediction\ny_pred = model.predict(X_test)\n\n\n# 6. Evaluation\naccuracy = accuracy_score(y_test, y_pred)\n\nprint(\"Accuracy:\", accuracy)",
+    "sha256": "c11d5001c6396d2d33d733fdca9b589b9de168fe269acf0bf970c757808f78c6"
+  },
+  {
+    "index": 2,
+    "language": "text",
+    "text": "Iris Dataset\n     ↓\nTrain / Test Split\n     ↓\nStandardScaler\n     ↓\nMLPClassifier\n     ↓\nTraining\n     ↓\nPrediction\n     ↓\nAccuracy",
+    "sha256": "912881657b024c9d6fd834aafd0ba19a71cbf169a77eedb109c42537e5f0ffd3"
+  },
+  {
+    "index": 3,
+    "language": "python",
+    "text": "Perceptron(\n    max_iter=1000,\n    eta0=1.0,\n    random_state=42,\n)",
+    "sha256": "6cb15784b78ca7306f637e5b3a82fd59dcbc40bc47a71e7c32da804d73fb6937"
+  },
+  {
+    "index": 4,
+    "language": "python",
+    "text": "MLPClassifier(\n    hidden_layer_sizes=(100,),\n    activation=\"relu\",\n    solver=\"adam\",\n    max_iter=1000,\n    random_state=42,\n)",
+    "sha256": "91b594a58106000a37a3b73c5c33e64ad64f4f106000463afe7191358686d184"
+  },
+  {
+    "index": 5,
+    "language": "python",
+    "text": "hidden_layer_sizes=(100,)",
+    "sha256": "bb461f4a09e0a76aeac88d30ed14b76252821ea672392f8013c69296297ed8da"
+  },
+  {
+    "index": 6,
+    "language": "text",
+    "text": "Input Layer\n    ↓\nHidden Layer\n100 Neurons\n    ↓\nOutput Layer",
+    "sha256": "cf62da4dd9d5e9a00c233d26bfb1bf072d79112d9d0a558e37093b0f240df91b"
+  },
+  {
+    "index": 7,
+    "language": "python",
+    "text": "hidden_layer_sizes=(100, 50)",
+    "sha256": "aa5f0550895765dd78a6cfa512e2a037795b2e09a9718e98e69c7898fcf0a497"
+  },
+  {
+    "index": 8,
+    "language": "text",
+    "text": "Input\n ↓\n100 Neurons\n ↓\n50 Neurons\n ↓\nOutput",
+    "sha256": "26dca6b5d23dcae3aa7d02bac7b03fdfff5ca607f8053579cc94c45ab9273cf9"
+  },
+  {
+    "index": 9,
+    "language": "python",
+    "text": "activation=\"relu\"",
+    "sha256": "b5f1a942de15abe72dd493f54a3145554bd5ea3856cd21b78cdc0179ce77520d"
+  },
+  {
+    "index": 10,
+    "language": "python",
+    "text": "solver=\"adam\"",
+    "sha256": "f7c081b028d64006f42f2f72e7919d98323fd57978f5851f8119ccc80c526878"
+  },
+  {
+    "index": 11,
+    "language": "text",
+    "text": "Forward\n↓\nLoss\n↓\nBackpropagation\n↓\nAdam\n↓\nWeight / Bias Update",
+    "sha256": "ffe018bd89a90ed27ed239f93685bea8cc84941b304c7ab059d5c11dce2fa11d"
+  },
+  {
+    "index": 12,
+    "language": "python",
+    "text": "max_iter=1000",
+    "sha256": "ea3b291c0054455ac9ed278b2634d4bf868079173339a4f025528634aa4cdd73"
+  },
+  {
+    "index": 13,
+    "language": "python",
+    "text": "random_state=42",
+    "sha256": "8e3f48eff0f54a73b6d09b75eb442c95a9b789d1a0185b0afe41bce5c6f556b8"
+  },
+  {
+    "index": 14,
+    "language": "python",
+    "text": "model.fit(X_train, y_train)",
+    "sha256": "4db693e9f265f1486887920c2e9cbce041b8de1f5d60b444efa8e2875b7a15ed"
+  },
+  {
+    "index": 15,
+    "language": "text",
+    "text": "Forward Propagation\n        ↓\nLoss Calculation\n        ↓\nBackpropagation\n        ↓\nAdam Optimizer\n        ↓\nParameter Update",
+    "sha256": "fa27677d072753c2f70f02296256ed90eb7edbb3a757af00f7f004ed39312fc6"
+  },
+  {
+    "index": 16,
+    "language": "python",
+    "text": "y_pred = model.predict(X_test)",
+    "sha256": "8d64d9c188ac972bd51acd0728e60f8c0682b230afbe667f311a699815b99bf1"
+  },
+  {
+    "index": 17,
+    "language": "python",
+    "text": "accuracy = accuracy_score(y_test, y_pred)",
+    "sha256": "c0f4681ed3363fdb9a29efe49c59c4ec6f76485697c8c3b87af87744385056b6"
+  },
+  {
+    "index": 18,
+    "language": "text",
+    "text": "Input\n  ↓\nLinear Combination\n  ↓\nDecision",
+    "sha256": "92d6e5acf6e94155ff23c45cc48742565305651f8fc398ed645184c6f1bf8201"
+  },
+  {
+    "index": 19,
+    "language": "text",
+    "text": "Input\n  ↓\nLinear Layer\n  ↓\nReLU\n  ↓\nLinear Layer\n  ↓\nOutput",
+    "sha256": "60e898fc9409312bf8767152e520e54ec00aa7168d87bb283d778ebf3ce5ffc3"
+  },
+  {
+    "index": 20,
+    "language": "text",
+    "text": "Data\n↓\nPreprocessing\n↓\nModel\n↓\nfit()\n↓\npredict()\n↓\nEvaluation",
+    "sha256": "1c2f1df2c20a45d805327e28ba431956214eba596940259eaae7361cbe071ac7"
+  },
+  {
+    "index": 21,
+    "language": "python",
+    "text": "hidden_layer_sizes=(100,)\nactivation=\"relu\"\nsolver=\"adam\"",
+    "sha256": "2a59b4c07b64031ad46f475b7c00ad7f8e947c7fea4c85d93d53a263e4fbf6ef"
+  },
+  {
+    "index": 22,
+    "language": "python",
+    "text": "from sklearn.datasets import load_iris\nfrom sklearn.metrics import accuracy_score\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.neural_network import MLPClassifier\nfrom sklearn.pipeline import make_pipeline\nfrom sklearn.preprocessing import StandardScaler\n\n\n# ============================================================\n# 1. Dataset Load\n# ============================================================\n\n# X: 4개의 Feature\n# y: 3개의 Iris Class\nX, y = load_iris(return_X_y=True)\n\n\n# ============================================================\n# 2. Train / Test Split\n# ============================================================\n\n# 전체 데이터의 80%는 학습, 20%는 평가에 사용\n# stratify=y: 각 Class의 비율을 비슷하게 유지\nX_train, X_test, y_train, y_test = train_test_split(\n    X,\n    y,\n    test_size=0.2,\n    random_state=42,\n    stratify=y,\n)\n\n\n# ============================================================\n# 3. Model Creation\n# ============================================================\n\nmodel = make_pipeline(\n\n    # 각 Feature를 평균 0, 표준편차 1 수준으로 표준화\n    StandardScaler(),\n\n    # Hidden Layer 1개, Neuron 100개인 MLP\n    MLPClassifier(\n        hidden_layer_sizes=(100,),\n        activation=\"relu\",\n        solver=\"adam\",\n        max_iter=1000,\n        random_state=42,\n    ),\n)\n\n\n# ============================================================\n# 4. Training\n# ============================================================\n\n# StandardScaler → MLPClassifier 순서로 학습\nmodel.fit(X_train, y_train)\n\n\n# ============================================================\n# 5. Prediction\n# ============================================================\n\n# Test Data의 Class 예측\ny_pred = model.predict(X_test)\n\n\n# ============================================================\n# 6. Evaluation\n# ============================================================\n\n# Accuracy 계산\naccuracy = accuracy_score(y_test, y_pred)\n\nprint(\"Accuracy:\", accuracy)",
+    "sha256": "3c82d96d86cc6c36257b81af6a50185492c0e867e0846c456c41c71f2ad29fd7"
+  }
+]

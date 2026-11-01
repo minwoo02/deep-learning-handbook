@@ -1,0 +1,86 @@
+[
+  {
+    "index": 0,
+    "language": "text",
+    "text": "Parameter p = 0.7\n        │\n        ▼\n   Probability Model\n        │\n        ├── X = 1 → 0.7\n        │\n        └── X = 0 → 0.3",
+    "sha256": "4088300fac73db6674696179a6c4111a212e46938564972a03ad6810bea7872f"
+  },
+  {
+    "index": 1,
+    "language": "text",
+    "text": "H H T H H T H T H H",
+    "sha256": "c1596b9f1c6645d0cdd305778fa58bac302ae853f3cc35b39a2f941666a89611"
+  },
+  {
+    "index": 2,
+    "language": "text",
+    "text": "MLE\n │\n ▼\nLikelihood를 최대화하는\nParameter 추정 원리\n\n\nEM\n │\n ▼\n잠재변수가 있는 모델에서\nLikelihood 최적화를 수행하는\n반복 알고리즘",
+    "sha256": "2294a8e0769f6c2b7e491e9df9b7e1d9c0507c215dfa1e17d3af3b6114088c97"
+  },
+  {
+    "index": 3,
+    "language": "python",
+    "text": "import numpy as np\n\n# Observed Data\nn_heads = 7\nn_tails = 3\n\n# Parameter Candidates\np_values = np.linspace(\n    0.01,\n    0.99,\n    100\n)\n\n# Likelihood Function\nlikelihood = (\n    p_values ** n_heads\n    *\n    (1 - p_values) ** n_tails\n)\n\n# Maximum Likelihood\nbest_index = np.argmax(\n    likelihood\n)\n\nbest_p = p_values[best_index]\n\nprint(\"Estimated p:\", best_p)",
+    "sha256": "658dfc93d5d8bf79f602efffbbe972ae995156a65eccfde05a53ad763ea876e3"
+  },
+  {
+    "index": 4,
+    "language": "python",
+    "text": "import matplotlib.pyplot as plt\n\nplt.figure(figsize=(8, 5))\n\nplt.plot(\n    p_values,\n    likelihood,\n    label=\"Likelihood\"\n)\n\nplt.axvline(\n    x=0.7,\n    linestyle=\"--\",\n    label=\"MLE = 0.7\"\n)\n\nplt.xlabel(\"Parameter p\")\nplt.ylabel(\"Likelihood\")\n\nplt.title(\n    \"Bernoulli Likelihood Function\"\n)\n\nplt.legend()\nplt.grid(alpha=0.3)\n\nplt.show()",
+    "sha256": "0ac296bd800f9a227e9c9952ec3b87c4a0d669e22ecbc1efe7cfd03581e5a6b7"
+  },
+  {
+    "index": 5,
+    "language": "python",
+    "text": "log_likelihood = (\n    n_heads * np.log(p_values)\n    +\n    n_tails * np.log(1 - p_values)\n)\n\nnll = -log_likelihood",
+    "sha256": "4d47da1f06d991c1ceb788a209e254c0fef7d94a169b50cd7c81cfc628352ee1"
+  },
+  {
+    "index": 6,
+    "language": "text",
+    "text": "Likelihood\n    │\n    ▼\nLogarithm\n    │\n    ▼\nLog-Likelihood\n    │\n    ▼\nNegative Sign\n    │\n    ▼\nNegative Log-Likelihood",
+    "sha256": "bdb5e537c1e3161404ed74bea47c0ff68c0d5b9670af489638279339a8d88a48"
+  },
+  {
+    "index": 7,
+    "language": "text",
+    "text": "Parameter p = 0.7\n        │\n        ▼\n   Probability Model\n        │\n        ├── X = 1 → 0.7\n        │\n        └── X = 0 → 0.3",
+    "sha256": "4088300fac73db6674696179a6c4111a212e46938564972a03ad6810bea7872f"
+  },
+  {
+    "index": 8,
+    "language": "text",
+    "text": "H H T H H T H T H H",
+    "sha256": "c1596b9f1c6645d0cdd305778fa58bac302ae853f3cc35b39a2f941666a89611"
+  },
+  {
+    "index": 9,
+    "language": "text",
+    "text": "MLE\n │\n ▼\nLikelihood를 최대화하는\nParameter 추정 원리\n\n\nEM\n │\n ▼\n잠재변수가 있는 모델에서\nLikelihood 최적화를 수행하는\n반복 알고리즘",
+    "sha256": "2294a8e0769f6c2b7e491e9df9b7e1d9c0507c215dfa1e17d3af3b6114088c97"
+  },
+  {
+    "index": 10,
+    "language": "python",
+    "text": "import numpy as np\n\n# Observed Data\nn_heads = 7\nn_tails = 3\n\n# Parameter Candidates\np_values = np.linspace(\n    0.01,\n    0.99,\n    100\n)\n\n# Likelihood Function\nlikelihood = (\n    p_values ** n_heads\n    *\n    (1 - p_values) ** n_tails\n)\n\n# Maximum Likelihood\nbest_index = np.argmax(\n    likelihood\n)\n\nbest_p = p_values[best_index]\n\nprint(\"Estimated p:\", best_p)",
+    "sha256": "658dfc93d5d8bf79f602efffbbe972ae995156a65eccfde05a53ad763ea876e3"
+  },
+  {
+    "index": 11,
+    "language": "python",
+    "text": "import matplotlib.pyplot as plt\n\nplt.figure(figsize=(8, 5))\n\nplt.plot(\n    p_values,\n    likelihood,\n    label=\"Likelihood\"\n)\n\nplt.axvline(\n    x=0.7,\n    linestyle=\"--\",\n    label=\"MLE = 0.7\"\n)\n\nplt.xlabel(\"Parameter p\")\nplt.ylabel(\"Likelihood\")\n\nplt.title(\n    \"Bernoulli Likelihood Function\"\n)\n\nplt.legend()\nplt.grid(alpha=0.3)\n\nplt.show()",
+    "sha256": "0ac296bd800f9a227e9c9952ec3b87c4a0d669e22ecbc1efe7cfd03581e5a6b7"
+  },
+  {
+    "index": 12,
+    "language": "python",
+    "text": "log_likelihood = (\n    n_heads * np.log(p_values)\n    +\n    n_tails * np.log(1 - p_values)\n)\n\nnll = -log_likelihood",
+    "sha256": "4d47da1f06d991c1ceb788a209e254c0fef7d94a169b50cd7c81cfc628352ee1"
+  },
+  {
+    "index": 13,
+    "language": "text",
+    "text": "Likelihood\n    │\n    ▼\nLogarithm\n    │\n    ▼\nLog-Likelihood\n    │\n    ▼\nNegative Sign\n    │\n    ▼\nNegative Log-Likelihood",
+    "sha256": "bdb5e537c1e3161404ed74bea47c0ff68c0d5b9670af489638279339a8d88a48"
+  }
+]

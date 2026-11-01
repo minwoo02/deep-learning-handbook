@@ -1,0 +1,134 @@
+[
+  {
+    "index": 0,
+    "language": "text",
+    "text": "Gradient Descent\n       │\n       ▼\n      SGD\n       │\n       ├── Momentum\n       │     └── Gradient 방향의 이동평균\n       │\n       └── Adaptive Learning Rate\n             ├── AdaGrad\n             └── RMSProp\n                    │\n                    ▼\n                   Adam\n                    │\n                    ├── First Moment\n                    └── Second Moment\n                    │\n                    ▼\n           L2 Regularization 문제\n                    │\n                    ▼\n       Decoupled Weight Decay\n                    │\n                    ▼\n                   AdamW",
+    "sha256": "27952b8697cc7305b54a3e2944041a883d78080bcc7d124e215d95f430dd1af4"
+  },
+  {
+    "index": 1,
+    "language": "text",
+    "text": "SGD\n │\n ├── Direction Stabilization\n │     │\n │     ▼\n │   Momentum\n │\n └── Adaptive Step Size\n       │\n       ├── AdaGrad\n       └── RMSProp",
+    "sha256": "b5261c940020eae628a529111435971795a7691049396e28704c1868391a9d89"
+  },
+  {
+    "index": 2,
+    "language": "text",
+    "text": "Gradient at Step 1\n        ↓\nGradient at Step 2\n        ↓\nGradient at Step 3\n        ↓\nExponential Moving Average\n        ↓\nSmoothed Update Direction",
+    "sha256": "75a74201d63e7238f659583f1e38118226e636a8e118379760e068b9844b9f0e"
+  },
+  {
+    "index": 3,
+    "language": "text",
+    "text": "Gradient\n    │\n    ├── First Moment\n    │       │\n    │       ▼\n    │   Gradient Direction\n    │\n    └── Second Moment\n            │\n            ▼\n      Gradient Scale\n            │\n            ▼\n    Adaptive Step Size",
+    "sha256": "a73262350810cefbb6de3b071ca18385a612ddf5d59931550f7de08071b77cb3"
+  },
+  {
+    "index": 4,
+    "language": "text",
+    "text": "Step 1 → Gradient: +0.8\nStep 2 → Gradient: +1.2\nStep 3 → Gradient: +0.9\nStep 4 → Gradient: +1.1",
+    "sha256": "f5811239506f9904dc841b59e10bd98723f3c6f53de6ee3cedcec21016307409"
+  },
+  {
+    "index": 5,
+    "language": "text",
+    "text": "Parameter A\nGradient Magnitude: Large\n\nParameter B\nGradient Magnitude: Small",
+    "sha256": "a5272b52457e5f39fa5e7740b5daa38ce2b81529ab7d3ff65447243313dd3c70"
+  },
+  {
+    "index": 6,
+    "language": "text",
+    "text": "First Moment\n      │\n      ▼\nSmoothed Gradient Direction\n      │\n      └─────────┐\n                │\n                ▼\n          Adam Update\n                ▲\n                │\n      ┌─────────┘\n      │\nSecond Moment\n      │\n      ▼\nAdaptive Scaling",
+    "sha256": "103742c6d7b44077882d9768e9500dae02c98acd966a25d6ddf5d67d2382ca21"
+  },
+  {
+    "index": 7,
+    "language": "text",
+    "text": "L2 Regularization\n        │\n        ▼\nGradient에 λθ 추가\n        │\n        ▼\nFirst Moment Calculation\n        │\n        ▼\nSecond Moment Calculation\n        │\n        ▼\nAdaptive Scaling\n        │\n        ▼\nParameter Update",
+    "sha256": "65932d5280606503f907a52d9bc43fa0f15e409717bf866066134e68165b0358"
+  },
+  {
+    "index": 8,
+    "language": "text",
+    "text": "Data Loss Gradient\n        │\n        ▼\nAdam Moment Estimation\n        │\n        ▼\nAdaptive Update\n        │\n        ├──────────────────┐\n        │                  │\n        ▼                  ▼\n   Adam Update        Weight Decay\n        │                  │\n        └────────┬─────────┘\n                 │\n                 ▼\n          Parameter Update",
+    "sha256": "690f9f1d6c6cafc7ed25e0ea4c8a2ef2ea2be4d2029063dfc9e0c4cadb815e2c"
+  },
+  {
+    "index": 9,
+    "language": "python",
+    "text": "import torch\n\n# 동일한 초기 Parameter\np_adam = torch.nn.Parameter(\n    torch.tensor([1.0])\n)\n\np_adamw = torch.nn.Parameter(\n    torch.tensor([1.0])\n)\n\n# Adam: Coupled L2 Penalty\noptimizer_adam = torch.optim.Adam(\n    [p_adam],\n    lr=0.01,\n    weight_decay=0.1\n)\n\n# AdamW: Decoupled Weight Decay\noptimizer_adamw = torch.optim.AdamW(\n    [p_adamw],\n    lr=0.01,\n    weight_decay=0.1\n)\n\n# Data Loss Gradient = 0\np_adam.grad = torch.zeros_like(p_adam)\np_adamw.grad = torch.zeros_like(p_adamw)\n\noptimizer_adam.step()\noptimizer_adamw.step()\n\nprint(\"Adam :\", p_adam.item())\nprint(\"AdamW:\", p_adamw.item())",
+    "sha256": "53124d71e21f2f4805658792c7330f0529438298726f08c43933df26555b8801"
+  },
+  {
+    "index": 10,
+    "language": "text",
+    "text": "Adam : 0.990000\nAdamW: 0.999000",
+    "sha256": "9f5b2c0fdc115df14381f350a89e0e344f122831cf4bd1b56bc850358e327eef"
+  },
+  {
+    "index": 11,
+    "language": "python",
+    "text": "import torch\n\noptimizer = torch.optim.AdamW(\n    model.parameters(),\n    lr=0.001,\n    betas=(0.9, 0.999),\n    eps=1e-8,\n    weight_decay=0.01\n)",
+    "sha256": "a67a84b5d2ed85c28235c8190d379dc9d8eb8ad7844869c4741e39c3ba27ed43"
+  },
+  {
+    "index": 12,
+    "language": "python",
+    "text": "lr = 0.001\nbetas = (0.9, 0.999)\neps = 1e-8\nweight_decay = 0.01",
+    "sha256": "91b7077d6fdc496c7ac77a6088154c18618b178d6f5b24d4196edb19d841b239"
+  },
+  {
+    "index": 13,
+    "language": "python",
+    "text": "optimizer = torch.optim.AdamW(\n    model.parameters(),\n    lr=0.001,\n    weight_decay=0.0\n)",
+    "sha256": "829ae92c0cd076facdf0d2f227e35d27716ef1decb7ce3071138f341e5bbb302"
+  },
+  {
+    "index": 14,
+    "language": "python",
+    "text": "import torch\n\ndecay_params = []\nno_decay_params = []\n\nfor name, param in model.named_parameters():\n\n    if not param.requires_grad:\n        continue\n\n    # 실무에서 사용하는 간단한 분류 기준\n    if param.ndim >= 2:\n        decay_params.append(param)\n    else:\n        no_decay_params.append(param)\n\noptimizer = torch.optim.AdamW(\n    [\n        {\n            \"params\": decay_params,\n            \"weight_decay\": 0.01\n        },\n        {\n            \"params\": no_decay_params,\n            \"weight_decay\": 0.0\n        }\n    ],\n    lr=0.001\n)",
+    "sha256": "7db4eb918840bab921f86524283b4669407caf87c3026b4d2c17d3041b01859d"
+  },
+  {
+    "index": 15,
+    "language": "text",
+    "text": "Input Batch\n     │\n     ▼\nForward Propagation\n     │\n     ▼\nLoss Calculation\n     │\n     ▼\nBackward Propagation\n     │\n     ▼\nGradient Calculation\n     │\n     ▼\nAdamW Optimizer Step\n     │\n     ├── Adaptive Moment Update\n     │\n     └── Decoupled Weight Decay\n     │\n     ▼\nUpdated Parameters",
+    "sha256": "f404f577bcc7a00a42678222bff1cce255263635e5212ece079dc843523fea7d"
+  },
+  {
+    "index": 16,
+    "language": "python",
+    "text": "import torch\nimport torch.nn as nn\n\nmodel = nn.Sequential(\n    nn.Linear(4, 64),\n    nn.ReLU(),\n    nn.Linear(64, 3)\n)\n\ncriterion = nn.CrossEntropyLoss()\n\noptimizer = torch.optim.AdamW(\n    model.parameters(),\n    lr=1e-3,\n    weight_decay=0.01\n)\n\n# 예제용 Synthetic Data\ntorch.manual_seed(42)\n\nX = torch.randn(100, 4)\ny = torch.randint(0, 3, (100,))\n\nepochs = 20\n\nfor epoch in range(epochs):\n\n    model.train()\n\n    optimizer.zero_grad()\n\n    logits = model(X)\n\n    loss = criterion(logits, y)\n\n    loss.backward()\n\n    optimizer.step()\n\n    print(\n        f\"Epoch {epoch+1:02d} \"\n        f\"| Loss: {loss.item():.4f}\"\n    )",
+    "sha256": "ee70118da7eff75ff7a964567ea82a5e55368a6abb378ff23c19ac111cec39c7"
+  },
+  {
+    "index": 17,
+    "language": "python",
+    "text": "from transformers import (\n    Trainer,\n    TrainingArguments\n)\n\ntraining_args = TrainingArguments(\n    output_dir=\"./results\",\n\n    learning_rate=5e-5,\n    weight_decay=0.01,\n\n    per_device_train_batch_size=8,\n    num_train_epochs=3,\n\n    optim=\"adamw_torch\",\n\n    lr_scheduler_type=\"linear\",\n    warmup_steps=100\n)\n\ntrainer = Trainer(\n    model=model,\n    args=training_args,\n    train_dataset=train_dataset,\n    eval_dataset=eval_dataset\n)\n\ntrainer.train()",
+    "sha256": "c99ad73457326eb7fb1186c8aa20c1c89e5798c60523d6aafde2fa7eaf9aca06"
+  },
+  {
+    "index": 18,
+    "language": "text",
+    "text": "Learning Rate\n      ↑\n      │        ┌────────\n      │       /\n      │      /\n      │     /\n      │    /\n      │___/__________________→ Step\n          Warmup",
+    "sha256": "1aea3b1f4401530d2e03ee4ee2af5770262adf4bc836bf19b11a369c2e40e47f"
+  },
+  {
+    "index": 19,
+    "language": "text",
+    "text": "Weight Initialization\n        │\n        ▼\nInitial Parameters\n        │\n        ▼\nTraining\n        │\n        ▼\nAdamW Optimizer\n        │\n        ▼\nParameter Update",
+    "sha256": "37123d7ee8b370adb6065efc4c4fd3623effd70069396cc25ae2603c03ef2412"
+  },
+  {
+    "index": 20,
+    "language": "python",
+    "text": "optimizer.zero_grad()\n\nloss.backward()\n\ntorch.nn.utils.clip_grad_norm_(\n    model.parameters(),\n    max_norm=1.0\n)\n\noptimizer.step()",
+    "sha256": "f9ed794add01179cf14281752de81d75f10b886a9b48ba598dfefa8d2ebb5246"
+  },
+  {
+    "index": 21,
+    "language": "text",
+    "text": "SGD\n  │\n  ▼\nMomentum + Adaptive Step Size\n  │\n  ▼\nAdam\n  │\n  ▼\nMoment-based Optimization\n  │\n  ▼\nCoupled L2 Penalty 문제\n  │\n  ▼\nDecoupled Weight Decay\n  │\n  ▼\nAdamW",
+    "sha256": "e7a06d9e4d95612972bc975476d5de79fbd3bc2553a388788cda1e2afcb62a35"
+  }
+]

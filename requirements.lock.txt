@@ -1,0 +1,17 @@
+beautifulsoup4==4.15.0
+click==8.5.0
+deepmerge==4.0.0
+Jinja2==3.1.6
+Markdown==3.11.2
+markdownify==1.2.3
+MarkupSafe==3.0.4
+pathspec==1.1.1
+Pygments==2.21.0
+pymdown-extensions==12.3
+PyYAML==6.0.3
+six==1.17.0
+soupsieve==3.0.4
+tomli==2.5.0
+typing_extensions==4.16.0
+zensical==0.0.74
+zensical-ui==0.0.41

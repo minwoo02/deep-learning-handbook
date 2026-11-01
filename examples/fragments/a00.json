@@ -1,0 +1,8 @@
+[
+  {
+    "index": 0,
+    "language": "text",
+    "text": "Machine Learning & Deep Learning\n              │\n              ▼\n     Supervised Learning\n              │\n              ▼\n   Classification / Regression\n              │\n              ▼\n       Neural Network\n              │\n              ▼\n   Perceptron → MLP → DNN\n              │\n              ▼\n   Forward / Backpropagation\n              │\n              ▼\n   Gradient-based Optimization\n              │\n              ▼\n   Probability & Statistics\n              │\n              ▼\n     Likelihood / MLE / MAP\n              │\n              ▼\n         Loss Function\n              │\n              ▼\n      Model Evaluation\n              │\n              ▼\n       Cross Validation\n              │\n              ▼\n     Hyperparameter Tuning\n              │\n              ▼\n    Generalization Evaluation",
+    "sha256": "20018669b6b50b8730be1f050ead6208cc0db8538df2d09e76a81281a2cfa0f3"
+  }
+]

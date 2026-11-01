@@ -1,0 +1,260 @@
+[
+  {
+    "index": 0,
+    "language": "text",
+    "text": "Input Data\n    │\n    ▼\nClassification Model\n    │\n    ▼\nPrediction\n    │\n    ├── Normal (0)\n    │\n    └── Abnormal (1)",
+    "sha256": "08b09ce0b1d8296c8d7241200103a5fea8049393e709e025680fc4a9c7b067d2"
+  },
+  {
+    "index": 1,
+    "language": "text",
+    "text": "Actual     : Positive\nPrediction : Positive\nResult     : Correct",
+    "sha256": "cd1faa981854100363283483ff1de039ce4faa3e06a6c35d897f255a72484561"
+  },
+  {
+    "index": 2,
+    "language": "text",
+    "text": "Actual     : Negative\nPrediction : Negative\nResult     : Correct",
+    "sha256": "a2e037853424c98866b601ba8f8e32aa75bb548cb03084889867eeb1b28cab23"
+  },
+  {
+    "index": 3,
+    "language": "text",
+    "text": "Actual     : Negative\nPrediction : Positive\nResult     : Incorrect",
+    "sha256": "bb2d8fcb51f2a8267f798ea58ab10847f731d3f760ba339e6f25c51356320f0d"
+  },
+  {
+    "index": 4,
+    "language": "text",
+    "text": "Actual     : Positive\nPrediction : Negative\nResult     : Incorrect",
+    "sha256": "f794ccf5184778555c13100f7e16ec3c5104d364be0f2246da57cc4febd4ba09"
+  },
+  {
+    "index": 5,
+    "language": "text",
+    "text": "TP, TN → Correct Prediction\n\nFP, FN → Incorrect Prediction",
+    "sha256": "27c99bccc6c210be4a1299e3ce62f9c22fb242de39b4e3ddb3a06412d8e04440"
+  },
+  {
+    "index": 6,
+    "language": "text",
+    "text": "Total Samples : 1000\n\nActual Positive : 1\nActual Negative : 999\n\nModel Prediction:\n모든 데이터를 Negative로 예측",
+    "sha256": "b6123d4d6d36cafabc59b670723a6a8b5ff8a22c431dae53b6e07244bb296901"
+  },
+  {
+    "index": 7,
+    "language": "text",
+    "text": "Predicted Positive\n        │\n        ├── TP : Correct\n        │\n        └── FP : Incorrect",
+    "sha256": "bafe4e0c63397d0d8651fb63d11a03684431177f562a9a72b250f60b049a7a04"
+  },
+  {
+    "index": 8,
+    "language": "text",
+    "text": "Actual Positive\n       │\n       ├── TP : Detected\n       │\n       └── FN : Missed",
+    "sha256": "950349169a41259453af9b308ed96000e77646d0c1883dd37ef61f4cd706269f"
+  },
+  {
+    "index": 9,
+    "language": "text",
+    "text": "Precision\n    │\n    ▼\nPredicted Positive 기준\n    │\n    ▼\nFP에 주목\n\n\nRecall\n    │\n    ▼\nActual Positive 기준\n    │\n    ▼\nFN에 주목",
+    "sha256": "0b53d1cb96a2edf78ddf22318b759b2ce6c3451fbbcb5d791d4c9c3c18669997"
+  },
+  {
+    "index": 10,
+    "language": "text",
+    "text": "Threshold 증가\n        │\n        ▼\nPositive 판정이 엄격해짐\n        │\n        ├── FP 감소 가능\n        │\n        └── FN 증가 가능\n\n\nThreshold 감소\n        │\n        ▼\nPositive 판정이 관대해짐\n        │\n        ├── TP 증가 가능\n        │\n        └── FP 증가 가능",
+    "sha256": "76da1820374a83ac4995e0abc8d27f2efe6513612a376cf52782f88f1b479269"
+  },
+  {
+    "index": 11,
+    "language": "python",
+    "text": "from sklearn.metrics import (\n    confusion_matrix,\n    accuracy_score,\n    precision_score,\n    recall_score,\n    f1_score\n)",
+    "sha256": "f07f49fdef2ca10dcbf901bfffa6515f586b74dc94e03f3d5322a1284528b8eb"
+  },
+  {
+    "index": 12,
+    "language": "python",
+    "text": "import numpy as np\n\n# Actual Labels\ny_true = np.array(\n    [0] * 50 +\n    [0] * 10 +\n    [1] * 20 +\n    [1] * 20\n)\n\n# Predicted Labels\ny_pred = np.array(\n    [0] * 50 +\n    [1] * 10 +\n    [0] * 20 +\n    [1] * 20\n)",
+    "sha256": "5b4ec798e750d5234bd627ba0ed9c7e2bb04f6e3e2762493d78c45fdca36fc99"
+  },
+  {
+    "index": 13,
+    "language": "python",
+    "text": "cm = confusion_matrix(\n    y_true,\n    y_pred\n)\n\nprint(cm)",
+    "sha256": "2b26cab27e27539ae7b51390c9b675af1129c9ec1e123a5147e9eb9b3f796168"
+  },
+  {
+    "index": 14,
+    "language": "text",
+    "text": "[[50 10]\n [20 20]]",
+    "sha256": "ca8cd0617f5db005bfb94d7571aa493861f641bab105eabb3ce531eba863fdb6"
+  },
+  {
+    "index": 15,
+    "language": "text",
+    "text": "[[TN FP]\n [FN TP]]",
+    "sha256": "d216ac7197db2436076e7d79cffefd71329b5570c39123a203b9e83cfb1e0828"
+  },
+  {
+    "index": 16,
+    "language": "python",
+    "text": "tn, fp, fn, tp = cm.ravel()",
+    "sha256": "52913b11b9fe5f3b7886cdcd010decd2ed2b11332fa4551bfc4a3d38433eb202"
+  },
+  {
+    "index": 17,
+    "language": "python",
+    "text": "print(\"TP:\", tp)\nprint(\"TN:\", tn)\nprint(\"FP:\", fp)\nprint(\"FN:\", fn)",
+    "sha256": "87abdcf5f03aa01fe575e9da20064c00fb77b10b1ce292872b2028bec166cc08"
+  },
+  {
+    "index": 18,
+    "language": "text",
+    "text": "TP: 20\nTN: 50\nFP: 10\nFN: 20",
+    "sha256": "5b5ff3398926867d386e42c4682970e6f2b691a61c8410fc0147f63f0d6d0c22"
+  },
+  {
+    "index": 19,
+    "language": "python",
+    "text": "accuracy = accuracy_score(\n    y_true,\n    y_pred\n)\n\nprint(\"Accuracy:\", accuracy)",
+    "sha256": "541eeeaf6f240842a6867d9236eb48f795a0f3073809b9d97f1c0f4199bc0362"
+  },
+  {
+    "index": 20,
+    "language": "text",
+    "text": "Accuracy: 0.7",
+    "sha256": "296627262fa104c8ee9a127c6b410c9082b164c6064a19d0911df9a8bdc8121d"
+  },
+  {
+    "index": 21,
+    "language": "python",
+    "text": "precision = precision_score(\n    y_true,\n    y_pred\n)\n\nprint(\"Precision:\", precision)",
+    "sha256": "a41e9bfd77d7175077bac2f88a92c3b4dd8b2aea793706d1ba0ad17f83cd6edd"
+  },
+  {
+    "index": 22,
+    "language": "text",
+    "text": "Precision: 0.6666666666666666",
+    "sha256": "344c7f3e5ecf91d6535acd4d0753a16a6ae0ce46522b9a6dd2a20cb88891ca55"
+  },
+  {
+    "index": 23,
+    "language": "python",
+    "text": "recall = recall_score(\n    y_true,\n    y_pred\n)\n\nprint(\"Recall:\", recall)",
+    "sha256": "979b8c257e268cdaf19a61602eeb5234c93c106a7b8a7d259866f94ed91bd138"
+  },
+  {
+    "index": 24,
+    "language": "text",
+    "text": "Recall: 0.5",
+    "sha256": "217077d8409215249835ac9a0dc3283bd7e737bf3d86cc1b700cd66b983f9628"
+  },
+  {
+    "index": 25,
+    "language": "python",
+    "text": "f1 = f1_score(\n    y_true,\n    y_pred\n)\n\nprint(\"F1-score:\", f1)",
+    "sha256": "b56a4bac50a708cbbc840f4820a77c473b27210e0544f3ab80bc5567658759a2"
+  },
+  {
+    "index": 26,
+    "language": "text",
+    "text": "F1-score: 0.5714285714285714",
+    "sha256": "e0e68c097001fca90b73b9a2d4b354f80733622cce9f5af55eee59340c2746b1"
+  },
+  {
+    "index": 27,
+    "language": "python",
+    "text": "from sklearn.metrics import (\n    confusion_matrix,\n    accuracy_score,\n    precision_score,\n    recall_score,\n    f1_score\n)\n\nimport numpy as np\n\n\ny_true = np.array(\n    [0] * 50 +\n    [0] * 10 +\n    [1] * 20 +\n    [1] * 20\n)\n\ny_pred = np.array(\n    [0] * 50 +\n    [1] * 10 +\n    [0] * 20 +\n    [1] * 20\n)\n\n\ncm = confusion_matrix(\n    y_true,\n    y_pred,\n    labels=[0, 1]\n)\n\naccuracy = accuracy_score(\n    y_true,\n    y_pred\n)\n\nprecision = precision_score(\n    y_true,\n    y_pred\n)\n\nrecall = recall_score(\n    y_true,\n    y_pred\n)\n\nf1 = f1_score(\n    y_true,\n    y_pred\n)\n\n\nprint(\"Confusion Matrix:\")\nprint(cm)\n\nprint()\n\nprint(f\"Accuracy  : {accuracy:.4f}\")\nprint(f\"Precision : {precision:.4f}\")\nprint(f\"Recall    : {recall:.4f}\")\nprint(f\"F1-score  : {f1:.4f}\")",
+    "sha256": "21e65323050c9073e24db6ca597480c97402bdfc79854a1894ec92bf1bbcbd70"
+  },
+  {
+    "index": 28,
+    "language": "text",
+    "text": "Confusion Matrix:\n[[50 10]\n [20 20]]\n\nAccuracy  : 0.7000\nPrecision : 0.6667\nRecall    : 0.5000\nF1-score  : 0.5714",
+    "sha256": "525dc1fb5700bf9a3874b0eb449a761b248a3a7592e0a10b0d9309d972082e0f"
+  },
+  {
+    "index": 29,
+    "language": "python",
+    "text": "from sklearn.metrics import classification_report\n\nprint(\n    classification_report(\n        y_true,\n        y_pred,\n        target_names=[\n            \"Negative\",\n            \"Positive\"\n        ]\n    )\n)",
+    "sha256": "856d26735e0ff622fe3cd5b6e41f61df3888dd77b15c71055448d27bb40502b4"
+  },
+  {
+    "index": 30,
+    "language": "text",
+    "text": "Class 0 : Setosa\nClass 1 : Versicolor\nClass 2 : Virginica",
+    "sha256": "faa77e4642f8c4048ad145364f19c0e36aeaece9b3a699f5ee9b47a9e83e9e49"
+  },
+  {
+    "index": 31,
+    "language": "text",
+    "text": "Positive Class : Setosa\n\nNegative Classes:\n    Versicolor\n    Virginica",
+    "sha256": "6f9430bb1d3d1b82f89b57710c3dd7c28152a1925a1841f469df424e990c3012"
+  },
+  {
+    "index": 32,
+    "language": "text",
+    "text": "Classification Threshold\n          │\n          ▼\n     Prediction 변경\n          │\n          ▼\n Confusion Matrix 변경\n          │\n          ├── Precision 변경\n          │\n          └── Recall 변경\n          │\n          ▼\n       PR Curve",
+    "sha256": "1e12d1bca404e8a796e1d7be708af274ac900c3adae8ffd01939d22abc93dfb2"
+  },
+  {
+    "index": 33,
+    "language": "text",
+    "text": "Actual Negative : 60\nActual Positive : 40",
+    "sha256": "d0781e1e2ad61ab9c76116d2dd455d1e14f225989f44fcec8ca6a41365b4d4ba"
+  },
+  {
+    "index": 34,
+    "language": "text",
+    "text": "Negative : 990 Samples\nPositive : 10 Samples",
+    "sha256": "4566b1d0ec2d86fef387b18f3fcb3097883a491918a2b3e02e91414510e2efa7"
+  },
+  {
+    "index": 35,
+    "language": "python",
+    "text": "import numpy as np\n\n# Actual Labels\ny_true = np.array(\n    [0] * 50 +\n    [0] * 10 +\n    [1] * 20 +\n    [1] * 20\n)\n\n# Positive Class Scores\n# 개념 설명을 위해 설정한 가상 점수\ny_score = np.array(\n    [0.1] * 50 +\n    [0.6] * 10 +\n    [0.4] * 20 +\n    [0.9] * 20\n)\n\n# Threshold = 0.5\ny_pred = (y_score >= 0.5).astype(int)",
+    "sha256": "ec5d75d84a22df31c76c9456b7dc3a2947fc46da7d0219a15ee0d1d1b6f0e1f2"
+  },
+  {
+    "index": 36,
+    "language": "text",
+    "text": "[[50 10]\n [20 20]]",
+    "sha256": "ca8cd0617f5db005bfb94d7571aa493861f641bab105eabb3ce531eba863fdb6"
+  },
+  {
+    "index": 37,
+    "language": "python",
+    "text": "import matplotlib.pyplot as plt\n\nfrom sklearn.metrics import (\n    roc_curve,\n    roc_auc_score\n)\n\nfpr, tpr, roc_thresholds = roc_curve(\n    y_true,\n    y_score\n)\n\nroc_auc = roc_auc_score(\n    y_true,\n    y_score\n)\n\nplt.figure(figsize=(7, 5))\n\nplt.plot(\n    fpr,\n    tpr,\n    marker=\"o\",\n    label=f\"ROC-AUC = {roc_auc:.4f}\"\n)\n\nplt.plot(\n    [0, 1],\n    [0, 1],\n    linestyle=\"--\",\n    label=\"Random Classifier\"\n)\n\nplt.xlabel(\"False Positive Rate\")\nplt.ylabel(\"True Positive Rate\")\nplt.title(\"ROC Curve\")\n\nplt.legend()\nplt.grid(alpha=0.3)\nplt.show()\n\nprint(f\"ROC-AUC: {roc_auc:.4f}\")",
+    "sha256": "c843c048f645bb72feffaa328c379a1cec8d389ec273f6a2f3e1aceeb38074cc"
+  },
+  {
+    "index": 38,
+    "language": "text",
+    "text": "ROC-AUC: 0.9167",
+    "sha256": "aebe8bb1facab59e17cee24ea8976903f00b1b0bf17b7e050a3ab118ec399f77"
+  },
+  {
+    "index": 39,
+    "language": "python",
+    "text": "from sklearn.metrics import (\n    precision_recall_curve,\n    average_precision_score\n)\n\nprecision, recall, pr_thresholds = (\n    precision_recall_curve(\n        y_true,\n        y_score\n    )\n)\n\nap = average_precision_score(\n    y_true,\n    y_score\n)\n\nplt.figure(figsize=(7, 5))\n\nplt.step(\n    recall,\n    precision,\n    where=\"post\",\n    label=f\"AP = {ap:.4f}\"\n)\n\nplt.axhline(\n    y=y_true.mean(),\n    linestyle=\"--\",\n    label=\"Positive Prevalence\"\n)\n\nplt.xlabel(\"Recall\")\nplt.ylabel(\"Precision\")\nplt.title(\"Precision-Recall Curve\")\n\nplt.legend()\nplt.grid(alpha=0.3)\nplt.show()\n\nprint(f\"Average Precision: {ap:.4f}\")",
+    "sha256": "3f96b7c8b382288edf0446d269d193a0ce601bce3ec6ea92efcc16adb90a5fcc"
+  },
+  {
+    "index": 40,
+    "language": "text",
+    "text": "Average Precision: 0.9000",
+    "sha256": "3c240fa0f21b74808dbb05c58cd4a3e354e338e3c138a723a6c3b0a521a61337"
+  },
+  {
+    "index": 41,
+    "language": "text",
+    "text": "Classification Model\n        │\n        ▼\n  Prediction Score\n        │\n        ├── Threshold 적용\n        │        │\n        │        ▼\n        │   Predicted Label\n        │        │\n        │        ├── Accuracy\n        │        ├── Precision\n        │        ├── Recall\n        │        └── F1-score\n        │\n        └── Threshold 변화\n                 │\n                 ├── PR Curve\n                 │      └── AP\n                 │\n                 └── ROC Curve\n                        └── ROC-AUC",
+    "sha256": "e71dcba68049243181b3568a7e2fce5ec518f8f2220ef17013c7d6e1d6f6684a"
+  },
+  {
+    "index": 42,
+    "language": "text",
+    "text": "Accuracy\n    │\n    ▼\n전체 Sample 기준\n    │\n    ▼\n(TP + TN) / Total\n\n\nPrecision\n    │\n    ▼\nPredicted Positive 기준\n    │\n    ▼\nTP / (TP + FP)\n\n\nRecall\n    │\n    ▼\nActual Positive 기준\n    │\n    ▼\nTP / (TP + FN)\n\n\nF1-score\n    │\n    ▼\nPrecision + Recall\n    │\n    ▼\nHarmonic Mean",
+    "sha256": "293adc2cd8606a0e2c0317b752ac66a2cea8a39a2795e23fd106f247ee135423"
+  }
+]

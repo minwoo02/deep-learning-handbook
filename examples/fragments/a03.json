@@ -1,0 +1,80 @@
+[
+  {
+    "index": 0,
+    "language": "text",
+    "text": "Email\n→ Spam / Not Spam\n\nImage\n→ Dog / Cat\n\nTumor Data\n→ Benign / Malignant",
+    "sha256": "65591427f2d1d4a1b0df4740ea53353ee9416b79303c019e3a1ef7cffb96d33d"
+  },
+  {
+    "index": 1,
+    "language": "text",
+    "text": "0 → 정상\n1 → 불량",
+    "sha256": "7a5c250d811b60238c30f6dc3e2b5e5f8b0770331bfba9c2177d2eeb1676691a"
+  },
+  {
+    "index": 2,
+    "language": "text",
+    "text": "0 → Spam 아님\n1 → Spam",
+    "sha256": "cc15e15ce4a141e692af1859e567df3c14b98fe979e49d7fa34a3a490337423e"
+  },
+  {
+    "index": 3,
+    "language": "text",
+    "text": "Setosa\nVersicolor\nVirginica",
+    "sha256": "b02935f14b406187a3aafed13ede44a4ed9ddf16cb8bfdd76a30bcce86ab93a6"
+  },
+  {
+    "index": 4,
+    "language": "text",
+    "text": "House Data\n→ 450,000,000원\n\nSensor Data\n→ 3.27 V\n\nWeather Data\n→ 24.8 °C",
+    "sha256": "edfe0a46b69c463a5071a7fca24067f5309a39695add237e630ee74a4d214d62"
+  },
+  {
+    "index": 5,
+    "language": "python",
+    "text": "sklearn.neural_network.MLPClassifier",
+    "sha256": "e3d067b9d5670d9ecfe38d8f6e24da406939c01016779ccbb9827c02c5ff7aa4"
+  },
+  {
+    "index": 6,
+    "language": "text",
+    "text": "Input\n↓\nHidden Layer\n↓\nNon-linear Activation\n↓\nOutput\n↓\nClass Prediction",
+    "sha256": "8617b9f31e79988f70a1f301b22055e2f43f93d7082043d530df585b8e1b36f2"
+  },
+  {
+    "index": 7,
+    "language": "python",
+    "text": "sklearn.neural_network.MLPRegressor",
+    "sha256": "fb23ce8933817f0c8c95a2f5cff8ea7f6708c9d4ed2bb85a81b2a6130c5a59b8"
+  },
+  {
+    "index": 8,
+    "language": "text",
+    "text": "3.21\n3.45\n2.98\n...",
+    "sha256": "c2ff73350951083e89f066593cda0607a429adefbf0e1cac3e717a5cac6b85be"
+  },
+  {
+    "index": 9,
+    "language": "text",
+    "text": "Input\n↓\nLinear\n↓\nActivation\n↓\nLinear\n↓\nActivation\n↓\nOutput",
+    "sha256": "a06da871c08e7cc153b15e0769e7f91536064f5f83a19d4f20a8a3a56d67eaca"
+  },
+  {
+    "index": 10,
+    "language": "text",
+    "text": "Probability >= 0.5 → Class 1\nProbability < 0.5  → Class 0",
+    "sha256": "84fbd7af5bbbc525d8ec5f5626b94301c16309268c6eaa679c6f5f49c5d55440"
+  },
+  {
+    "index": 11,
+    "language": "text",
+    "text": "Dog / Cat\nNormal / Abnormal\nSpam / Not Spam\nA / B / C",
+    "sha256": "38966e8f8e4d81894d04b2db768e5a3e693c557dd0e98c941a083db05a52af6d"
+  },
+  {
+    "index": 12,
+    "language": "text",
+    "text": "Temperature\nVoltage\nPrice\nDistance\nLifetime",
+    "sha256": "6d9f490ce0f59c24ecc0dedd3f7de64e2c803893accd561b525f4fe3f9617386"
+  }
+]

@@ -1,0 +1,176 @@
+[
+  {
+    "index": 0,
+    "language": "text",
+    "text": "Input\n  │\n  ▼\nLayer 1\n  │\n  ▼\nLayer 2\n  │\n  ▼\nLayer 3\n  │\n  ▼\nOutput",
+    "sha256": "26d74a0b1c37a745673022401832c81829ff32664fdb51b1ab279532665e9fb0"
+  },
+  {
+    "index": 1,
+    "language": "text",
+    "text": "Output\n  │\n  ▼\nGradient\n  │\n  ▼\nLayer 3\n  │\n  ▼\nGradient\n  │\n  ▼\nLayer 2\n  │\n  ▼\nGradient\n  │\n  ▼\nLayer 1",
+    "sha256": "68e6b6fb1bdf28de281b0f95c9529a63ef54983a49805fb087e5598443d6dadb"
+  },
+  {
+    "index": 2,
+    "language": "text",
+    "text": "Forward Propagation\n        │\n        ▼\nLoss Calculation\n        │\n        ▼\nBackward Propagation\n        │\n        ▼\nGradient Calculation\n        │\n        ▼\nGradient Clipping\n        │\n        ▼\nOptimizer Step\n        │\n        ▼\nParameter Update",
+    "sha256": "bc8ec0d6ec585ffdd15ca52e55ed171c64d51f84dd95808ea729b9a534021147"
+  },
+  {
+    "index": 3,
+    "language": "python",
+    "text": "torch.nn.utils.clip_grad_value_()",
+    "sha256": "f8c07eea9ca1954c9cde18c2f056aa894bcf3b59c635fba20d5e62197eb8f9af"
+  },
+  {
+    "index": 4,
+    "language": "python",
+    "text": "import torch\nimport torch.nn as nn\n\nparameter = nn.Parameter(\n    torch.zeros(3)\n)\n\nparameter.grad = torch.tensor([\n    3.0,\n    -4.0,\n    0.5\n])\n\nprint(\n    \"Before:\",\n    parameter.grad\n)\n\nnn.utils.clip_grad_value_(\n    [parameter],\n    clip_value=1.0\n)\n\nprint(\n    \"After:\",\n    parameter.grad\n)",
+    "sha256": "932eb1c637bfda50a1bb7c38901d64799638f86d310aa33474ca9da6a6347481"
+  },
+  {
+    "index": 5,
+    "language": "text",
+    "text": "Before: tensor([ 3.0000, -4.0000,  0.5000])\n\nAfter: tensor([ 1.0000, -1.0000,  0.5000])",
+    "sha256": "aace52899d35991c4f4603d1f3b177783466883e60f22f011b946005ca24d8d8"
+  },
+  {
+    "index": 6,
+    "language": "python",
+    "text": "torch.nn.utils.clip_grad_norm_()",
+    "sha256": "1dc3be039705f72f5a1d08a9efa479c8d5571e9ff626ca38b53eca2f6abc7e4f"
+  },
+  {
+    "index": 7,
+    "language": "python",
+    "text": "import torch\nimport torch.nn as nn\n\nparameter = nn.Parameter(\n    torch.zeros(2)\n)\n\nparameter.grad = torch.tensor([\n    3.0,\n    4.0\n])\n\nprint(\n    \"Before:\",\n    parameter.grad\n)\n\ntotal_norm = nn.utils.clip_grad_norm_(\n    [parameter],\n    max_norm=2.0\n)\n\nprint(\n    \"Original Norm:\",\n    total_norm.item()\n)\n\nprint(\n    \"After:\",\n    parameter.grad\n)",
+    "sha256": "c4b17d2b7e4f5d60c6c65571392fb30f7935456af4ce38edb4219aea1c7cfcc2"
+  },
+  {
+    "index": 8,
+    "language": "text",
+    "text": "Before: tensor([3., 4.])\n\nOriginal Norm: 5.0\n\nAfter: tensor([1.2000, 1.6000])",
+    "sha256": "bfcb05e2da1d00cefa411f2c34d74bf9a51dbd1589a3c216a8a4e03371fd7a3a"
+  },
+  {
+    "index": 9,
+    "language": "python",
+    "text": "max_norm=2.0",
+    "sha256": "347583efb3e8d08c48ef2e8398f87da24e6e35e4e69bdf6e3e70452352058c67"
+  },
+  {
+    "index": 10,
+    "language": "python",
+    "text": "total_norm = nn.utils.clip_grad_norm_(\n    model.parameters(),\n    max_norm=1.0\n)",
+    "sha256": "f435b494f01f7b5986066b31a48a00dbdbafc7b9abc6195cf108e2e9e98b31da"
+  },
+  {
+    "index": 11,
+    "language": "text",
+    "text": "Original Gradient Norm\n          5.0\n           │\n           ▼\nGradient Clipping\n    max_norm = 1.0\n           │\n           ▼\nClipped Gradient Norm\n          1.0",
+    "sha256": "296ad3f25d0ce3b307798dbb39e228d80c28bf0f96a66b47cd09a6d105aab55b"
+  },
+  {
+    "index": 12,
+    "language": "text",
+    "text": "Layer 1\n  ├── Weight\n  └── Bias\n\nLayer 2\n  ├── Weight\n  └── Bias\n\nLayer 3\n  ├── Weight\n  └── Bias",
+    "sha256": "77f986580788b19e3d4620e05964ea0143c4b7bead56dc92a8d576d60c3d9c3b"
+  },
+  {
+    "index": 13,
+    "language": "python",
+    "text": "total_norm = torch.nn.utils.clip_grad_norm_(\n    model.parameters(),\n    max_norm=1.0,\n    norm_type=2.0\n)",
+    "sha256": "807f5bf85c271b5ebe7424a875f7dab60d50e42f213ca2074adef71dcd4d79dd"
+  },
+  {
+    "index": 14,
+    "language": "python",
+    "text": "norm_type=2.0",
+    "sha256": "30781cfb6964fa490b6894e17d713e641047b70d77ba738f16717a73c9542cbc"
+  },
+  {
+    "index": 15,
+    "language": "python",
+    "text": "import torch\nimport torch.nn as nn\n\n\nclass SimpleANN(nn.Module):\n\n    def __init__(self):\n\n        super().__init__()\n\n        self.net = nn.Sequential(\n            nn.Linear(4, 32),\n            nn.ReLU(),\n\n            nn.Linear(32, 32),\n            nn.ReLU(),\n\n            nn.Linear(32, 3)\n        )\n\n    def forward(self, x):\n\n        return self.net(x)",
+    "sha256": "f9bc4fa90fed4b01e01023017cd0f4f11f19d693d2bf8084532f2d094706c0a1"
+  },
+  {
+    "index": 16,
+    "language": "python",
+    "text": "model = SimpleANN()\n\ncriterion = nn.CrossEntropyLoss()\n\noptimizer = torch.optim.Adam(\n    model.parameters(),\n    lr=0.001\n)",
+    "sha256": "facf6a6c0c90a087289e705fa935577aca1ba24249b98029847c542db6fd0746"
+  },
+  {
+    "index": 17,
+    "language": "python",
+    "text": "model.train()\n\nfor X, y in train_loader:\n\n    # 1. Gradient 초기화\n    optimizer.zero_grad()\n\n    # 2. Forward Propagation\n    logits = model(X)\n\n    # 3. Loss Calculation\n    loss = criterion(\n        logits,\n        y\n    )\n\n    # 4. Backward Propagation\n    loss.backward()\n\n    # 5. Gradient Clipping\n    torch.nn.utils.clip_grad_norm_(\n        model.parameters(),\n        max_norm=1.0\n    )\n\n    # 6. Parameter Update\n    optimizer.step()",
+    "sha256": "cbd65342e4b2421917fa67aa878000c220f5793a51f656c60bbf230c530a6787"
+  },
+  {
+    "index": 18,
+    "language": "python",
+    "text": "loss.backward()\n\ntorch.nn.utils.clip_grad_norm_(\n    model.parameters(),\n    max_norm=1.0\n)\n\noptimizer.step()",
+    "sha256": "35d40fe1025c03fea5a6837eb8bcad3945b98a855c209427ceea94a305c26aa3"
+  },
+  {
+    "index": 19,
+    "language": "python",
+    "text": "optimizer.zero_grad()\n\nlogits = model(X)\n\nloss = criterion(\n    logits,\n    y\n)\n\nloss.backward()\n\n# Clipping 전 Gradient Norm\noriginal_norm = torch.nn.utils.clip_grad_norm_(\n    model.parameters(),\n    max_norm=1.0\n)\n\nprint(\n    \"Original Gradient Norm:\",\n    original_norm.item()\n)\n\noptimizer.step()",
+    "sha256": "a36e347a0fad501e4b1a351a8627d0211d11a2061e60f85c5ccc21c2ee0aae02"
+  },
+  {
+    "index": 20,
+    "language": "text",
+    "text": "Original Gradient Norm: 5.7",
+    "sha256": "bdef4605a72176d824a3a80926367b659fee532958d2c5d4fee9af5c03ee5be1"
+  },
+  {
+    "index": 21,
+    "language": "python",
+    "text": "max_norm = 1.0",
+    "sha256": "460510a996f48066c249c42d94fa1076bc1e0a4911fd68a91938528ed9759aac"
+  },
+  {
+    "index": 22,
+    "language": "text",
+    "text": "Model Creation\n      │\n      ▼\nWeight Initialization\n      │\n      ▼\nForward Propagation\n      │\n      ▼\nLoss Calculation\n      │\n      ▼\nBackward Propagation\n      │\n      ▼\nGradient Calculation\n      │\n      ▼\nGradient Clipping\n      │\n      ▼\nOptimizer Step\n      │\n      ▼\nParameter Update",
+    "sha256": "57d1e7f164c0bea1c62307048c65d189cbaef261574d0a191c07eb45db594453"
+  },
+  {
+    "index": 23,
+    "language": "python",
+    "text": "optimizer.zero_grad()\n\nloss.backward()\n\ntorch.nn.utils.clip_grad_norm_(\n    model.parameters(),\n    max_norm=1.0\n)\n\noptimizer.step()",
+    "sha256": "f9ed794add01179cf14281752de81d75f10b886a9b48ba598dfefa8d2ebb5246"
+  },
+  {
+    "index": 24,
+    "language": "text",
+    "text": "Mini-batch 1\n    │\n    ▼\nBackward\n    │\n    ▼\nMini-batch 2\n    │\n    ▼\nBackward\n    │\n    ▼\nAccumulated Gradient\n    │\n    ▼\nGradient Clipping\n    │\n    ▼\nOptimizer Step",
+    "sha256": "f5928888fd1bc6a4a07fab7fc0dc9ff08e252ac25aaa73f285ad571db7d39684"
+  },
+  {
+    "index": 25,
+    "language": "python",
+    "text": "scaler.scale(loss).backward()\n\nscaler.unscale_(optimizer)\n\ntorch.nn.utils.clip_grad_norm_(\n    model.parameters(),\n    max_norm=1.0\n)\n\nscaler.step(optimizer)\n\nscaler.update()",
+    "sha256": "53438edadbed35ea93439519887c86f3f310c0e15fe4f9cac107bf896d4275b4"
+  },
+  {
+    "index": 26,
+    "language": "python",
+    "text": "torch.nn.utils.clip_grad_value_(\n    model.parameters(),\n    clip_value=1.0\n)",
+    "sha256": "702c22c0c85c61f43a3ee29be4e25bdc967210b41655b9615d37f4d76e93634a"
+  },
+  {
+    "index": 27,
+    "language": "python",
+    "text": "torch.nn.utils.clip_grad_norm_(\n    model.parameters(),\n    max_norm=1.0\n)",
+    "sha256": "d9a20af079d45dcc2f928512ae09095276868416fbe16482cc9b18f613850e89"
+  },
+  {
+    "index": 28,
+    "language": "python",
+    "text": "loss.backward()\n\ntorch.nn.utils.clip_grad_norm_(\n    model.parameters(),\n    max_norm=1.0\n)\n\noptimizer.step()",
+    "sha256": "35d40fe1025c03fea5a6837eb8bcad3945b98a855c209427ceea94a305c26aa3"
+  }
+]

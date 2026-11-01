@@ -1,0 +1,20 @@
+{
+  "articles": 39,
+  "code_blocks": 1364,
+  "markdown_pages": 77,
+  "math_expressions": 2935,
+  "image_references": 15,
+  "code_preservation": "PASS: all source blocks match fragments and Markdown",
+  "local_markdown_links": "PASS",
+  "training_execution": "NOT RUN: source fragments include partial examples, output, and diagrams",
+  "external_images": "URL preservation checked; network availability not exhaustively checked",
+  "built_local_links_checked": 7441,
+  "built_local_links": "PASS",
+  "zensical_build": "PASS: 0.0.74, clean build, no issues",
+  "browser_checks": [
+    "Home navigation visible",
+    "Mermaid mindmap rendered visually",
+    "Loss page: 254 MathJax containers rendered"
+  ],
+  "deployment": "pending publication"
+}

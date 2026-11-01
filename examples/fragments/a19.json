@@ -1,0 +1,56 @@
+[
+  {
+    "index": 0,
+    "language": "text",
+    "text": "Regularization Strength 증가\n             │\n             ▼\nModel Flexibility 제한\n             │\n             ▼\n복잡한 패턴 및 Noise에 대한 적합 감소\n             │\n             ▼\nOverfitting 완화 가능",
+    "sha256": "ffac11671858127a5982a8a9343c3e7d7ee0056d86b1dc0743e9096312b50cdb"
+  },
+  {
+    "index": 1,
+    "language": "text",
+    "text": "Norm\n  │\n  ├── L1 Norm\n  │      │\n  │      ▼\n  │  L1 Regularization\n  │      │\n  │      └── Lasso / Sparsity\n  │\n  └── L2 Norm\n         │\n         ▼\n     Squared L2 Norm\n         │\n         ▼\n     L2 Regularization\n         │\n         └── Ridge / Weight Shrinkage\n\nL1 + L2\n   │\n   ▼\nElastic Net",
+    "sha256": "84ea3d402ed1ea426be6fd50c8264100b691f5aed66c310bc657579b873adb48"
+  },
+  {
+    "index": 2,
+    "language": "text",
+    "text": "Training 진행\n      │\n      ▼\nTraining Loss 감소\n      │\n      ▼\nValidation Loss 측정\n      │\n      ├── 개선됨\n      │     └── Training 지속\n      │\n      └── 개선되지 않음\n            │\n            ▼\n       Patience 확인\n            │\n            ▼\n       Early Stopping",
+    "sha256": "15c27452fda619e23d6de6ab2f859683866a471ee4d45fc9db32607bb738988f"
+  },
+  {
+    "index": 3,
+    "language": "text",
+    "text": "Hidden Layer\n\n○ ○ ○ ○ ○ ○",
+    "sha256": "8d7467dc4ccc5e68cc4a2b3f350a85673a3f1e423402790a5da68d4ab85f19cf"
+  },
+  {
+    "index": 4,
+    "language": "text",
+    "text": "Training Step A\n\n○ × ○ ○ × ○\n\nTraining Step B\n\n× ○ ○ × ○ ○\n\nTraining Step C\n\n○ ○ × ○ ○ ×",
+    "sha256": "1de6459d7cd64ad90912d654b12e90798775312965e4e76f5227fb0fef6fe9db"
+  },
+  {
+    "index": 5,
+    "language": "text",
+    "text": "Training\n    │\n    ▼\nRandom Dropout 적용\n    │\n    ▼\nParameter Update\n\n\nInference\n    │\n    ▼\nDropout 비활성화\n    │\n    ▼\n전체 Network를 이용한 Prediction",
+    "sha256": "084caba5dda48d08841c13e5ca3573d5612e6062eccecf8b724230903f7d50db"
+  },
+  {
+    "index": 6,
+    "language": "text",
+    "text": "Regularization\n      │\n      ├── L1 Penalty\n      │\n      ├── L2 Penalty\n      │\n      └── Weight Decay\n              │\n              └── AdamW의 Decoupled Weight Decay",
+    "sha256": "fee346f93dedb2c1c2b0af56465910ce8e0429bd6a39f0748e8c70f423a15f19"
+  },
+  {
+    "index": 7,
+    "language": "text",
+    "text": "Regularization Candidates\n           │\n           ▼\n      Model Training\n           │\n           ▼\n   Validation Performance\n           │\n           ▼\n    Hyperparameter Selection\n           │\n           ▼\n        Final Model",
+    "sha256": "67d972bb3aaad1a5fd21db0eb4e6283683d23ee96e784ee683c10676d12ff52c"
+  },
+  {
+    "index": 8,
+    "language": "text",
+    "text": "Regularization\n      │\n      ├── Parameter Penalty\n      │      ├── L1\n      │      ├── L2\n      │      └── Elastic Net\n      │\n      ├── Training Control\n      │      ├── Early Stopping\n      │      └── Dropout\n      │\n      ├── Data-based Methods\n      │      ├── Data Augmentation\n      │      └── Noise Injection\n      │\n      ├── Model Constraints\n      │      ├── Weight Constraint\n      │      └── Batch Normalization (간접 효과)\n      │\n      └── Target-based Methods\n             ├── Label Smoothing\n             └── Soft Labeling",
+    "sha256": "6afd28eaab0349b8dc2b1e5abe3bf93aa13e43cc4674b6cebdd9e54bf9688c0a"
+  }
+]

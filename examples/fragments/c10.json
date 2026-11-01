@@ -1,0 +1,290 @@
+[
+  {
+    "index": 0,
+    "language": "text",
+    "text": "Current Parameter\n        │\n        ▼\nGradient Calculation\n        │\n        ▼\nNegative Gradient Direction\n        │\n        ▼\nLearning Rate 적용\n        │\n        ▼\nParameter Update",
+    "sha256": "f865679f27670fad8532a22335c3974fb30a20bfbaba79596d3874af184ec013"
+  },
+  {
+    "index": 1,
+    "language": "text",
+    "text": "Current\n   │\n   ▼\n● → ● → ● → ● → ● → ● → Minimum",
+    "sha256": "d50c95622c8126ae0cad44d3ac78eaf0e0653cc0d65cf17cdb0e20245df084a1"
+  },
+  {
+    "index": 2,
+    "language": "text",
+    "text": "Small Learning Rate\n        │\n        ▼\nSmall Parameter Update\n        │\n        ▼\nSlow Convergence",
+    "sha256": "6105363829e60960df5e8494cda6fd1005bfd325324f33fa49b5365a918640ff"
+  },
+  {
+    "index": 3,
+    "language": "text",
+    "text": "Current\n   │\n   ▼\n● ─────→ ● ───→ ● → Minimum",
+    "sha256": "c4a06eadd94c26365e63d88c51b99ce76e01cfb84540b47898c88836de9b5a5b"
+  },
+  {
+    "index": 4,
+    "language": "text",
+    "text": "Learning Rate\n      │\n      ▼\nAppropriate Update\n      │\n      ▼\nStable Optimization\n      │\n      ▼\nConvergence",
+    "sha256": "0e18163a55aeeb51c137fb323f28d1df0c52b9a50ecf9e1361143f26824d72f8"
+  },
+  {
+    "index": 5,
+    "language": "text",
+    "text": "          Minimum\n             │\n        ● ←──┼─────→ ●\n             │\n        ● ←──┼─────→ ●",
+    "sha256": "3fe81626565dc3fe1e87e49b411c2399568d4790c5a4bccf73ecfb4f0d952d87"
+  },
+  {
+    "index": 6,
+    "language": "text",
+    "text": "Large Learning Rate\n        │\n        ▼\nLarge Parameter Update\n        │\n        ▼\nOvershooting\n        │\n        ▼\nOscillation / Divergence",
+    "sha256": "36f3407ad8a1c985345eeeb30bc0c0b7cd1fd1bc71aa6b1f593cdfb95ef73c67"
+  },
+  {
+    "index": 7,
+    "language": "text",
+    "text": "0.01\n0.1\n0.8\n1.2",
+    "sha256": "f1ed046b4791940120e49fe7dda4b3490236c8d3462ac2c60661e218f028ef3c"
+  },
+  {
+    "index": 8,
+    "language": "python",
+    "text": "import torch\nimport matplotlib.pyplot as plt\n\n\ndef train_with_lr(lr, steps=30):\n\n    theta = torch.nn.Parameter(\n        torch.tensor(0.0)\n    )\n\n    optimizer = torch.optim.SGD(\n        [theta],\n        lr=lr\n    )\n\n    losses = []\n\n    for step in range(steps):\n\n        optimizer.zero_grad()\n\n        loss = (theta - 3) ** 2\n\n        losses.append(\n            loss.item()\n        )\n\n        loss.backward()\n\n        optimizer.step()\n\n    return losses\n\n\nlearning_rates = [\n    0.01,\n    0.1,\n    0.8,\n    1.2\n]\n\nplt.figure(figsize=(9, 5))\n\nfor lr in learning_rates:\n\n    losses = train_with_lr(\n        lr,\n        steps=30\n    )\n\n    plt.plot(\n        losses,\n        label=f\"lr={lr}\"\n    )\n\nplt.yscale(\"log\")\n\nplt.xlabel(\"Optimization Step\")\nplt.ylabel(\"Loss\")\nplt.title(\"Learning Rate Comparison\")\n\nplt.legend()\nplt.grid(alpha=0.3)\n\nplt.show()",
+    "sha256": "34c8ed1d90a53799df5feb33318596eec6e8d82ce3402b413d60840769435e72"
+  },
+  {
+    "index": 9,
+    "language": "python",
+    "text": "optimizer = torch.optim.SGD(\n    model.parameters(),\n    lr=0.01\n)",
+    "sha256": "8a329376b351a2dda7f08c341a5c1349d55de87b0876d8732db7d3ef3b691166"
+  },
+  {
+    "index": 10,
+    "language": "python",
+    "text": "model.parameters()",
+    "sha256": "f3e2f02f593fecd13fc1a058b9c14858a92ce4de5dadb158bb13a0b153b6a864"
+  },
+  {
+    "index": 11,
+    "language": "python",
+    "text": "lr=0.01",
+    "sha256": "8af49e8a1636103b590ef76304a4c7ecfa989bb504f1c665c9fd0adaa0bee5c8"
+  },
+  {
+    "index": 12,
+    "language": "text",
+    "text": "Model Parameter\n      │\n      ▼\nTraining을 통해 업데이트\n\n\nLearning Rate\n      │\n      ▼\nParameter Update의 크기 조절",
+    "sha256": "a0f6d601d40e97fab5ac303c3580383b357f141da98092349a80168f2aa6a9b6"
+  },
+  {
+    "index": 13,
+    "language": "text",
+    "text": "Learning Rate\n      ↑\n      │ ──────────────────────\n      │\n      └──────────────────────→ Step",
+    "sha256": "52cc8af2d6c41c05154ac3f25eaafe7175bd8713feaf8ae3ba24acad3a93c123"
+  },
+  {
+    "index": 14,
+    "language": "python",
+    "text": "optimizer = torch.optim.SGD(\n    model.parameters(),\n    lr=0.01\n)",
+    "sha256": "8a329376b351a2dda7f08c341a5c1349d55de87b0876d8732db7d3ef3b691166"
+  },
+  {
+    "index": 15,
+    "language": "text",
+    "text": "Training Start\n      │\n      ▼\nInitial Learning Rate\n      │\n      ▼\nTraining Progress\n      │\n      ▼\nLearning Rate Adjustment\n      │\n      ▼\nFine Parameter Update",
+    "sha256": "9886ef22421859be6b58e240878049f05bca1343215127ec437004da344906e4"
+  },
+  {
+    "index": 16,
+    "language": "text",
+    "text": "Epoch 1~10\nlr = 0.1\n\nEpoch 11~20\nlr = 0.01\n\nEpoch 21~30\nlr = 0.001",
+    "sha256": "e4919538b1e441d616b45f95789eca1ee792ad5eb7a8518fe012e061a1548261"
+  },
+  {
+    "index": 17,
+    "language": "text",
+    "text": "Learning Rate\n      ↑\n      │ ─────────\n      │          │\n      │          └────────\n      │                   │\n      │                   └────────\n      └────────────────────────────→ Epoch",
+    "sha256": "2c011737e1e95f1aa0a0adad09acd70d98b04515b955dde1dc6a0f7804ce1925"
+  },
+  {
+    "index": 18,
+    "language": "python",
+    "text": "optimizer = torch.optim.SGD(\n    model.parameters(),\n    lr=0.1\n)\n\nscheduler = torch.optim.lr_scheduler.StepLR(\n    optimizer,\n    step_size=10,\n    gamma=0.1\n)",
+    "sha256": "06f39d9f92d9f13da336a928deb7e49ccd034d8841f4e232ffc9f697b05bbcfa"
+  },
+  {
+    "index": 19,
+    "language": "python",
+    "text": "for epoch in range(30):\n\n    train_one_epoch(\n        model,\n        train_loader,\n        optimizer\n    )\n\n    scheduler.step()",
+    "sha256": "91aefb5211e3f2dd6298a1f2950d4c6fc63820dfdb52940ef03097adf8685892"
+  },
+  {
+    "index": 20,
+    "language": "python",
+    "text": "optimizer = torch.optim.SGD(\n    model.parameters(),\n    lr=0.1\n)\n\nscheduler = torch.optim.lr_scheduler.ExponentialLR(\n    optimizer,\n    gamma=0.95\n)",
+    "sha256": "ccb6bc53cf1b45d2f33dd207403af7836b915b12dc23c2ddcea31c454fe69339"
+  },
+  {
+    "index": 21,
+    "language": "python",
+    "text": "scheduler.step()",
+    "sha256": "6ca9b3eaacdce71f93339920b20ddd25b687b0e3744996b32068736dd114c515"
+  },
+  {
+    "index": 22,
+    "language": "text",
+    "text": "Learning Rate\n      ↑\n      │ ───╮\n      │    ╰╮\n      │     ╰╮\n      │       ╰──╮\n      │          ╰──────\n      └────────────────────→ Step",
+    "sha256": "18f29b6401e1c923d2e3115865e097f1e336e98bc3a5705a8509ccf83bf05832"
+  },
+  {
+    "index": 23,
+    "language": "python",
+    "text": "optimizer = torch.optim.AdamW(\n    model.parameters(),\n    lr=0.001\n)\n\nscheduler = (\n    torch.optim.lr_scheduler.CosineAnnealingLR(\n        optimizer,\n        T_max=100,\n        eta_min=1e-6\n    )\n)",
+    "sha256": "5643fb113904fdf74b7e6c8e9678f39c0d05e46a657ce35bb36d14f3712a147f"
+  },
+  {
+    "index": 24,
+    "language": "text",
+    "text": "Training\n    │\n    ▼\nValidation Loss 측정\n    │\n    ▼\nImprovement?\n    │\n    ├── Yes → Learning Rate 유지\n    │\n    └── No\n          │\n          ▼\n     Patience 초과?\n          │\n          ├── No → 계속 Training\n          │\n          └── Yes\n                │\n                ▼\n          Learning Rate 감소",
+    "sha256": "d0d0979bec70f70c540812b67b6a07b07149e7b7503b105ca06c50e9e492e1bb"
+  },
+  {
+    "index": 25,
+    "language": "python",
+    "text": "optimizer = torch.optim.AdamW(\n    model.parameters(),\n    lr=0.001\n)\n\nscheduler = (\n    torch.optim.lr_scheduler.ReduceLROnPlateau(\n        optimizer,\n        mode=\"min\",\n        factor=0.5,\n        patience=5,\n        min_lr=1e-6\n    )\n)",
+    "sha256": "c1a0a3421499635669f3d938fae00af6856c92da260a2faac27b654e2416afc0"
+  },
+  {
+    "index": 26,
+    "language": "python",
+    "text": "for epoch in range(100):\n\n    train_loss = train_one_epoch(\n        model,\n        train_loader,\n        optimizer\n    )\n\n    val_loss = validate(\n        model,\n        val_loader\n    )\n\n    scheduler.step(val_loss)",
+    "sha256": "d8aa8af179d7bf0fc3ec9c2f7b180ba0950d8f13ed54eef323151d47ecbcd33e"
+  },
+  {
+    "index": 27,
+    "language": "text",
+    "text": "Learning Rate\n      ↑\n      │        ─────────────\n      │       /\n      │      /\n      │     /\n      │____/\n      └──────────────────────→ Step\n         Warmup",
+    "sha256": "2542875a9dc69527badeb3cedafdefce2c1c8b2741f60a472667ae5569c7d901"
+  },
+  {
+    "index": 28,
+    "language": "text",
+    "text": "Learning Rate\n      ↑\n      │       ╭────╮\n      │      /      ╲\n      │     /        ╲\n      │    /          ╲___\n      │___/               ╲___\n      └────────────────────────→ Step\n        Warmup     Cosine Decay",
+    "sha256": "3ed55a2b03d274307144b5853fc3475cc15aa07a2df6d76f4a52a5e35f3abd38"
+  },
+  {
+    "index": 29,
+    "language": "python",
+    "text": "import torch\n\noptimizer = torch.optim.AdamW(\n    model.parameters(),\n    lr=0.001\n)\n\n# Warmup: 5 Scheduler Steps\nwarmup_scheduler = (\n    torch.optim.lr_scheduler.LinearLR(\n        optimizer,\n        start_factor=0.1,\n        end_factor=1.0,\n        total_iters=5\n    )\n)\n\n# Cosine Decay: 45 Scheduler Steps\ncosine_scheduler = (\n    torch.optim.lr_scheduler.CosineAnnealingLR(\n        optimizer,\n        T_max=45,\n        eta_min=1e-6\n    )\n)\n\n# Sequential Scheduler\nscheduler = (\n    torch.optim.lr_scheduler.SequentialLR(\n        optimizer,\n        schedulers=[\n            warmup_scheduler,\n            cosine_scheduler\n        ],\n        milestones=[5]\n    )\n)",
+    "sha256": "143af338dd524e6215d83f8ecd2600a7219283085716fecc0b042083e934cf12"
+  },
+  {
+    "index": 30,
+    "language": "python",
+    "text": "for epoch in range(50):\n\n    train_one_epoch(\n        model,\n        train_loader,\n        optimizer\n    )\n\n    scheduler.step()\n\n    current_lr = (\n        optimizer.param_groups[0][\"lr\"]\n    )\n\n    print(\n        f\"Epoch {epoch+1:02d} \"\n        f\"| LR: {current_lr:.6f}\"\n    )",
+    "sha256": "5101c267ed4e4652951cd96fb8f65ce22b5d016f6ae630b95651d396afd33a1b"
+  },
+  {
+    "index": 31,
+    "language": "text",
+    "text": "Learning Rate\n      ↑\n      │      /\\      /\\\n      │     /  \\    /  \\\n      │    /    \\  /    \\\n      │___/      \\/      \\___\n      └────────────────────────→ Step",
+    "sha256": "676a601f4e1c1dfc092239e85833ac1fb6e0d3d52b309fbb9c9c68f1edb09d88"
+  },
+  {
+    "index": 32,
+    "language": "python",
+    "text": "scheduler = (\n    torch.optim.lr_scheduler.CyclicLR(\n        optimizer,\n        base_lr=1e-4,\n        max_lr=1e-2,\n        step_size_up=100,\n        mode=\"triangular\",\n        cycle_momentum=False\n    )\n)",
+    "sha256": "ab22ec69976f8e262c961ecf613cebf3a88ef6e1800ba52afac6478c0204c9cc"
+  },
+  {
+    "index": 33,
+    "language": "text",
+    "text": "Learning Rate\n      ↑\n      │        /\\\n      │       /  \\\n      │      /    \\\n      │_____/      \\________\n      └──────────────────────→ Step",
+    "sha256": "1e5fdf546c508932a3b0552796190f29555d97ac4f56709dc5ad137c647191fd"
+  },
+  {
+    "index": 34,
+    "language": "python",
+    "text": "scheduler = torch.optim.lr_scheduler.OneCycleLR(\n    optimizer,\n    max_lr=0.01,\n    epochs=20,\n    steps_per_epoch=len(train_loader)\n)",
+    "sha256": "956a1f2343757d976faf6415586150b504b13dfd5c2ff4445cb82efea10e75c3"
+  },
+  {
+    "index": 35,
+    "language": "python",
+    "text": "for epoch in range(20):\n\n    for X, y in train_loader:\n\n        optimizer.zero_grad()\n\n        prediction = model(X)\n\n        loss = loss_fn(\n            prediction,\n            y\n        )\n\n        loss.backward()\n\n        optimizer.step()\n\n        scheduler.step()",
+    "sha256": "f7fe1f964a3d7efec138e8de31e18550218bba2710efbfb5499bd7bd546f8a70"
+  },
+  {
+    "index": 36,
+    "language": "text",
+    "text": "1e-5\n1e-4\n1e-3\n1e-2\n1e-1",
+    "sha256": "fe77a0f6293f3f7689d9a2ef926af4b2a5365bac8fb97ae635688bf0a40c3f3c"
+  },
+  {
+    "index": 37,
+    "language": "text",
+    "text": "Learning Rate Candidates\n          │\n          ▼\n      Model Training\n          │\n          ▼\nTraining Loss / Validation Metric\n          │\n          ▼\n      Comparison\n          │\n          ▼\nLearning Rate Selection",
+    "sha256": "0abea777be69fbdaef2597aa638910cac063af1d14c5df8af00bf2eac6310be9"
+  },
+  {
+    "index": 38,
+    "language": "text",
+    "text": "Small Learning Rate\n        │\n        ▼\nGradually Increase LR\n        │\n        ▼\nObserve Training Loss\n        │\n        ▼\nIdentify Useful LR Range",
+    "sha256": "f1b85443791a2f90930244d59a76cf66fb01e23bf22d36d4e9c52d4eb2231752"
+  },
+  {
+    "index": 39,
+    "language": "python",
+    "text": "current_lr = optimizer.param_groups[0][\"lr\"]\n\nprint(current_lr)",
+    "sha256": "9fa9db48e482800f7cc432d0cc7b11d36d88de0c667a016a739475f73d406b38"
+  },
+  {
+    "index": 40,
+    "language": "python",
+    "text": "for i, group in enumerate(\n    optimizer.param_groups\n):\n\n    print(\n        f\"Group {i}:\",\n        group[\"lr\"]\n    )",
+    "sha256": "ee3ae9037b97e6a74a0eec3a153fd4d3c89e46aa8a6fdfb01ea77a991857ec8e"
+  },
+  {
+    "index": 41,
+    "language": "python",
+    "text": "optimizer.zero_grad()\n\nloss.backward()\n\noptimizer.step()\n\nscheduler.step()",
+    "sha256": "c39f8523835704ef0fb238708037fe4248605174798c7d642645c7c9caebcb10"
+  },
+  {
+    "index": 42,
+    "language": "python",
+    "text": "scheduler.step(val_loss)",
+    "sha256": "ba727fa8ec7c350f729b91287f9128fa8327d1b98bbe768c5ef4f3998690cb2c"
+  },
+  {
+    "index": 43,
+    "language": "python",
+    "text": "scheduler.step()",
+    "sha256": "6ca9b3eaacdce71f93339920b20ddd25b687b0e3744996b32068736dd114c515"
+  },
+  {
+    "index": 44,
+    "language": "python",
+    "text": "torch.save(\n    {\n        \"model\": model.state_dict(),\n        \"optimizer\": optimizer.state_dict(),\n        \"scheduler\": scheduler.state_dict(),\n        \"epoch\": epoch\n    },\n    \"checkpoint.pt\"\n)",
+    "sha256": "bfcf1acab2733f80e4e23bd7398a902168aedd200e067554edef14fb1bb41b65"
+  },
+  {
+    "index": 45,
+    "language": "text",
+    "text": "Pretrained Backbone\n        │\n        ▼\nSmall Learning Rate\n\n\nNew Classification Head\n        │\n        ▼\nLarger Learning Rate",
+    "sha256": "e70fcc65ffc618c55f81b14289e15a3be9b81bd72c5239a7b751605b31673d66"
+  },
+  {
+    "index": 46,
+    "language": "python",
+    "text": "optimizer = torch.optim.AdamW(\n    [\n        {\n            \"params\": model.backbone.parameters(),\n            \"lr\": 1e-5\n        },\n        {\n            \"params\": model.classifier.parameters(),\n            \"lr\": 1e-3\n        }\n    ]\n)",
+    "sha256": "2147ec712f9c49013a1725c115bf6587750be6f7a98280898a2162a50fbaa037"
+  },
+  {
+    "index": 47,
+    "language": "text",
+    "text": "Learning Rate\n      │\n      ├── Constant\n      │\n      ├── Step Decay\n      │\n      ├── Exponential Decay\n      │\n      ├── Cosine Annealing\n      │\n      ├── ReduceLROnPlateau\n      │\n      ├── Warmup\n      │\n      ├── Cyclical LR\n      │\n      └── OneCycleLR",
+    "sha256": "5e95ed1761cb60f73190d5af817a95995e10a43ff75ff66e10abfb7d4e217f57"
+  }
+]

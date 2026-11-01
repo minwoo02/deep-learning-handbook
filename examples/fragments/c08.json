@@ -1,0 +1,8 @@
+[
+  {
+    "index": 0,
+    "language": "python",
+    "text": "import torch.nn as nn\n\nclass XORModel(nn.Module):\n    def __init__(self):\n        super().__init__()\n        self.linear1 = nn.Linear(2, 4)\n        self.relu = nn.ReLU()\n        self.linear2 = nn.Linear(4, 1)\n\n    def forward(self, x):\n        x = self.linear1(x)\n        x = self.relu(x)\n        x = self.linear2(x)\n        return x",
+    "sha256": "d9c0294ba2e9d1d00a6365c95f85df6cf3e4fd72ebd4fb11b0c3005f473ca4bf"
+  }
+]

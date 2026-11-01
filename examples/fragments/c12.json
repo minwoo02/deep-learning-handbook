@@ -1,0 +1,224 @@
+[
+  {
+    "index": 0,
+    "language": "text",
+    "text": "Input\n  │\n  ▼\nForward Propagation\n  │\n  ▼\nLoss Calculation\n  │\n  ▼\nBackpropagation\n  │\n  ▼\nGradient Calculation\n  │\n  ▼\nParameter Update",
+    "sha256": "2eaca3805dde8ea402201100626a912dee1a5deb8373a919c03f5cb811042487"
+  },
+  {
+    "index": 1,
+    "language": "text",
+    "text": "Input\n  │\n  ▼\nLinear Layer 1\n  │\n  ▼\nActivation\n  │\n  ▼\nLinear Layer 2\n  │\n  ▼\nActivation\n  │\n  ▼\nLinear Layer 3\n  │\n  ▼\nOutput",
+    "sha256": "f012ae41591e68cc1c9e5f47d7c1b0f0ebe3d224cc0ce65528cdf993cae0d1df"
+  },
+  {
+    "index": 2,
+    "language": "text",
+    "text": "Backpropagation\n      │\n      ▼\nRepeated Chain Rule\n      │\n      ▼\nSmall Gradient\n      │\n      ▼\nVanishing Gradient\n      │\n      ▼\nEarly Layer 학습 어려움",
+    "sha256": "fb018bf0a397c3b1b656052a7c28e86f9c3c5c4ec40366a551afe53fc5c3ce9e"
+  },
+  {
+    "index": 3,
+    "language": "text",
+    "text": "Large Gradient\n      │\n      ▼\nLarge Parameter Update\n      │\n      ▼\nTraining Instability\n      │\n      ▼\nLoss Divergence 가능",
+    "sha256": "707f1fbeec75533ff3845e1f13732248678afbd34011e0d1fd23744c17353b3f"
+  },
+  {
+    "index": 4,
+    "language": "python",
+    "text": "import torch\nimport torch.nn as nn\n\nlayer = nn.Linear(4, 3)\n\nnn.init.zeros_(layer.weight)\n\nprint(layer.weight)",
+    "sha256": "dfa6259a1da8dcb5ebd6e98ead26e0d4e1711afe034c005b2ad20fc5a46bb78d"
+  },
+  {
+    "index": 5,
+    "language": "python",
+    "text": "nn.init.zeros_(layer.bias)",
+    "sha256": "527f25263389141348d681e6c21fd21ec863d6605413610f294d109737d2b543"
+  },
+  {
+    "index": 6,
+    "language": "python",
+    "text": "nn.init.xavier_uniform_(\n    layer.weight\n)\n\nnn.init.zeros_(\n    layer.bias\n)",
+    "sha256": "8a593137dd680f8570b8126f243f06d8204a3bf9c621776e0d0dcfc91836b62b"
+  },
+  {
+    "index": 7,
+    "language": "python",
+    "text": "layer = nn.Linear(4, 8)\n\nnn.init.normal_(\n    layer.weight,\n    mean=0.0,\n    std=0.01\n)",
+    "sha256": "dce2626e74862e902fc8975d58ec5e658a5eba1b6d63697fc5edb38873f7d20c"
+  },
+  {
+    "index": 8,
+    "language": "python",
+    "text": "layer = nn.Linear(4, 8)\n\nnn.init.uniform_(\n    layer.weight,\n    a=-0.1,\n    b=0.1\n)",
+    "sha256": "07aa73a47befb58ac5ca2697788f56e774b75e51edc7d98af299ca8d969070b0"
+  },
+  {
+    "index": 9,
+    "language": "python",
+    "text": "layer = nn.Linear(4, 8)",
+    "sha256": "27e41d6e716a535d0405a2e27c975d91609e23a5b3941c2803ede774a54ee685"
+  },
+  {
+    "index": 10,
+    "language": "python",
+    "text": "print(layer.weight.shape)",
+    "sha256": "a29a79ed1fd871a0963395ff53ef8692d17a92ff95b5979e69a1eafcf819423f"
+  },
+  {
+    "index": 11,
+    "language": "text",
+    "text": "torch.Size([8, 4])",
+    "sha256": "12ff92f19f0591a8f3ef99c0fd48059cd310bd19e014f868d05d5bc0983bd31a"
+  },
+  {
+    "index": 12,
+    "language": "python",
+    "text": "import math\nimport torch.nn as nn\n\nlayer = nn.Linear(128, 64)\n\nfan_in = layer.in_features\n\nstd = math.sqrt(\n    1.0 / fan_in\n)\n\nnn.init.normal_(\n    layer.weight,\n    mean=0.0,\n    std=std\n)\n\nnn.init.zeros_(\n    layer.bias\n)",
+    "sha256": "25c34befc5c2371b095bc9de27f9566ddd4d0bb8c3b054d21439c2d0843ee36c"
+  },
+  {
+    "index": 13,
+    "language": "python",
+    "text": "layer = nn.Linear(128, 64)\n\nnn.init.xavier_normal_(\n    layer.weight\n)\n\nnn.init.zeros_(\n    layer.bias\n)",
+    "sha256": "f975f06ad62dcc34351ee0eb7e51bff082d6ce5ce7dce24c1bddc0aee22eb16a"
+  },
+  {
+    "index": 14,
+    "language": "python",
+    "text": "layer = nn.Linear(128, 64)\n\nnn.init.xavier_uniform_(\n    layer.weight\n)\n\nnn.init.zeros_(\n    layer.bias\n)",
+    "sha256": "927fc3e634f9e83b24d2dc4b3e185a7cf8a1082216ae7dc39fcf5fe56e53afbf"
+  },
+  {
+    "index": 15,
+    "language": "python",
+    "text": "layer = nn.Linear(128, 64)\n\nnn.init.kaiming_normal_(\n    layer.weight,\n    mode=\"fan_in\",\n    nonlinearity=\"relu\"\n)\n\nnn.init.zeros_(\n    layer.bias\n)",
+    "sha256": "eda61f02fb31faf41cbe2a1e6af11bbf7598cea6a68f47253058a6ac3f6b9c6c"
+  },
+  {
+    "index": 16,
+    "language": "python",
+    "text": "mode=\"fan_in\"",
+    "sha256": "198c05789fbbffe65ce6a4a8ba184143d646545820eaecbbb9320fdd4ec6e38d"
+  },
+  {
+    "index": 17,
+    "language": "python",
+    "text": "mode=\"fan_out\"",
+    "sha256": "213a7f73a4a03fac658b7f77dadf9571d43ff9baa54d18f2ac11a1aab9dcb79b"
+  },
+  {
+    "index": 18,
+    "language": "python",
+    "text": "layer = nn.Linear(128, 64)\n\nnn.init.kaiming_uniform_(\n    layer.weight,\n    mode=\"fan_in\",\n    nonlinearity=\"relu\"\n)\n\nnn.init.zeros_(\n    layer.bias\n)",
+    "sha256": "a40edc64f0207b4bdcc56c27be8c37a8419fa99e77292d05094ed55c0ec9ea67"
+  },
+  {
+    "index": 19,
+    "language": "python",
+    "text": "gain = nn.init.calculate_gain(\n    \"tanh\"\n)\n\nnn.init.xavier_uniform_(\n    layer.weight,\n    gain=gain\n)",
+    "sha256": "4d3906901ce7052df5a83b171dcf552d93c556065a6b308d90ff9140aa2628c1"
+  },
+  {
+    "index": 20,
+    "language": "python",
+    "text": "layer = nn.Linear(128, 64)\n\nnn.init.kaiming_normal_(\n    layer.weight,\n    a=0.01,\n    mode=\"fan_in\",\n    nonlinearity=\"leaky_relu\"\n)",
+    "sha256": "406e20eb9514619a62fa0eff3dccb5bb9677489505569bd16893ddde05d1e0fa"
+  },
+  {
+    "index": 21,
+    "language": "python",
+    "text": "layer = nn.Linear(128, 128)\n\nnn.init.orthogonal_(\n    layer.weight\n)\n\nnn.init.zeros_(\n    layer.bias\n)",
+    "sha256": "74bdaae7c61e0dcf2a771e515e37b7710a9b54f8b6cb9f251d5b1f0934e3ffb0"
+  },
+  {
+    "index": 22,
+    "language": "python",
+    "text": "layer = nn.Linear(4, 8)",
+    "sha256": "27e41d6e716a535d0405a2e27c975d91609e23a5b3941c2803ede774a54ee685"
+  },
+  {
+    "index": 23,
+    "language": "text",
+    "text": "Input(4)\n   │\n   ▼\nLinear(4, 32)\n   │\n   ▼\nReLU\n   │\n   ▼\nLinear(32, 32)\n   │\n   ▼\nReLU\n   │\n   ▼\nLinear(32, 3)\n   │\n   ▼\nOutput Logits(3)",
+    "sha256": "b8f3bd487164477618868491a4d8ed33f33c519ff3aeacd542d151dc13de2e77"
+  },
+  {
+    "index": 24,
+    "language": "python",
+    "text": "import torch\nimport torch.nn as nn\n\n\nclass CustomMLP(nn.Module):\n\n    def __init__(self):\n\n        super().__init__()\n\n        self.net = nn.Sequential(\n            nn.Linear(4, 32),\n            nn.ReLU(),\n\n            nn.Linear(32, 32),\n            nn.ReLU(),\n\n            nn.Linear(32, 3)\n        )\n\n    def forward(self, x):\n\n        return self.net(x)",
+    "sha256": "63a221c52bf0668fa2a51569c76e6426fbd126cfb725283891e4230b92ff1021"
+  },
+  {
+    "index": 25,
+    "language": "python",
+    "text": "model = CustomMLP()\n\n# Hidden Layer 1\nnn.init.kaiming_normal_(\n    model.net[0].weight,\n    mode=\"fan_in\",\n    nonlinearity=\"relu\"\n)\n\n# Hidden Layer 2\nnn.init.kaiming_normal_(\n    model.net[2].weight,\n    mode=\"fan_in\",\n    nonlinearity=\"relu\"\n)\n\n# Output Layer\nnn.init.xavier_uniform_(\n    model.net[4].weight\n)\n\n# Bias Initialization\nfor module in model.modules():\n\n    if isinstance(module, nn.Linear):\n\n        if module.bias is not None:\n\n            nn.init.zeros_(module.bias)",
+    "sha256": "b0dd58033fe3db9b09ae643c04767c1592016ff016343ef2a674a38d171c3345"
+  },
+  {
+    "index": 26,
+    "language": "python",
+    "text": "def initialize_relu_layers(module):\n\n    if isinstance(module, nn.Linear):\n\n        nn.init.kaiming_normal_(\n            module.weight,\n            mode=\"fan_in\",\n            nonlinearity=\"relu\"\n        )\n\n        if module.bias is not None:\n\n            nn.init.zeros_(\n                module.bias\n            )",
+    "sha256": "e6ff2b286c35291f0d6e088f79933ecd5221481cdb0dc65bbf74eae364455c4f"
+  },
+  {
+    "index": 27,
+    "language": "python",
+    "text": "model = CustomMLP()\n\nmodel.apply(\n    initialize_relu_layers\n)",
+    "sha256": "c7ebacfc049ce44df7912ef1b21347225022294452b64c281deae62fd5f609b3"
+  },
+  {
+    "index": 28,
+    "language": "python",
+    "text": "nn.init.xavier_uniform_(\n    model.net[4].weight\n)",
+    "sha256": "8f6a823989f9252fa4494cc26d5c2ef8094978a3383145ba825fa81b18d253b3"
+  },
+  {
+    "index": 29,
+    "language": "python",
+    "text": "for name, param in model.named_parameters():\n\n    if \"weight\" in name:\n\n        print(\n            name,\n            \"Mean:\",\n            param.mean().item(),\n            \"Std:\",\n            param.std().item()\n        )",
+    "sha256": "f6f00c401b83c8e4caed5151f615c2979ea246e3566e5d4b18ef5a270cd61f79"
+  },
+  {
+    "index": 30,
+    "language": "python",
+    "text": "import torch\nimport torch.nn as nn\n\nclass DeepMLP(nn.Module):\n\n    def __init__(\n        self,\n        depth=10,\n        width=128\n    ):\n\n        super().__init__()\n\n        self.layers = nn.ModuleList([\n            nn.Linear(width, width)\n            for _ in range(depth)\n        ])\n\n    def forward(self, x):\n\n        activation_stds = []\n\n        for layer in self.layers:\n\n            x = torch.relu(\n                layer(x)\n            )\n\n            activation_stds.append(\n                x.std(unbiased=False).item()\n            )\n\n        return x, activation_stds",
+    "sha256": "a2b0410bfcdde4d5cb5d15bfcf211e63f6e9c1f1f041174e40fcfbc626eab3d2"
+  },
+  {
+    "index": 31,
+    "language": "python",
+    "text": "def initialize_model(model, method):\n\n    for layer in model.layers:\n\n        if method == \"small\":\n\n            nn.init.normal_(\n                layer.weight,\n                mean=0.0,\n                std=0.01\n            )\n\n        elif method == \"xavier\":\n\n            nn.init.xavier_normal_(\n                layer.weight\n            )\n\n        elif method == \"he\":\n\n            nn.init.kaiming_normal_(\n                layer.weight,\n                mode=\"fan_in\",\n                nonlinearity=\"relu\"\n            )\n\n        else:\n\n            raise ValueError(\n                f\"Unknown initialization: {method}\"\n            )\n\n        nn.init.zeros_(\n            layer.bias\n        )",
+    "sha256": "ff3920a55e5f08530ca9f3ab3cdf5b1e636884e6f343f68ec9f1317786766911"
+  },
+  {
+    "index": 32,
+    "language": "python",
+    "text": "import matplotlib.pyplot as plt\n\n# 동일한 Input Data 생성\ntorch.manual_seed(7)\n\nx = torch.randn(1024, 128)\n\nresults = {}\n\nfor method in [\n    \"small\",\n    \"xavier\",\n    \"he\"\n]:\n\n    # 초기화 비교를 위한 Random Seed\n    torch.manual_seed(42)\n\n    model = DeepMLP(\n        depth=10,\n        width=128\n    )\n\n    initialize_model(\n        model,\n        method\n    )\n\n    with torch.no_grad():\n\n        _, activation_stds = model(x)\n\n    results[method] = activation_stds\n\n\n# Visualization\nplt.figure(figsize=(9, 5))\n\nfor method, values in results.items():\n\n    plt.plot(\n        range(1, len(values) + 1),\n        values,\n        marker=\"o\",\n        label=method\n    )\n\nplt.xlabel(\"Layer\")\nplt.ylabel(\"Activation Standard Deviation\")\n\nplt.title(\n    \"Weight Initialization Comparison\"\n)\n\nplt.legend()\nplt.grid(alpha=0.3)\n\nplt.show()",
+    "sha256": "b7fa0b14b25de8548e4cf2567ac1e6d142c7b9ce9b9550d4f6d1cac0b887a228"
+  },
+  {
+    "index": 33,
+    "language": "python",
+    "text": "activation_rms = (\n    x.square()\n    .mean()\n    .sqrt()\n    .item()\n)",
+    "sha256": "fc404d6980affb9a594078330402efe9f439dac55b34803620b7093ba2578f47"
+  },
+  {
+    "index": 34,
+    "language": "python",
+    "text": "loss.backward()\n\ntorch.nn.utils.clip_grad_norm_(\n    model.parameters(),\n    max_norm=1.0\n)\n\noptimizer.step()",
+    "sha256": "35d40fe1025c03fea5a6837eb8bcad3945b98a855c209427ceea94a305c26aa3"
+  },
+  {
+    "index": 35,
+    "language": "python",
+    "text": "nn.init.xavier_uniform_(\n    layer.weight\n)",
+    "sha256": "79011ebbc807c3c25e967e404d2397c063047057c608ad997ee19fc4416d4c22"
+  },
+  {
+    "index": 36,
+    "language": "python",
+    "text": "nn.init.kaiming_normal_(\n    layer.weight,\n    mode=\"fan_in\",\n    nonlinearity=\"relu\"\n)",
+    "sha256": "62b7aa76ff5519f70663d3e1c33f13406fdaa8ab3117159081d9e768188a9ccb"
+  }
+]

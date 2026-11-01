@@ -1,0 +1,38 @@
+[
+  {
+    "index": 0,
+    "language": "text",
+    "text": "Head\nTail",
+    "sha256": "ab8cb071c1e90f8ec70cebe06e2689ece52fcf0a019321f95ccd29350ed268ca"
+  },
+  {
+    "index": 1,
+    "language": "text",
+    "text": "Discrete Random Variable\n           │\n           ▼\n          PMF\n           │\n           ▼\n       Probability\n\n\nContinuous Random Variable\n           │\n           ▼\n          PDF\n           │\n           ▼\n       Integration\n           │\n           ▼\n       Probability",
+    "sha256": "1ce6a52f8c8d823467a6319170cdcc3abdccdd15e9231699630e56a79b87bbe6"
+  },
+  {
+    "index": 2,
+    "language": "text",
+    "text": "HH\nHT\nTH\nTT",
+    "sha256": "8353263aec5d5ad8f3040fe53d8354673740d7087a39662c34a6b8796189196c"
+  },
+  {
+    "index": 3,
+    "language": "text",
+    "text": "PDF\n │\n │ Integration\n ▼\nCDF\n │\n │ Differentiation\n ▼\nPDF",
+    "sha256": "261437609b149400fa22f525d8a41f0376530de48e279e05d56ea745ec75c09e"
+  },
+  {
+    "index": 4,
+    "language": "python",
+    "text": "import numpy as np\nimport matplotlib.pyplot as plt\n\nx = np.array([0, 1, 2])\n\npmf = np.array([\n    0.25,\n    0.50,\n    0.25\n])\n\ncdf = np.cumsum(pmf)\n\nprint(\"PMF:\", pmf)\nprint(\"CDF:\", cdf)\n\nplt.figure(figsize=(7, 4))\n\nplt.bar(\n    x,\n    pmf,\n    width=0.5\n)\n\nplt.xticks(x)\nplt.xlabel(\"Number of Heads\")\nplt.ylabel(\"Probability\")\nplt.title(\"PMF\")\n\nplt.grid(alpha=0.3)\nplt.show()\n\nplt.figure(figsize=(7, 4))\n\nplt.step(\n    x,\n    cdf,\n    where=\"post\"\n)\n\nplt.xlim(-0.5, 2.5)\nplt.ylim(0, 1.1)\n\nplt.xticks(x)\nplt.xlabel(\"Number of Heads\")\nplt.ylabel(\"Cumulative Probability\")\nplt.title(\"CDF\")\n\nplt.grid(alpha=0.3)\nplt.show()",
+    "sha256": "7a44a8f0c17801b165452f2f85173659908181909065604e96b8d8e69b0d2a73"
+  },
+  {
+    "index": 5,
+    "language": "text",
+    "text": "PMF: [0.25 0.5  0.25]\nCDF: [0.25 0.75 1.  ]",
+    "sha256": "b01191941ae722410a07149a51030bc527d927d66b6a2955af2d36d0b6089c67"
+  }
+]

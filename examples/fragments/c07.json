@@ -1,0 +1,320 @@
+[
+  {
+    "index": 0,
+    "language": "python",
+    "text": "model.fit(X_train, y_train)",
+    "sha256": "4db693e9f265f1486887920c2e9cbce041b8de1f5d60b444efa8e2875b7a15ed"
+  },
+  {
+    "index": 1,
+    "language": "text",
+    "text": "Input Layer\n(4 Features)\n      │\n      ▼\nLinear Layer\n(4 → 100)\n      │\n      ▼\nReLU Activation\n      │\n      ▼\nLinear Layer\n(100 → 3)\n      │\n      ▼\nOutput Layer\n(3 Class Logits)\n      │\n      ▼\nCrossEntropyLoss",
+    "sha256": "1da375a8347cb67d35dc10379493478095e52dcea8b5e614308a3762831e9b10"
+  },
+  {
+    "index": 2,
+    "language": "python",
+    "text": "import torch\nimport torch.nn as nn\nimport torch.optim as optim\n\nfrom sklearn.datasets import load_iris\nfrom sklearn.metrics import accuracy_score\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.preprocessing import StandardScaler",
+    "sha256": "6f5f2a3ed6b5d30353539508c8f2b7437746a6569ae756143c8311bd6c1b0824"
+  },
+  {
+    "index": 3,
+    "language": "text",
+    "text": "torch\n→ Tensor 연산\n\ntorch.nn\n→ Neural Network 구성\n\ntorch.optim\n→ Optimizer\n\nscikit-learn\n→ Dataset / Preprocessing / Evaluation",
+    "sha256": "f4c9677ef58fb7d66cb07859bd43701df34273723031c09771e59cd7ddcf2e46"
+  },
+  {
+    "index": 4,
+    "language": "python",
+    "text": "X, y = load_iris(return_X_y=True)",
+    "sha256": "5937e1d30064e0ef3cd6309f5a27ea8f03a05f882d5d18a92090407c3931ca44"
+  },
+  {
+    "index": 5,
+    "language": "text",
+    "text": "X → Features\ny → Labels",
+    "sha256": "886b14ff84f04bb50fa952f61f621e1323f794e76fcb1701c431f536a7a298ed"
+  },
+  {
+    "index": 6,
+    "language": "python",
+    "text": "X_train, X_test, y_train, y_test = train_test_split(\n    X,\n    y,\n    test_size=0.2,\n    random_state=42,\n    stratify=y,\n)",
+    "sha256": "636f227b3d4493627417bc0467c4e1c6bee396dcc78b62d4f91bbd51941fdaf3"
+  },
+  {
+    "index": 7,
+    "language": "python",
+    "text": "scaler = StandardScaler()\n\nX_train_scaled = scaler.fit_transform(X_train)\nX_test_scaled = scaler.transform(X_test)",
+    "sha256": "9ade0386181c4b7d2e36bff0c249e39e77e0afadbc4d5ba52c8e996bcf374e15"
+  },
+  {
+    "index": 8,
+    "language": "python",
+    "text": "scaler.fit_transform(X_train)",
+    "sha256": "75a9bd06623dd09f446569f401e2abcb125d52ee955b6c04f185c8e7a9a831cb"
+  },
+  {
+    "index": 9,
+    "language": "python",
+    "text": "scaler.transform(X_test)",
+    "sha256": "ce819c2d135ff890c2b26efee625efa922b749f923bd95ded1278b72420a7ffd"
+  },
+  {
+    "index": 10,
+    "language": "python",
+    "text": "X_train_tensor = torch.tensor(\n    X_train_scaled,\n    dtype=torch.float32\n)\n\ny_train_tensor = torch.tensor(\n    y_train,\n    dtype=torch.long\n)\n\nX_test_tensor = torch.tensor(\n    X_test_scaled,\n    dtype=torch.float32\n)\n\ny_test_tensor = torch.tensor(\n    y_test,\n    dtype=torch.long\n)",
+    "sha256": "844b46032b590dd262bfff37d5bd7a56957023fbc686985c91f63b3e12e84363"
+  },
+  {
+    "index": 11,
+    "language": "python",
+    "text": "torch.float32",
+    "sha256": "ad88df0b8b9de1789dbaa2a58c2b82e33de557553b203a4b14ed28d7cdf19622"
+  },
+  {
+    "index": 12,
+    "language": "python",
+    "text": "torch.long",
+    "sha256": "1c1307ab38e7ef7a4da95d6534fccb67f12bdd3b9733263399beed458a431d52"
+  },
+  {
+    "index": 13,
+    "language": "python",
+    "text": "class PyTorchMLP(nn.Module):\n\n    def __init__(\n        self,\n        input_dim,\n        hidden_dim,\n        output_dim,\n    ):\n        super(PyTorchMLP, self).__init__()\n\n        self.fc1 = nn.Linear(\n            input_dim,\n            hidden_dim\n        )\n\n        self.relu = nn.ReLU()\n\n        self.fc2 = nn.Linear(\n            hidden_dim,\n            output_dim\n        )",
+    "sha256": "ba1069890125ba99d3981c689c410b54c11df110551fa11ba4f578b9d6a6c380"
+  },
+  {
+    "index": 14,
+    "language": "python",
+    "text": "nn.Module",
+    "sha256": "f8131ea3d7122e16be9e2ca34032768a17bcf5c257478c53f843dee6450fc843"
+  },
+  {
+    "index": 15,
+    "language": "python",
+    "text": "self.fc1 = nn.Linear(\n    input_dim,\n    hidden_dim\n)",
+    "sha256": "1cddfb6a3eb621165e0f66f50fa41a3d6f961d04627e497dc6de9326ced6427a"
+  },
+  {
+    "index": 16,
+    "language": "python",
+    "text": "self.relu = nn.ReLU()",
+    "sha256": "43ca675d95f6eb729dc88307196b26bcd823cf07bba23d15e11a309343f07601"
+  },
+  {
+    "index": 17,
+    "language": "python",
+    "text": "self.fc2 = nn.Linear(\n    hidden_dim,\n    output_dim\n)",
+    "sha256": "d5b1589a1fab33f1915db8577698ccb3577329f925a0beed061d529e9554fe26"
+  },
+  {
+    "index": 18,
+    "language": "python",
+    "text": "output_dim=3",
+    "sha256": "870e34d18c4f638d020939aa2c744fb1b08fce36936a501e6be5cd80d0b01bbd"
+  },
+  {
+    "index": 19,
+    "language": "python",
+    "text": "def forward(self, x):\n\n    out = self.fc1(x)\n    out = self.relu(out)\n    out = self.fc2(out)\n\n    return out",
+    "sha256": "ea6d39c54e48c73dbfac6657bcd7f9895be4524bc1e0bf3a7117f1322facc27e"
+  },
+  {
+    "index": 20,
+    "language": "text",
+    "text": "Input\n  ↓\nfc1\n  ↓\nReLU\n  ↓\nfc2\n  ↓\nOutput",
+    "sha256": "454226dba212c76198d5dffdea9b3bfc3730423f1ac16f8636d217e72ed44994"
+  },
+  {
+    "index": 21,
+    "language": "python",
+    "text": "model = PyTorchMLP(\n    input_dim=4,\n    hidden_dim=100,\n    output_dim=3\n)",
+    "sha256": "e11275eca81a99678a88693561bbecbb97246e77d5892736b6296047a719a7f6"
+  },
+  {
+    "index": 22,
+    "language": "text",
+    "text": "input_dim = 4",
+    "sha256": "8e16b40c5742f3fdc12dbffcfd16937351d8f553564a735aa53847d251297a75"
+  },
+  {
+    "index": 23,
+    "language": "text",
+    "text": "hidden_dim = 100",
+    "sha256": "7fba7bb216d797069db378fea6490159d64ca211a2b93b25d1d88feb38f5c0de"
+  },
+  {
+    "index": 24,
+    "language": "text",
+    "text": "output_dim = 3",
+    "sha256": "2aad05daa41035d23701cb6d1ae8152e8e6fd9077542d2befee44978c83a9fc7"
+  },
+  {
+    "index": 25,
+    "language": "python",
+    "text": "criterion = nn.CrossEntropyLoss()",
+    "sha256": "5ee9e3b0448736fcf89ff84ba7be322f553c632070fc2419c0872de46e7b444c"
+  },
+  {
+    "index": 26,
+    "language": "python",
+    "text": "outputs = model(X_train_tensor)",
+    "sha256": "4eb7559b72954b17a72a96a851b752dc75aeee3589d60868d1493798b69ce022"
+  },
+  {
+    "index": 27,
+    "language": "python",
+    "text": "y_train_tensor",
+    "sha256": "571cfd4a802b5a5101e0cf042e98c84a7b2ebd55f56eb4fd5c4299738c2f0a43"
+  },
+  {
+    "index": 28,
+    "language": "python",
+    "text": "optimizer = optim.Adam(\n    model.parameters(),\n    lr=0.01\n)",
+    "sha256": "dd9a84766c2312ea35bd2d266324f9eb9c9391c39ed2680decb089a1d0da949a"
+  },
+  {
+    "index": 29,
+    "language": "python",
+    "text": "model.parameters()",
+    "sha256": "f3e2f02f593fecd13fc1a058b9c14858a92ce4de5dadb158bb13a0b153b6a864"
+  },
+  {
+    "index": 30,
+    "language": "python",
+    "text": "lr=0.01",
+    "sha256": "8af49e8a1636103b590ef76304a4c7ecfa989bb504f1c665c9fd0adaa0bee5c8"
+  },
+  {
+    "index": 31,
+    "language": "python",
+    "text": "epochs = 100\n\nfor epoch in range(epochs):\n\n    outputs = model(X_train_tensor)\n\n    loss = criterion(\n        outputs,\n        y_train_tensor\n    )\n\n    optimizer.zero_grad()\n\n    loss.backward()\n\n    optimizer.step()",
+    "sha256": "784ba5a343be494f5d068e9bac7dd5c006c5ad34569267b4d8b52b3105d77733"
+  },
+  {
+    "index": 32,
+    "language": "python",
+    "text": "outputs = model(X_train_tensor)",
+    "sha256": "4eb7559b72954b17a72a96a851b752dc75aeee3589d60868d1493798b69ce022"
+  },
+  {
+    "index": 33,
+    "language": "text",
+    "text": "Linear\n↓\nReLU\n↓\nLinear",
+    "sha256": "a7d185eb41a3ed83ce4ee951b8486de9a3601b3509c2f53cde79d25b058baf60"
+  },
+  {
+    "index": 34,
+    "language": "python",
+    "text": "loss = criterion(\n    outputs,\n    y_train_tensor\n)",
+    "sha256": "dbdcd667ae209f3b0bef2792874422ac1fba0fae02d761525ca09dba50645173"
+  },
+  {
+    "index": 35,
+    "language": "text",
+    "text": "Prediction\n     ↓\nActual Label\n     ↓\nLoss",
+    "sha256": "b22eceb283110cdb9be9bbee002a8ddc28efe71006e9a55ace2e0f6bb61b8278"
+  },
+  {
+    "index": 36,
+    "language": "python",
+    "text": "optimizer.zero_grad()",
+    "sha256": "fbede2b3426f8daffe4f37608a474a03600387afc9a0b3258712e470124f9757"
+  },
+  {
+    "index": 37,
+    "language": "python",
+    "text": "loss.backward()",
+    "sha256": "227fe80da08b6d02955034947b207abea315364b3d84ee7b1732f8e8c3b31d8d"
+  },
+  {
+    "index": 38,
+    "language": "python",
+    "text": "optimizer.step()",
+    "sha256": "d9e59d7e651406a80e3569ffa41084f191174efc349faa642472c01e845fa001"
+  },
+  {
+    "index": 39,
+    "language": "text",
+    "text": "Weight Update\nBias Update",
+    "sha256": "6f784b691cf8317e0a8789c8c09624eb45894c4c18b870a17f1222ef091841c2"
+  },
+  {
+    "index": 40,
+    "language": "python",
+    "text": "optimizer.zero_grad()\nloss.backward()\noptimizer.step()",
+    "sha256": "18443360d1c66e6f1865e884c466fa5f79b86e54adf52603afac5f6c461b3407"
+  },
+  {
+    "index": 41,
+    "language": "text",
+    "text": "zero_grad()\n→ 이전 Gradient 초기화\n\nbackward()\n→ Gradient 계산\n\nstep()\n→ Parameter 업데이트",
+    "sha256": "85464347ceba221de418f60a89d7f3fc05b1c4a67965d4702af230eb207d38ab"
+  },
+  {
+    "index": 42,
+    "language": "python",
+    "text": "model.eval()",
+    "sha256": "45bf010c8945c8582402644951737948dcc61cda8f418cb4cb8cf85bae21019b"
+  },
+  {
+    "index": 43,
+    "language": "python",
+    "text": "with torch.no_grad():",
+    "sha256": "d4f61231629bbf1e3960a804d3539a92239fa118f856b5d0efb60eafba2dc2e7"
+  },
+  {
+    "index": 44,
+    "language": "python",
+    "text": "with torch.no_grad():\n\n    test_outputs = model(\n        X_test_tensor\n    )",
+    "sha256": "7b72b4e2036e0839d03c0475a8d69e6fc6eab1209d3c23e2a843797e497044cd"
+  },
+  {
+    "index": 45,
+    "language": "python",
+    "text": "_, y_pred = torch.max(\n    test_outputs,\n    1\n)",
+    "sha256": "b1eb266dc704e39491987256441ca8e31cd83888b46ae4c1d987971f21356f4c"
+  },
+  {
+    "index": 46,
+    "language": "python",
+    "text": "accuracy = accuracy_score(\n    y_test,\n    y_pred.numpy()\n)\n\nprint(\n    \"PyTorch MLP Accuracy:\",\n    accuracy\n)",
+    "sha256": "11fddb32b2099602e275f4a904c0b7b8708f24aca41e7c36148903be5131bb36"
+  },
+  {
+    "index": 47,
+    "language": "python",
+    "text": "model.fit(X_train, y_train)",
+    "sha256": "4db693e9f265f1486887920c2e9cbce041b8de1f5d60b444efa8e2875b7a15ed"
+  },
+  {
+    "index": 48,
+    "language": "text",
+    "text": "Forward\n↓\nLoss\n↓\nBackpropagation\n↓\nOptimizer\n↓\nParameter Update",
+    "sha256": "3571863d13e0f6c840f685c8565af815ccbb2640203064d4d04625e8b93188ed"
+  },
+  {
+    "index": 49,
+    "language": "python",
+    "text": "outputs = model(X_train_tensor)\n\nloss = criterion(\n    outputs,\n    y_train_tensor\n)\n\noptimizer.zero_grad()\nloss.backward()\noptimizer.step()",
+    "sha256": "61ef22ab03a51fc14b0bef7feec69eace25c6778939e7c90af9409063bc24e6d"
+  },
+  {
+    "index": 50,
+    "language": "text",
+    "text": "Tensor Input\n      ↓\nnn.Linear\n      ↓\nReLU\n      ↓\nnn.Linear\n      ↓\nModel Output\n      ↓\nCross Entropy Loss\n      ↓\nBackpropagation\n      ↓\nAdam Optimizer\n      ↓\nWeight / Bias Update\n      ↓\nRepeat",
+    "sha256": "fff0f659fc0328e3470ad3bf3e0d1d982135b71ecc5c7102275cbe77e2b57ee9"
+  },
+  {
+    "index": 51,
+    "language": "python",
+    "text": "optimizer.zero_grad()\nloss.backward()\noptimizer.step()",
+    "sha256": "18443360d1c66e6f1865e884c466fa5f79b86e54adf52603afac5f6c461b3407"
+  },
+  {
+    "index": 52,
+    "language": "text",
+    "text": "Gradient 초기화\n→\nGradient 계산\n→\nParameter 업데이트",
+    "sha256": "14efe649bb7964b0f76275012a27649ff13b45d9727ea8703e1f33fcd61d32f2"
+  }
+]
