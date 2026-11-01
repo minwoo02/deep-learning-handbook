@@ -1,6 +1,6 @@
 # Regression · nn.Module
 
-13~15절: nn.Linear와 CelsiusANN. 사용자 정의 Module의 자세한 설명은 아래의 Custom 모델 구현 문서에서 살펴본다.
+nn.Linear와 CelsiusANN. 사용자 정의 Module의 자세한 설명은 아래의 Custom 모델 구현 문서에서 살펴본다.
 
 | 항목 | 해당 단계의 코드 |
 | --- | --- |
