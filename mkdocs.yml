@@ -8,6 +8,8 @@ theme:
   - navigation.top
   - content.code.copy
   - toc.follow
+  - toc.integrate
+  - navigation.path
   palette:
   - scheme: default
     primary: indigo
@@ -129,7 +131,7 @@ markdown_extensions:
 - toc:
     title: 이 글의 목차
     permalink: true
-    toc_depth: 2-3
+    toc_depth: 2-6
 extra_javascript:
 - assets/mathjax.js
 - https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js
