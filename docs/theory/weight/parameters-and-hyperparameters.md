@@ -3,7 +3,7 @@
 [TOC]
 
 
-관련 실습: [PyTorch Custom 모델 구현: nn.Module 상속부터 모델 관리까지](../../practice/pytorch-basics/c04.md) · [PyTorch 가중치 초기화 완전 정리: Xavier·He·LeCun Initialization과 Gradient 문제](../../practice/tech-weight/c12.md) · [PyTorch Batch Normalization 완전 정리: 동작 원리부터 Running Statistics와 학습·추론까지](../../practice/tech-normalization/c13.md)
+관련 실습: [PyTorch Custom 모델 구현: nn.Module 상속부터 모델 관리까지](../../practice/pytorch-basics/custom-nn-module.md) · [PyTorch 가중치 초기화 완전 정리: Xavier·He·LeCun Initialization과 Gradient 문제](../../practice/tech-weight/weight-initialization.md) · [PyTorch Batch Normalization 완전 정리: 동작 원리부터 Running Statistics와 학습·추론까지](../../practice/tech-normalization/batch-normalization.md)
 
 
 ---

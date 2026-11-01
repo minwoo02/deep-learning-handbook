@@ -3,7 +3,7 @@
 [TOC]
 
 
-관련 실습: [scikit-learn MLPClassifier 이해하기](../../practice/sklearn/c02.md) · [PyTorch로 MLP 직접 구현하기](../../practice/classification/c07.md) · [PyTorch 가중치 초기화 완전 정리: Xavier·He·LeCun Initialization과 Gradient 문제](../../practice/tech-weight/c12.md) · [PyTorch Batch Normalization 완전 정리: 동작 원리부터 Running Statistics와 학습·추론까지](../../practice/tech-normalization/c13.md)
+관련 실습: [scikit-learn MLPClassifier 이해하기](../../practice/sklearn/sklearn-mlp-classifier.md) · [PyTorch로 MLP 직접 구현하기](../../practice/classification/iris-mlp-training.md) · [PyTorch 가중치 초기화 완전 정리: Xavier·He·LeCun Initialization과 Gradient 문제](../../practice/tech-weight/weight-initialization.md) · [PyTorch Batch Normalization 완전 정리: 동작 원리부터 Running Statistics와 학습·추론까지](../../practice/tech-normalization/batch-normalization.md)
 
 
 ---
@@ -114,7 +114,7 @@ Activation Function의 가장 중요한 역할은 바로 이 **비선형성(Non-
 
 초기의 Perceptron에서는 Activation Function으로 **Step Function**을 사용했다.
 
-![](../../assets/velog/a09-8138395e653a005c-image.png)
+![](../../assets/images/activation-functions-01.png)
 
 #### 함수식
 
@@ -206,7 +206,7 @@ Gradient Descent를 이용한 학습에 부적합
 
 대표적인 함수가 **Sigmoid Function**이다.
 
-![](../../assets/velog/a09-1f6aaa58d50168a1-image.png)
+![](../../assets/images/activation-functions-02.png)
 
 #### 함수식
 
@@ -362,7 +362,7 @@ Input 쪽 Layer
 
 Sigmoid와 비슷한 형태의 Activation Function으로 **Tanh**가 있다.
 
-![](../../assets/velog/a09-9745c99511ac4681-image.png)
+![](../../assets/images/activation-functions-03.png)
 
 #### 함수식
 
@@ -406,7 +406,7 @@ $$
 
 Deep Learning에서 매우 중요한 Activation Function이 **ReLU(Rectified Linear Unit)** 이다.
 
-![](../../assets/velog/a09-5b5f667fa114c070-image.png)
+![](../../assets/images/activation-functions-04.png)
 
 #### 함수식
 
@@ -585,7 +585,7 @@ Weight Update 어려움
 
 Dying ReLU 문제를 완화하기 위한 방법 중 하나가 **Leaky ReLU**이다.
 
-![](../../assets/velog/a09-0469dacc8010d567-image.png)
+![](../../assets/images/activation-functions-06.png)
 
 #### 함수식
 
@@ -912,7 +912,7 @@ $$
 - 발표: 2015년
 - 주요 특징: 음수 영역의 포화 특성과 부드러운 곡선
 
-![](../../assets/velog/a09-1070361e1b3b654c-image.png)
+![](../../assets/images/activation-functions-05.png)
 
 #### 함수식
 
@@ -1194,7 +1194,7 @@ model.apply(init_lecun)
 
 **Softplus**는 ReLU를 부드럽게 근사하는 Activation Function이다.
 
-![](../../assets/velog/a09-2793480a95dbba78-image.png)
+![](../../assets/images/activation-functions-07.png)
 
 #### 함수식
 
@@ -1301,7 +1301,7 @@ softplus = nn.Softplus()
 - 발표: 2016년
 - 특징: Smooth, Non-monotonic, Non-convex
 
-![](../../assets/velog/a09-7affac00e31e8c26-image.png)
+![](../../assets/images/activation-functions-08.png)
 
 #### 함수식
 
@@ -1459,7 +1459,7 @@ gelu_approx = nn.GELU(
 - Swish: 2017년에 일반화된 형태로 주목
 - 특징: Smooth, Non-monotonic, Non-convex
 
-![](../../assets/velog/a09-db42d2a2ce860636-image.png)
+![](../../assets/images/activation-functions-09.png)
 
 #### 함수식
 

@@ -1,91 +1,91 @@
 [
   {
     "source": "https://velog.velcdn.com/images/haru02/post/c0508d1d-056d-4e25-964b-e41e8e1c4d83/image.png",
-    "path": "assets/velog/a06-f888134f90dc7884-image.png",
+    "path": "assets/images/perceptron-geometry-01.png",
     "sha256": "3878628bcc92f0063c10075361d0638100fff26ff137e6d334865acb4a40df99",
     "bytes": 138448
   },
   {
     "source": "https://velog.velcdn.com/images/haru02/post/0a4a2710-593d-4d34-9e31-377dd819a334/image.png",
-    "path": "assets/velog/a09-8138395e653a005c-image.png",
+    "path": "assets/images/activation-functions-01.png",
     "sha256": "fcfc7ea248dbaea9b655518cd706554c7c3b44d4feb939742a73267b5428594b",
     "bytes": 31760
   },
   {
     "source": "https://velog.velcdn.com/images/haru02/post/4423087e-d053-4b5e-9b39-89e7d5058a1e/image.png",
-    "path": "assets/velog/a09-1f6aaa58d50168a1-image.png",
+    "path": "assets/images/activation-functions-02.png",
     "sha256": "9c36520ab688544f703c0bed6b523ee274f70c199de8f11a28f3565c83867477",
     "bytes": 46867
   },
   {
     "source": "https://velog.velcdn.com/images/haru02/post/70c38f72-8449-4264-b049-ade3cb849a6c/image.png",
-    "path": "assets/velog/a09-9745c99511ac4681-image.png",
+    "path": "assets/images/activation-functions-03.png",
     "sha256": "459096f50a8efd8a89131772b58df91cf459236c59570a1637f1d37e98360069",
     "bytes": 48518
   },
   {
     "source": "https://velog.velcdn.com/images/haru02/post/e10e57c4-bdfe-468e-ad9f-be0184afc569/image.png",
-    "path": "assets/velog/a09-5b5f667fa114c070-image.png",
+    "path": "assets/images/activation-functions-04.png",
     "sha256": "67ce283fe7cfdb9daa645d580fe542aeb0a601d71c0f5209b90b89c2d12a3aa6",
     "bytes": 38381
   },
   {
     "source": "https://velog.velcdn.com/images/haru02/post/27e309c2-ee37-4e68-89a2-1b9574352186/image.png",
-    "path": "assets/velog/a09-1070361e1b3b654c-image.png",
+    "path": "assets/images/activation-functions-05.png",
     "sha256": "b83ebbbe18eb7e652804e9640844b32c90c8a35a6da5a5ed4d2164cd59e513b1",
     "bytes": 36058
   },
   {
     "source": "https://velog.velcdn.com/images/haru02/post/fcf21bcd-2109-4249-9341-4e1ce851f318/image.png",
-    "path": "assets/velog/a09-0469dacc8010d567-image.png",
+    "path": "assets/images/activation-functions-06.png",
     "sha256": "2706a9d33b5bfd345a2baa3f100bb4be4bb8ce96c0c755bd68373787e47f627d",
     "bytes": 43458
   },
   {
     "source": "https://velog.velcdn.com/images/haru02/post/f2c94c76-2746-41ee-a2e2-dbe783a55265/image.png",
-    "path": "assets/velog/a09-2793480a95dbba78-image.png",
+    "path": "assets/images/activation-functions-07.png",
     "sha256": "2b4b93e212f2683fe59cd7d53b17e5d56e5bf951215890a667d37b1d3f5610d7",
     "bytes": 43602
   },
   {
     "source": "https://velog.velcdn.com/images/haru02/post/5e183e87-f871-49a6-ac1c-c6ce9d9c33aa/image.png",
-    "path": "assets/velog/a09-7affac00e31e8c26-image.png",
+    "path": "assets/images/activation-functions-08.png",
     "sha256": "bf0bf05d921c35353a9eb8a06bed3ef3154bd928c0133ce386e68f54b4b8c32f",
     "bytes": 39953
   },
   {
     "source": "https://velog.velcdn.com/images/haru02/post/c0ab3c78-dabc-40f3-9d95-e803098b6603/image.png",
-    "path": "assets/velog/a09-db42d2a2ce860636-image.png",
+    "path": "assets/images/activation-functions-09.png",
     "sha256": "d0a7ca416a1bc299a3fbcfecb77861f88eccb2b848034d37d0903ecb6629b5a0",
     "bytes": 44700
   },
   {
     "source": "https://velog.velcdn.com/images/haru02/post/4aea7b2e-f5d9-4d77-a01e-4fdd9c401950/image.jpg",
-    "path": "assets/velog/a18-eec4ea90917838d0-image.jpg",
+    "path": "assets/images/probabilistic-loss-functions-01.jpg",
     "sha256": "b2522768d36958a55d5e1d840793f03289395dee1e9e363b835b5e5a55ba94c6",
     "bytes": 87254
   },
   {
     "source": "https://velog.velcdn.com/images/haru02/post/e9b2a2ca-3df2-4dee-9a4d-eb62890dc0ca/image.png",
-    "path": "assets/velog/c06-65564bf8e774a510-image.png",
+    "path": "assets/images/linear-to-ann-regression-01.png",
     "sha256": "a1498caa0be6efa930e605e414c346fa71379a1078f8322b57d7cad78b22fc24",
     "bytes": 41601
   },
   {
     "source": "https://velog.velcdn.com/images/haru02/post/45af03a9-38b1-459e-98e1-57e0c5ef45db/image.png",
-    "path": "assets/velog/c06-ba84536f0d53098e-image.png",
+    "path": "assets/images/linear-to-ann-regression-02.png",
     "sha256": "20ffe50f0e0283d469ecc5ed537d4eeda2fdf20b72515f9de0875f9b81f503bc",
     "bytes": 25670
   },
   {
     "source": "https://velog.velcdn.com/images/haru02/post/be94c472-601d-4665-a094-885cf4618b95/image.png",
-    "path": "assets/velog/c06-7193e30a92d8d478-image.png",
+    "path": "assets/images/linear-to-ann-regression-03.png",
     "sha256": "8e4865ffca15a783ec6de2782f064e47793dd0c9c2c5239cb46da85ce8d03125",
     "bytes": 48645
   },
   {
     "source": "https://velog.velcdn.com/images/haru02/post/236880b1-1e50-46b4-9e34-74e7e3ca252f/image.png",
-    "path": "assets/velog/c13-80ee008588d3379f-image.png",
+    "path": "assets/images/batch-normalization-01.png",
     "sha256": "81e74d2cab7cc81005abbc156222a8f3cdcf6bc30099af5d484d6042779c8cd5",
     "bytes": 5257123
   }

@@ -17,7 +17,7 @@
 
 
 
-관련 이론: [Gradient Descent와 Learning Rate: Linear Regression과 Logistic Regression까지](../../theory/gradients/a11.md) · [딥러닝 손실함수의 확률적 이해: MLE·NLL부터 Cross-Entropy, MSE, MAE, L1·L2 정규화까지](../../theory/loss/a18.md) · [Regularization 완전 정리: Overfitting·L1/L2부터 Dropout·Early Stopping·Data Augmentation까지](../../theory/regularization/a19.md)
+관련 이론: [Gradient Descent와 Learning Rate: Linear Regression과 Logistic Regression까지](../../theory/gradients/gradient-descent-and-learning-rate.md) · [딥러닝 손실함수의 확률적 이해: MLE·NLL부터 Cross-Entropy, MSE, MAE, L1·L2 정규화까지](../../theory/loss/probabilistic-loss-functions.md) · [Regularization 완전 정리: Overfitting·L1/L2부터 Dropout·Early Stopping·Data Augmentation까지](../../theory/regularization/regularization.md)
 
 
 ---

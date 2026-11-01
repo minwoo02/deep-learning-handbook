@@ -17,7 +17,7 @@
 
 
 
-관련 이론: [Perceptron에서 MLP와 Backpropagation까지: 신경망은 어떻게 학습하는가?](../../theory/architectures/a05.md) · [Activation Function](../../theory/architectures/a09.md) · [머신러닝 분류 성능평가 완전 정리: Confusion Matrix부터 Accuracy·Precision·Recall·F1-score까지](../../theory/evaluation/a20.md)
+관련 이론: [Perceptron에서 MLP와 Backpropagation까지: 신경망은 어떻게 학습하는가?](../../theory/architectures/perceptron-mlp-backpropagation.md) · [Activation Function](../../theory/architectures/activation-functions.md) · [머신러닝 분류 성능평가 완전 정리: Confusion Matrix부터 Accuracy·Precision·Recall·F1-score까지](../../theory/evaluation/classification-metrics.md)
 
 
 ---

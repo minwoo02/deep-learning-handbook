@@ -17,7 +17,7 @@
 
 
 
-관련 이론: [Classification과 Regression](../../theory/foundations/a03.md) · [머신러닝 회귀 성능평가 완전 정리: MAE·MSE·RMSE·MAPE부터 결정계수 R²까지](../../theory/evaluation/a21.md)
+관련 이론: [Classification과 Regression](../../theory/foundations/classification-vs-regression.md) · [머신러닝 회귀 성능평가 완전 정리: MAE·MSE·RMSE·MAPE부터 결정계수 R²까지](../../theory/evaluation/regression-metrics.md)
 
 
 ---

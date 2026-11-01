@@ -17,7 +17,7 @@
 
 
 
-관련 이론: [Classification과 Regression](../../theory/foundations/a03.md) · [TLU와 Perceptron의 기하학적 이해](../../theory/architectures/a06.md) · [머신러닝 분류 성능평가 완전 정리: Confusion Matrix부터 Accuracy·Precision·Recall·F1-score까지](../../theory/evaluation/a20.md)
+관련 이론: [Classification과 Regression](../../theory/foundations/classification-vs-regression.md) · [TLU와 Perceptron의 기하학적 이해](../../theory/architectures/perceptron-geometry.md) · [머신러닝 분류 성능평가 완전 정리: Confusion Matrix부터 Accuracy·Precision·Recall·F1-score까지](../../theory/evaluation/classification-metrics.md)
 
 
 ---

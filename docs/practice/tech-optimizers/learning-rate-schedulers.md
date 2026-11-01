@@ -17,7 +17,7 @@
 
 
 
-관련 이론: [Gradient Descent와 Learning Rate: Linear Regression과 Logistic Regression까지](../../theory/gradients/a11.md) · [Hyperparameter Tuning](../../theory/evaluation/a23.md)
+관련 이론: [Gradient Descent와 Learning Rate: Linear Regression과 Logistic Regression까지](../../theory/gradients/gradient-descent-and-learning-rate.md) · [Hyperparameter Tuning](../../theory/evaluation/hyperparameter-tuning.md)
 
 
 ---

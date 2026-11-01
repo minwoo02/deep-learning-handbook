@@ -17,7 +17,7 @@
 
 
 
-관련 이론: [Perceptron에서 MLP와 Backpropagation까지: 신경망은 어떻게 학습하는가?](../../theory/architectures/a05.md) · [Parameter vs Hyperparameter: 모델이 학습하는 값과 사람이 정하는 값](../../theory/weight/a10.md)
+관련 이론: [Perceptron에서 MLP와 Backpropagation까지: 신경망은 어떻게 학습하는가?](../../theory/architectures/perceptron-mlp-backpropagation.md) · [Parameter vs Hyperparameter: 모델이 학습하는 값과 사람이 정하는 값](../../theory/weight/parameters-and-hyperparameters.md)
 
 
 ---

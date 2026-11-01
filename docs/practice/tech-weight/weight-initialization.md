@@ -17,7 +17,7 @@
 
 
 
-관련 이론: [Parameter vs Hyperparameter: 모델이 학습하는 값과 사람이 정하는 값](../../theory/weight/a10.md) · [Activation Function](../../theory/architectures/a09.md)
+관련 이론: [Parameter vs Hyperparameter: 모델이 학습하는 값과 사람이 정하는 값](../../theory/weight/parameters-and-hyperparameters.md) · [Activation Function](../../theory/architectures/activation-functions.md)
 
 
 ---

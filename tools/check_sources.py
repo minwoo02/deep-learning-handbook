@@ -6,15 +6,15 @@ R=Path(__file__).resolve().parents[1]
 manifest=json.loads((R/'sources/manifest.json').read_text())
 count=0
 for row in manifest:
- source=json.loads((R/'sources'/f"{row['id']}.json").read_text())
+ source=json.loads((R/row['source_file']).read_text())
  assert '[Truncated]' not in source['html'],row['id']
  assert hashlib.sha256(source['html'].encode()).hexdigest()==row['source_sha256']
- blocks=json.loads((R/'examples/fragments'/f"{row['id']}.json").read_text())
+ blocks=json.loads((R/row['fragments_file']).read_text())
  original=BeautifulSoup(source['html'],'html.parser').find_all('pre')
  assert len(blocks)==len(original)
  document=R/'docs'/row['destination']
  if row['id'] in ('a00', 'c00'):
-  document=R/'sources/legacy-guides'/f"{row['id']}.md"
+  document=R/row['archive_file']
  markdown=document.read_text()
  for src,block in zip(original,blocks):
   assert src.get_text()==block['text']

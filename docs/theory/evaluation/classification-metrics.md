@@ -3,7 +3,7 @@
 [TOC]
 
 
-관련 실습: [scikit-learn으로 Perceptron 구현하기](../../practice/sklearn/c01.md) · [scikit-learn MLPClassifier 이해하기](../../practice/sklearn/c02.md) · [PyTorch로 MLP 직접 구현하기](../../practice/classification/c07.md) · [PyTorch로 Iris Dataset 다중 분류 구현하기: Dataset부터 ANN 학습 및 평가까지](../../practice/classification/c09.md)
+관련 실습: [scikit-learn으로 Perceptron 구현하기](../../practice/sklearn/sklearn-perceptron.md) · [scikit-learn MLPClassifier 이해하기](../../practice/sklearn/sklearn-mlp-classifier.md) · [PyTorch로 MLP 직접 구현하기](../../practice/classification/iris-mlp-training.md) · [PyTorch로 Iris Dataset 다중 분류 구현하기: Dataset부터 ANN 학습 및 평가까지](../../practice/classification/iris-classification-pipeline.md)
 
 
 ---

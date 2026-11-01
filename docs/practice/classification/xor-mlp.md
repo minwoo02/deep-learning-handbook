@@ -17,7 +17,7 @@
 
 
 
-관련 이론: [XOR로 이해하는 Perceptron의 한계와 MLP](../../theory/architectures/a07.md) · [Perceptron에서 MLP와 Backpropagation까지: 신경망은 어떻게 학습하는가?](../../theory/architectures/a05.md)
+관련 이론: [XOR로 이해하는 Perceptron의 한계와 MLP](../../theory/architectures/xor-and-mlp.md) · [Perceptron에서 MLP와 Backpropagation까지: 신경망은 어떻게 학습하는가?](../../theory/architectures/perceptron-mlp-backpropagation.md)
 
 
 ---

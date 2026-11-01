@@ -17,7 +17,7 @@
 
 
 
-관련 이론: [Classification과 Regression](../../theory/foundations/a03.md) · [Gradient Descent와 Learning Rate: Linear Regression과 Logistic Regression까지](../../theory/gradients/a11.md) · [딥러닝 손실함수의 확률적 이해: MLE·NLL부터 Cross-Entropy, MSE, MAE, L1·L2 정규화까지](../../theory/loss/a18.md) · [머신러닝 회귀 성능평가 완전 정리: MAE·MSE·RMSE·MAPE부터 결정계수 R²까지](../../theory/evaluation/a21.md)
+관련 이론: [Classification과 Regression](../../theory/foundations/classification-vs-regression.md) · [Gradient Descent와 Learning Rate: Linear Regression과 Logistic Regression까지](../../theory/gradients/gradient-descent-and-learning-rate.md) · [딥러닝 손실함수의 확률적 이해: MLE·NLL부터 Cross-Entropy, MSE, MAE, L1·L2 정규화까지](../../theory/loss/probabilistic-loss-functions.md) · [머신러닝 회귀 성능평가 완전 정리: MAE·MSE·RMSE·MAPE부터 결정계수 R²까지](../../theory/evaluation/regression-metrics.md)
 
 
 ---
@@ -547,7 +547,7 @@ plt.show()
 ```
 
 그래프에서는 이상적인 선형 관계 주변에 Noise가 포함된 Sample들이 분포하는 것을 확인할 수 있다.  
-![](../../assets/velog/c06-65564bf8e774a510-image.png)
+![](../../assets/images/linear-to-ann-regression-01.png)
 
 이후 모델은 이 데이터의 전체적인 선형 관계를 학습하게 된다.
 
@@ -953,7 +953,7 @@ plt.show()
 그래프에서는 Epoch가 증가함에 따라 Loss가 감소하는 것을 확인할 수 있다.
 
 이는 모델이 Gradient Descent를 이용해 예측 오차를 줄이고 있다는 의미이다.  
-![](../../assets/velog/c06-ba84536f0d53098e-image.png)
+![](../../assets/images/linear-to-ann-regression-02.png)
 
 ### 9-4. 예측 결과 시각화
 
@@ -994,7 +994,7 @@ plt.legend()
 plt.show()
 ```
 
-![](../../assets/velog/c06-7193e30a92d8d478-image.png)
+![](../../assets/images/linear-to-ann-regression-03.png)
 
 학습된 모델의 예측선이 이상적인 관계식과 거의 일치하는 것을 확인할 수 있다.
 

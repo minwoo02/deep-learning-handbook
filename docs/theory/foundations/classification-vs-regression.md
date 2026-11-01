@@ -3,7 +3,7 @@
 [TOC]
 
 
-관련 실습: [scikit-learn으로 Perceptron 구현하기](../../practice/sklearn/c01.md) · [scikit-learn MLPRegressor로 California Housing 집값 예측하기](../../practice/sklearn/c03.md) · [PyTorch 딥러닝 모델 구현 실습: 선형회귀부터 ANN 학습·평가까지](../../practice/regression/c06.md)
+관련 실습: [scikit-learn으로 Perceptron 구현하기](../../practice/sklearn/sklearn-perceptron.md) · [scikit-learn MLPRegressor로 California Housing 집값 예측하기](../../practice/sklearn/california-housing-regression.md) · [PyTorch 딥러닝 모델 구현 실습: 선형회귀부터 ANN 학습·평가까지](../../practice/regression/linear-to-ann-regression.md)
 
 
 ---

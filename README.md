@@ -33,3 +33,17 @@ zensical serve
 `main` 변경 시 자동 검사·빌드 후 GitHub Pages로 배포합니다.
 
 제3자 이미지와 인용의 권리는 원저작자에게 있습니다. 별도의 포괄적 라이선스를 부여하지 않습니다.
+
+## 파일 이름
+
+파일명은 소문자 영어와 하이픈으로 주제를 표현합니다. 학습 순서는 파일 번호 대신 `mkdocs.yml`과 로드맵에서 관리합니다.
+
+| 내용 | 파일 |
+| --- | --- |
+| 활성화 함수 | `docs/theory/architectures/activation-functions.md` |
+| 역전파와 MLP | `docs/theory/architectures/perceptron-mlp-backpropagation.md` |
+| 선형회귀부터 ANN | `docs/practice/regression/linear-to-ann-regression.md` |
+| Iris 분류 | `docs/practice/classification/iris-classification-pipeline.md` |
+| 가중치 초기화 | `docs/practice/tech-weight/weight-initialization.md` |
+
+각 폴더의 `index.md`는 해당 분류의 개요입니다. 관련 수집 자료와 코드 블록도 같은 주제의 파일명을 사용합니다.

@@ -3,12 +3,12 @@
 [TOC]
 
 
-관련 실습: [PyTorch 딥러닝 모델 구현 실습: 선형회귀부터 ANN 학습·평가까지](../../practice/regression/c06.md) · [PyTorch로 MLP 직접 구현하기](../../practice/classification/c07.md) · [PyTorch로 Iris Dataset 다중 분류 구현하기: Dataset부터 ANN 학습 및 평가까지](../../practice/classification/c09.md) · [AdamW 완전 정리: Adam의 Moment Estimation부터 L2 Regularization·Weight Decay와 PyTorch 구현까지](../../practice/tech-optimizers/c11.md)
+관련 실습: [PyTorch 딥러닝 모델 구현 실습: 선형회귀부터 ANN 학습·평가까지](../../practice/regression/linear-to-ann-regression.md) · [PyTorch로 MLP 직접 구현하기](../../practice/classification/iris-mlp-training.md) · [PyTorch로 Iris Dataset 다중 분류 구현하기: Dataset부터 ANN 학습 및 평가까지](../../practice/classification/iris-classification-pipeline.md) · [AdamW 완전 정리: Adam의 Moment Estimation부터 L2 Regularization·Weight Decay와 PyTorch 구현까지](../../practice/tech-optimizers/adamw.md)
 
 
 ---
 
-![](../../assets/velog/a18-eec4ea90917838d0-image.jpg)  
+![](../../assets/images/probabilistic-loss-functions-01.jpg)  
 딥러닝 모델을 학습할 때는 모델의 예측값과 실제 정답 사이의 차이를 측정하기 위해 손실함수(Loss Function)를 사용한다.
 
 PyTorch에서는 다음과 같은 손실함수를 제공한다.

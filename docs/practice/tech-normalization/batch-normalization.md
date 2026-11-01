@@ -17,12 +17,12 @@
 
 
 
-관련 이론: [Activation Function](../../theory/architectures/a09.md) · [Parameter vs Hyperparameter: 모델이 학습하는 값과 사람이 정하는 값](../../theory/weight/a10.md)
+관련 이론: [Activation Function](../../theory/architectures/activation-functions.md) · [Parameter vs Hyperparameter: 모델이 학습하는 값과 사람이 정하는 값](../../theory/weight/parameters-and-hyperparameters.md)
 
 
 ---
 
-![](../../assets/velog/c13-80ee008588d3379f-image.png)
+![](../../assets/images/batch-normalization-01.png)
 
 딥러닝 모델을 학습할 때는 여러 Layer를 통과하는 과정에서 Activation과 Gradient의 크기가 변화한다.
 

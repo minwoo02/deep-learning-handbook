@@ -17,7 +17,7 @@
 
 
 
-관련 이론: [Supervised Learning(지도학습) 완전 정리: Classification·Regression부터 Object Detection·Segmentation까지](../../theory/foundations/a02.md)
+관련 이론: [Supervised Learning(지도학습) 완전 정리: Classification·Regression부터 Object Detection·Segmentation까지](../../theory/foundations/supervised-learning.md)
 
 
 ---

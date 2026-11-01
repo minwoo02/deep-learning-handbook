@@ -3,7 +3,7 @@
 [TOC]
 
 
-관련 실습: [PyTorch 딥러닝 모델 구현 실습: 선형회귀부터 ANN 학습·평가까지](../../practice/regression/c06.md) · [Learning Rate 완전 정리: 학습률 설정부터 Scheduler·Warmup·Cosine Annealing과 PyTorch 구현까지](../../practice/tech-optimizers/c10.md) · [AdamW 완전 정리: Adam의 Moment Estimation부터 L2 Regularization·Weight Decay와 PyTorch 구현까지](../../practice/tech-optimizers/c11.md) · [PyTorch Gradient Clipping 완전 정리: Exploding Gradient부터 Norm·Value Clipping 구현까지](../../practice/tech-gradients/c14.md)
+관련 실습: [PyTorch 딥러닝 모델 구현 실습: 선형회귀부터 ANN 학습·평가까지](../../practice/regression/linear-to-ann-regression.md) · [Learning Rate 완전 정리: 학습률 설정부터 Scheduler·Warmup·Cosine Annealing과 PyTorch 구현까지](../../practice/tech-optimizers/learning-rate-schedulers.md) · [AdamW 완전 정리: Adam의 Moment Estimation부터 L2 Regularization·Weight Decay와 PyTorch 구현까지](../../practice/tech-optimizers/adamw.md) · [PyTorch Gradient Clipping 완전 정리: Exploding Gradient부터 Norm·Value Clipping 구현까지](../../practice/tech-gradients/gradient-clipping.md)
 
 
 ---

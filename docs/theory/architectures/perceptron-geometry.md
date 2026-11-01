@@ -3,12 +3,12 @@
 [TOC]
 
 
-관련 실습: [scikit-learn으로 Perceptron 구현하기](../../practice/sklearn/c01.md)
+관련 실습: [scikit-learn으로 Perceptron 구현하기](../../practice/sklearn/sklearn-perceptron.md)
 
 
 ---
 
-![](../../assets/velog/a06-f888134f90dc7884-image.png)
+![](../../assets/images/perceptron-geometry-01.png)
 
 ## TLU와 Perceptron의 기하학적 이해: Weight, Bias, Decision Boundary
 

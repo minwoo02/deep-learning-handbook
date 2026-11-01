@@ -3,7 +3,7 @@
 [TOC]
 
 
-관련 실습: [Learning Rate 완전 정리: 학습률 설정부터 Scheduler·Warmup·Cosine Annealing과 PyTorch 구현까지](../../practice/tech-optimizers/c10.md)
+관련 실습: [Learning Rate 완전 정리: 학습률 설정부터 Scheduler·Warmup·Cosine Annealing과 PyTorch 구현까지](../../practice/tech-optimizers/learning-rate-schedulers.md)
 
 
 ---

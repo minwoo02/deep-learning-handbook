@@ -12,4 +12,4 @@
 | Optimizer | 수동 갱신 |
 | Activation | 없음 |
 
-- [PyTorch 딥러닝 모델 구현 실습: 선형회귀부터 ANN 학습·평가까지](../regression/c06.md)
+- [PyTorch 딥러닝 모델 구현 실습: 선형회귀부터 ANN 학습·평가까지](../regression/linear-to-ann-regression.md)

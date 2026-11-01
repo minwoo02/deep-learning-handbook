@@ -3,7 +3,7 @@
 [TOC]
 
 
-관련 실습: [PyTorch로 XOR 해결하기: MLP 클래스 구조 분석](../../practice/classification/c08.md)
+관련 실습: [PyTorch로 XOR 해결하기: MLP 클래스 구조 분석](../../practice/classification/xor-mlp.md)
 
 
 ---

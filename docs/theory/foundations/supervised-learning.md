@@ -3,7 +3,7 @@
 [TOC]
 
 
-관련 실습: [PyTorch Dataset과 DataLoader 이해하기 — 클래스 상속부터 데이터 전처리까지](../../practice/pytorch-basics/c05.md)
+관련 실습: [PyTorch Dataset과 DataLoader 이해하기 — 클래스 상속부터 데이터 전처리까지](../../practice/pytorch-basics/datasets-and-dataloaders.md)
 
 
 ---
