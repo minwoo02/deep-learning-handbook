@@ -16,6 +16,11 @@
     "Mermaid mindmap rendered visually",
     "Loss page: 254 MathJax containers rendered"
   ],
-  "deployment": "Pages source enabled by owner; next push deploys",
-  "github_actions_build": "PASS: run 41293665113 build and artifact upload"
+  "deployment": "PASS",
+  "github_actions_build": "PASS: source check, clean build, built-link check, artifact upload",
+  "site_url": "https://minwoo02.github.io/deep-learning-handbook/",
+  "deployment_commit": "067669b",
+  "github_actions_run": "https://github.com/minwoo02/deep-learning-handbook/actions/runs/41293988846",
+  "github_actions_deploy": "PASS",
+  "live_browser": "PASS: published Home and Mermaid roadmap rendered"
 }
