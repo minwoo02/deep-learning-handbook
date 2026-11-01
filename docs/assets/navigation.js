@@ -1,0 +1,61 @@
+/* Desktop navigation control. Mobile keeps the theme's native menu button. */
+(() => {
+  const storageKey = 'handbook.navigationCollapsed';
+  let collapsed = false;
+  try {
+    collapsed = localStorage.getItem(storageKey) === 'true';
+  } catch (_) {
+    // The control still works if browser storage is unavailable.
+  }
+
+  function initializeNavigationControl() {
+    const header = document.querySelector('.md-header__inner');
+    const sidebar = document.querySelector('.md-sidebar--primary');
+    if (!header || !sidebar) return;
+    sidebar.id = 'handbook-primary-navigation';
+
+    let button = document.getElementById('handbook-navigation-toggle');
+    if (!button) {
+      button = document.createElement('button');
+      button.id = 'handbook-navigation-toggle';
+      button.type = 'button';
+      button.className = 'handbook-navigation-toggle';
+      button.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></svg><span></span>';
+      const logo = header.querySelector('.md-logo');
+      if (logo) logo.after(button);
+      else header.prepend(button);
+
+      button.addEventListener('click', () => {
+        collapsed = !collapsed;
+        try {
+          localStorage.setItem(storageKey, String(collapsed));
+        } catch (_) {
+          // Persistence is optional; toggling is not.
+        }
+        updateControl();
+      });
+    }
+
+    function updateControl() {
+      const label = collapsed ? '목차 펼치기' : '목차 접기';
+      document.body.classList.toggle('handbook-navigation-collapsed', collapsed);
+      button.setAttribute('aria-controls', sidebar.id);
+      button.setAttribute('aria-expanded', String(!collapsed));
+      button.setAttribute('aria-label', label);
+      button.title = label;
+      button.querySelector('span').textContent = label;
+      // Let the theme recalculate sticky sidebars after the content width changes.
+      window.dispatchEvent(new Event('resize'));
+    }
+
+    updateControl();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeNavigationControl, { once: true });
+  } else {
+    initializeNavigationControl();
+  }
+  // Keep the control compatible with the theme's optional instant navigation.
+  if (typeof document$ !== 'undefined') document$.subscribe(initializeNavigationControl);
+})();

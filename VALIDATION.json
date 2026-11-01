@@ -8,7 +8,7 @@
   "local_markdown_links": "PASS",
   "training_execution": "NOT RUN: source fragments include partial examples, output, and diagrams",
   "external_images": "PASS: 15/15 source images downloaded; original URLs, bytes and SHA-256 preserved",
-  "built_local_links_checked": 7124,
+  "built_local_links_checked": 7199,
   "built_local_links": "PASS",
   "zensical_build": "PASS: 0.0.74, clean build, no issues",
   "browser_checks": [

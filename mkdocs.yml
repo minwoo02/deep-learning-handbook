@@ -132,6 +132,7 @@ markdown_extensions:
     permalink: true
     toc_depth: 2-6
 extra_javascript:
+- assets/navigation.js
 - assets/mathjax.js
 - https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js
 extra_css:
