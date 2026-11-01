@@ -1,6 +1,6 @@
 # Regression · Autograd
 
-10~11절: requires_grad, backward, 수동 parameter update.
+requires_grad, backward, 수동 parameter update.
 
 | 항목 | 해당 단계의 코드 |
 | --- | --- |
