@@ -1,6 +1,6 @@
 # Regression · SGD
 
-12절: 동일한 선형 모델에 optim.SGD 적용.
+동일한 선형 모델에 optim.SGD 적용.
 
 | 항목 | 해당 단계의 코드 |
 | --- | --- |
