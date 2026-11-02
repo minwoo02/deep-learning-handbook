@@ -1,16 +1,20 @@
 # Model Architecture
 
-Theory
+모델 구조별 개념을 살펴보고, 공통 개념과 구현 실습으로 연결한다.
 
-- [CNN: 이미지의 공간 구조를 활용하는 신경망](cnn.md)
-- [Convolutional Layer: Kernel·Stride·Padding과 출력 크기](convolutional-layer.md)
+## 공통 개념
 
-- [ANN • DNN • CNN • RNN 개념 및 핵심 차이 총정리](neural-network-architectures.md)
-- [Perceptron에서 MLP와 Backpropagation까지: 신경망은 어떻게 학습하는가?](perceptron-mlp-backpropagation.md)
-- [TLU와 Perceptron의 기하학적 이해](perceptron-geometry.md)
-- [XOR로 이해하는 Perceptron의 한계와 MLP](xor-and-mlp.md)
-- [딥러닝을 공간 변환 관점에서 이해하기](neural-networks-as-space-transformations.md)
+- [신경망 구조 비교: ANN·DNN·CNN·RNN](neural-network-architectures.md)
 - [Activation Function](activation-functions.md)
+
+## 모델 구조
+
+- [MLP](mlp.md) — Perceptron·XOR·Backpropagation·공간 변환 관점
+- [CNN](cnn.md) — 이미지의 공간 구조와 [Convolutional Layer](convolutional-layer.md)
+- [RNN](rnn.md)
+
+## 연결 실습
+
 - [PyTorch Custom 모델 구현: nn.Module 상속부터 모델 관리까지](../../practice/pytorch-basics/custom-nn-module.md)
 - [PyTorch로 MLP 직접 구현하기](../../practice/classification/iris-mlp-training.md)
 - [PyTorch로 XOR 해결하기: MLP 클래스 구조 분석](../../practice/classification/xor-mlp.md)
