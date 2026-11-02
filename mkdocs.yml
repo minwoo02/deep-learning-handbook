@@ -41,6 +41,7 @@ nav:
     - 개요: theory/architectures/index.md
     - RNN: theory/architectures/rnn.md
     - CNN: theory/architectures/cnn.md
+    - 'Convolutional Layer: Kernel·Stride·Padding과 출력 크기': theory/architectures/convolutional-layer.md
     - MLP: theory/architectures/mlp.md
     - ANN • DNN • CNN • RNN 개념 및 핵심 차이 총정리: theory/architectures/neural-network-architectures.md
     - 'Perceptron에서 MLP와 Backpropagation까지: 신경망은 어떻게 학습하는가?': theory/architectures/perceptron-mlp-backpropagation.md

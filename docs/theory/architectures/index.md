@@ -2,6 +2,9 @@
 
 Theory
 
+- [CNN: 이미지의 공간 구조를 활용하는 신경망](cnn.md)
+- [Convolutional Layer: Kernel·Stride·Padding과 출력 크기](convolutional-layer.md)
+
 - [ANN • DNN • CNN • RNN 개념 및 핵심 차이 총정리](neural-network-architectures.md)
 - [Perceptron에서 MLP와 Backpropagation까지: 신경망은 어떻게 학습하는가?](perceptron-mlp-backpropagation.md)
 - [TLU와 Perceptron의 기하학적 이해](perceptron-geometry.md)
