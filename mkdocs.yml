@@ -108,19 +108,19 @@ nav:
     - PyTorch로 MLP 직접 구현하기: practice/classification/iris-mlp-training.md
     - 'PyTorch로 XOR 해결하기: MLP 클래스 구조 분석': practice/classification/xor-mlp.md
     - 'PyTorch로 Iris Dataset 다중 분류 구현하기: Dataset부터 ANN 학습 및 평가까지': practice/classification/iris-classification-pipeline.md
+  - Weight & Initialization:
+    - 개요: practice/tech-weight/index.md
+    - 'PyTorch 가중치 초기화 완전 정리: Xavier·He·LeCun Initialization과 Gradient 문제': practice/tech-weight/weight-initialization.md
+  - Gradient Clipping:
+    - 개요: practice/tech-gradients/index.md
+    - 'PyTorch Gradient Clipping 완전 정리: Exploding Gradient부터 Norm·Value Clipping 구현까지': practice/tech-gradients/gradient-clipping.md
   - Optimizer:
     - 개요: practice/tech-optimizers/index.md
     - 'Learning Rate 완전 정리: 학습률 설정부터 Scheduler·Warmup·Cosine Annealing과 PyTorch 구현까지': practice/tech-optimizers/learning-rate-schedulers.md
     - 'AdamW 완전 정리: Adam의 Moment Estimation부터 L2 Regularization·Weight Decay와 PyTorch 구현까지': practice/tech-optimizers/adamw.md
-  - Weight & Initialization:
-    - 개요: practice/tech-weight/index.md
-    - 'PyTorch 가중치 초기화 완전 정리: Xavier·He·LeCun Initialization과 Gradient 문제': practice/tech-weight/weight-initialization.md
   - Normalization:
     - 개요: practice/tech-normalization/index.md
     - 'PyTorch Batch Normalization 완전 정리: 동작 원리부터 Running Statistics와 학습·추론까지': practice/tech-normalization/batch-normalization.md
-  - Gradient Clipping:
-    - 개요: practice/tech-gradients/index.md
-    - 'PyTorch Gradient Clipping 완전 정리: Exploding Gradient부터 Norm·Value Clipping 구현까지': practice/tech-gradients/gradient-clipping.md
 markdown_extensions:
 - tables
 - fenced_code
