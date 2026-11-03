@@ -49,6 +49,7 @@ nav:
     - CNN:
       - 개요: theory/architectures/cnn.md
       - 'Convolutional Layer: Kernel·Stride·Padding과 출력 크기': theory/architectures/convolutional-layer.md
+      - 'Pooling Layer: 특징을 요약하고 공간 크기를 줄이는 방법': theory/architectures/pooling-layer.md
     - RNN:
       - 개요: theory/architectures/rnn.md
     - Activation Function: theory/architectures/activation-functions.md

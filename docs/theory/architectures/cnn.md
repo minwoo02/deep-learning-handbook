@@ -69,6 +69,7 @@ CNN은 국소 연결과 가중치 공유를 통해 공간적 패턴을 효율적
 ## 관련 문서
 
 - [Convolutional Layer: Kernel·Stride·Padding과 출력 크기](convolutional-layer.md)
+- [Pooling Layer: 특징을 요약하고 공간 크기를 줄이는 방법](pooling-layer.md)
 
 - [ANN·CNN·RNN 비교](neural-network-architectures.md)
 - [CNN 구현 실습 · 준비 중](../../practice/stages/cnn.md)
