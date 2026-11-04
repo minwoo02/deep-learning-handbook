@@ -214,29 +214,6 @@ FP, FN → Incorrect Prediction
 
 ---
 
-#### 제1종·제2종 오류와 FP·FN의 관계
-
-![제1종 오류와 제2종 오류의 확률분포 개념도. 임계값 c의 오른쪽에 있는 H0 분포의 꼬리 면적이 알파, 왼쪽에 있는 H1 분포의 꼬리 면적이 베타이다.](../../assets/images/type-i-type-ii-errors.svg)
-
-위 그림은 설명을 위해 두 정규분포를 사용해 새로 작성한 **오른쪽 단측검정의 개념도**이다. 실제 분류 모델의 측정 결과는 아니다.
-
-\(H_0\)를 Negative 상태, \(H_0\)의 기각을 Positive 판정으로 두면 다음과 같이 연결된다.
-
-| 영역 | 가설검정에서의 의미 | 분류에서의 대응 |
-| --- | --- | --- |
-| \(\alpha\) | \(H_0\)가 참인데 기각하는 확률 · 제1종 오류 | False Positive Rate |
-| \(\beta\) | 특정 \(H_1\)이 참인데 \(H_0\)를 기각하지 못하는 확률 · 제2종 오류 | False Negative Rate |
-| \(1-\alpha\) | \(H_0\)가 참일 때 기각하지 않는 확률 | Specificity · True Negative Rate |
-| \(1-\beta\) | 특정 \(H_1\)이 참일 때 \(H_0\)를 기각하는 확률 · 검정력 | Recall · True Positive Rate |
-
-**FP·FN은 오류의 개수이고, \(\alpha\)·\(\beta\)는 각 실제 상태를 조건으로 한 오류 확률이다.** 분류 데이터에서는 각각 \(FP/(FP+TN)\), \(FN/(FN+TP)\)로 해당 비율을 추정한다.
-
-그림의 두 분포를 고정한 상태에서 임계값을 오른쪽으로 옮기면 \(\alpha\)는 줄고 \(\beta\)는 커진다. 반대로 왼쪽으로 옮기면 \(\alpha\)는 커지고 \(\beta\)는 줄어든다. \(\beta\)와 검정력은 어떤 대립가설을 기준으로 하는지에 따라 달라진다.
-
-참고: [NIST — Quantitative Techniques: Hypothesis Testing](https://itl.nist.gov/div898/handbook/eda/section3/eda35.htm)
-
----
-
 ## 3. 성능평가를 위한 예제
 
 이제 하나의 Confusion Matrix를 이용해 네 가지 성능지표를 모두 계산해 보자.
