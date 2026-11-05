@@ -78,6 +78,9 @@ nav:
   - Regularization:
     - 개요: theory/regularization/index.md
     - 'Regularization 완전 정리: Overfitting·L1/L2부터 Dropout·Early Stopping·Data Augmentation까지': theory/regularization/regularization.md
+  - Training Strategies:
+    - 개요: theory/training/index.md
+    - 'Transfer Learning: 사전학습한 특징을 새 문제에 활용하기': theory/training/transfer-learning.md
   - Evaluation:
     - 개요: theory/evaluation/index.md
     - '머신러닝 분류 성능평가 완전 정리: Confusion Matrix부터 Accuracy·Precision·Recall·F1-score까지': theory/evaluation/classification-metrics.md

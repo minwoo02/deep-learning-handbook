@@ -155,6 +155,8 @@ ResNet은 합성곱 경로의 결과에 Shortcut 경로의 값을 더한다. 입
 - [Convolutional Layer](convolutional-layer.md)
 - [Activation Function](activation-functions.md)
 
+- [Transfer Learning](../training/transfer-learning.md) — 사전학습 Backbone과 새 분류 Head를 연결하는 방법.
+
 ## 참고 자료
 
 - [ResNet 정리 — dsaint31](https://dsaint31.me/mkdocs_site/ML/ch14_cnn/resnet/): 글의 출발점이 된 참고 자료.

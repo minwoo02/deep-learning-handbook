@@ -257,6 +257,8 @@ PyTorch 2.15.0의 CPU 환경에서 본문의 모든 Python 블록을 순서대�
 - [Convolutional Layer](../../theory/architectures/convolutional-layer.md)
 - [LeNet-5](../../theory/architectures/lenet-5.md)
 
+- [Transfer Learning](../../theory/training/transfer-learning.md) — 학습한 특징을 새 문제에 활용하는 전략.
+
 ## 참고 자료
 
 - [PyTorch의 nn.Conv2d 사용법 — dsaint31](https://dsaint31.me/mkdocs_site/ML/ch14_cnn/module_conv2d/): 코드 설정과 정리 범위의 출발점.
