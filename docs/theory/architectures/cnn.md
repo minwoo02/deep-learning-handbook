@@ -82,3 +82,5 @@ CNN은 국소 연결과 가중치 공유를 통해 공간적 패턴을 효율적
 - [Goodfellow·Bengio·Courville — Deep Learning, Chapter 9: Convolutional Networks](https://www.deeplearningbook.org/contents/convnets.html) — 이동 등변성과 Pooling 설명을 보충한 자료이다.
 
 - [VGG: 작은 합성곱을 쌓아 깊이를 늘리다](vgg.md)
+
+- [ResNet: 입력을 더하는 연결이 깊은 학습을 돕는 이유](resnet.md)
