@@ -95,7 +95,7 @@ nav:
     - Regression · ANN: practice/stages/ann.md
     - Classification · XOR: practice/stages/xor.md
     - Classification · Iris: practice/stages/iris.md
-    - CNN · 학습 예정: practice/stages/cnn.md
+    - CNN · Conv2d Shape: practice/stages/cnn.md
     - RNN · 학습 예정: practice/stages/rnn.md
   - scikit-learn 입문:
     - 개요: practice/sklearn/index.md
@@ -114,6 +114,9 @@ nav:
     - PyTorch로 MLP 직접 구현하기: practice/classification/iris-mlp-training.md
     - 'PyTorch로 XOR 해결하기: MLP 클래스 구조 분석': practice/classification/xor-mlp.md
     - 'PyTorch로 Iris Dataset 다중 분류 구현하기: Dataset부터 ANN 학습 및 평가까지': practice/classification/iris-classification-pipeline.md
+  - CNN:
+    - 개요: practice/cnn/index.md
+    - 'PyTorch Conv2d: 코드의 Shape을 입체로 읽기': practice/cnn/conv2d-shapes.md
   - Weight & Initialization:
     - 개요: practice/tech-weight/index.md
     - 'PyTorch 가중치 초기화 완전 정리: Xavier·He·LeCun Initialization과 Gradient 문제': practice/tech-weight/weight-initialization.md

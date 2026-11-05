@@ -17,4 +17,4 @@ MLP·CNN·RNN은 모델 구조이며 Regression·Classification은 해결할 문
 
 PyTorch Basics → Regression(수동 gradient → autograd → SGD → nn.Module → Dataset/DataLoader → ANN) → Classification(XOR → Iris) → CNN → RNN
 
-CNN·RNN 구현 실습은 준비 중이다.
+[CNN의 Conv2d Shape 실습](practice/cnn/conv2d-shapes.md)부터 확인할 수 있다. CNN 분류 모델의 학습·평가와 RNN 구현 실습은 준비 중이다.

@@ -115,6 +115,10 @@ Convolutional Layer를 이해할 때는 **공간 크기와 채널 수를 분리�
 
 공간 크기는 Kernel·Stride·Padding·Dilation으로 결정되고, 출력 채널 수는 필터 개수로 결정된다.
 
+## 연결 실습
+
+- [PyTorch Conv2d: 코드의 Shape을 입체로 읽기](../../practice/cnn/conv2d-shapes.md) — 입력·가중치·출력 shape과 Grouped·Depthwise 연결을 코드와 입체 그림으로 확인한다.
+
 ## 참고자료
 
 - [dsaint31 — Convolutional Layer](https://dsaint31.me/mkdocs_site/ML/ch14_cnn/CNN_convolutional_layer/)
