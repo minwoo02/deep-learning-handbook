@@ -54,6 +54,7 @@ nav:
       - 'AlexNet: 깊은 CNN을 대규모 이미지 분류로 확장한 모델': theory/architectures/alexnet.md
       - 'VGG: 작은 합성곱을 쌓아 깊이를 늘리다': theory/architectures/vgg.md
       - 'ResNet: 입력을 더하는 연결이 깊은 학습을 돕는 이유': theory/architectures/resnet.md
+      - 'DenseNet: 이전 특징을 이어 붙여 재사용하다': theory/architectures/densenet.md
     - RNN:
       - 개요: theory/architectures/rnn.md
     - Activation Function: theory/architectures/activation-functions.md
