@@ -80,3 +80,5 @@ CNN은 국소 연결과 가중치 공유를 통해 공간적 패턴을 효율적
 
 - [dsaint31 — Convolutional Neural Network, CNN](https://dsaint31.me/mkdocs_site/ML/ch14_cnn/CNN_intro/) — 정리의 바탕이 된 글이다.
 - [Goodfellow·Bengio·Courville — Deep Learning, Chapter 9: Convolutional Networks](https://www.deeplearningbook.org/contents/convnets.html) — 이동 등변성과 Pooling 설명을 보충한 자료이다.
+
+- [VGG: 작은 합성곱을 쌓아 깊이를 늘리다](vgg.md)
