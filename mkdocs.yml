@@ -1,12 +1,14 @@
 site_name: Deep Learning Handbook
 site_url: https://minwoo02.github.io/deep-learning-handbook/
 repo_url: https://github.com/minwoo02/deep-learning-handbook
+edit_uri: edit/main/docs/
 theme:
   language: ko
   features:
   - navigation.tabs
   - navigation.top
   - content.code.copy
+  - content.action.edit
   - toc.follow
   - navigation.path
   palette:
