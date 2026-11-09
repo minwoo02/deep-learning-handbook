@@ -166,6 +166,8 @@ ResNet 구조를 파악할 때 가장 중요한 규칙은 **"하나의 스테이
    * **마지막 다운샘플링 관문:** 마지막으로 `Stride 2`를 적용해 해상도를 축소한다 ($\mathbf{14 \times 14 \to 7 \times 7}$).
 6. **Global Average Pooling & FC**
    * 최종적으로 남은 $7 \times 7$ 크기의 특징 맵을 평균 내어 하나의 벡터로 뭉친 뒤, 최종 분류(Fully Connected Layer)로 전달한다.
+  
+![](../../assets/images/resnet-18-architecture.png)
 
 > **💡 핵심 요약**
 > * **총 압축 횟수:** Stem에서 1번, Stage 2·3·4의 진입부에서 각 1번씩 **총 4번**의 해상도 축소(다운샘플링)가 일어난다.
