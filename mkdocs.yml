@@ -60,6 +60,7 @@ nav:
     - RNN:
       - 개요: theory/architectures/rnn.md
       - 'RNN: 이전 상태를 다음 계산에 쓰는 신경망': theory/architectures/rnn-intro.md
+      - 'RNN의 입출력 구조와 Encoder–Decoder': theory/architectures/rnn-topologies.md
     - Activation Function: theory/architectures/activation-functions.md
   - Weight & Initialization:
     - 개요: theory/weight/index.md
