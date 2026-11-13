@@ -140,5 +140,3 @@ Shape에서는 **Backbone이 내보내는 특징 차원과 Head가 받는 입력
 - [torchvision ResNet 구현](https://docs.pytorch.org/vision/stable/_modules/torchvision/models/resnet.html): ResNet-18의 특징 차원과 분류기 구조.
 - [BERT — Devlin et al.](https://arxiv.org/abs/1810.04805), [Language Models are Few-Shot Learners — Brown et al.](https://arxiv.org/abs/2005.14165): 언어 모델의 사전학습 방식 구분.
 - [A Fast Learning Algorithm for Deep Belief Nets — Hinton et al.](https://www.cs.toronto.edu/~hinton/absps/fastnc.pdf): 층별 사전학습의 역사적 사례.
-
-그림은 새로 작성한 설명용 도식이다. 색상은 가중치 업데이트 여부를 구분하며 실제 학습 결과를 나타내지 않는다.
